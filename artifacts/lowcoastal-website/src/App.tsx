@@ -3,6 +3,11 @@ import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { lazy, Suspense } from "react";
+const SharkToothPage = lazy(() => import("@/pages/SharkToothPage"));
+const DolphinPage = lazy(() => import("@/pages/DolphinPage"));
+const GroupCharterPage = lazy(() => import("@/pages/GroupCharterPage"));
+const FishingPage = lazy(() => import("@/pages/FishingPage"));
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   Anchor, 
@@ -293,6 +298,7 @@ function Hero() {
 const experiences = [
   {
     id: "shark-teeth",
+    path: "/shark-tooth-hunting",
     title: "Shark Tooth Hunting",
     desc: "Our hero experience. We take you to remote, boat-access-only barrier island beaches where prehistoric megalodon teeth wash ashore. Perfect for all ages — every fossil hunter's dream.",
     image: "/images/kids-teeth.png",
@@ -302,6 +308,7 @@ const experiences = [
   },
   {
     id: "dolphins",
+    path: "/dolphin-wildlife",
     title: "Dolphin & Wildlife Tours",
     desc: "Cruise the pristine estuarine waters and winding creeks to witness Atlantic bottlenose dolphins feeding and playing in their natural habitat, alongside eagles and pelicans.",
     image: "/images/dolphins.png",
@@ -311,6 +318,7 @@ const experiences = [
   },
   {
     id: "groups",
+    path: "/group-charters",
     title: "Bachelorette & Group Charters",
     desc: "Celebrate on the water! A private charter for your bachelorette party, family reunion, or corporate retreat. Bring your drinks, play your music, and let us handle the rest.",
     image: "/images/bachelorette.png",
@@ -320,6 +328,7 @@ const experiences = [
   },
   {
     id: "fishing",
+    path: "/inshore-fishing",
     title: "Inshore Fishing Trips",
     desc: "Target redfish, trout, and flounder in the nutrient-rich marshes. Whether you're a seasoned angler or teaching the kids to cast, our captains know exactly where the fish are biting.",
     image: "/images/fishing.png",
@@ -380,18 +389,26 @@ function Experiences() {
                     </li>
                   ))}
                 </ul>
-                <button 
-                  onClick={() => {
-                    const select = document.getElementById('tourType') as HTMLSelectElement;
-                    if(select) select.value = exp.id;
-                    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="w-full py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm flex items-center justify-center gap-2"
-                  data-testid={`book-${exp.id}-btn`}
-                >
-                  <Anchor className="h-4 w-4" />
-                  Book This Tour
-                </button>
+                <div className="flex gap-3">
+                  <a
+                    href={`${import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}${exp.path}`}
+                    className="flex-1 py-3 rounded-lg border border-border text-foreground/80 font-semibold hover:border-primary/40 hover:text-primary transition-all flex items-center justify-center gap-2 text-sm"
+                  >
+                    Learn More <ArrowRight className="h-4 w-4" />
+                  </a>
+                  <button 
+                    onClick={() => {
+                      const select = document.getElementById('tourType') as HTMLSelectElement;
+                      if(select) select.value = exp.id;
+                      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex-1 py-3 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:glow-orange-sm flex items-center justify-center gap-2 text-sm"
+                    data-testid={`book-${exp.id}-btn`}
+                  >
+                    <Anchor className="h-4 w-4" />
+                    Book Now
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -1177,10 +1194,30 @@ function App() {
         <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
           <Switch>
             <Route path="/" component={LandingPage} />
+            <Route path="/shark-tooth-hunting">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <SharkToothPage />
+              </Suspense>
+            </Route>
+            <Route path="/dolphin-wildlife">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <DolphinPage />
+              </Suspense>
+            </Route>
+            <Route path="/group-charters">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <GroupCharterPage />
+              </Suspense>
+            </Route>
+            <Route path="/inshore-fishing">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <FishingPage />
+              </Suspense>
+            </Route>
             <Route>
-              <div className="min-h-screen flex items-center justify-center">
+              <div className="min-h-screen flex items-center justify-center bg-background">
                 <div className="text-center">
-                  <h1 className="text-4xl font-serif font-bold mb-4">404 - Not Found</h1>
+                  <h1 className="text-4xl font-serif font-bold mb-4 text-foreground">404 - Not Found</h1>
                   <a href="/" className="text-primary hover:underline">Return home</a>
                 </div>
               </div>

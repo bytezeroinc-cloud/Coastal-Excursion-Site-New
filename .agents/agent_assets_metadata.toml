@@ -54,3 +54,39 @@ id = "pvF1SiVeAxJxpgmWX0ptT"
 uri = "file://artifacts/lowcoastal-website/public/images/fishing.png"
 type = "image"
 title = "fishing redfish marsh boat"
+
+[[generated]]
+id = "PI2wS4s09MonLxfI7GrAw"
+uri = "file://artifacts/lowcoastal-website/public/images/teeth-display.png"
+type = "image"
+title = "megalodon teeth display"
+
+[[generated]]
+id = "eutGBBBo_uYByJVx1seQ9"
+uri = "file://artifacts/lowcoastal-website/public/images/dolphin-guide.png"
+type = "image"
+title = "dolphin guide boat guests"
+
+[[generated]]
+id = "zJSTFkK7Wxw8AffaEyMSU"
+uri = "file://artifacts/lowcoastal-website/public/images/barrier-island.png"
+type = "image"
+title = "remote barrier island beach"
+
+[[generated]]
+id = "1WXh7eoSPamIZ7h5kjnjY"
+uri = "file://artifacts/lowcoastal-website/public/images/charter-party.png"
+type = "image"
+title = "charter party celebration boat"
+
+[[generated]]
+id = "cFuP-NTtiE_XvrHjACdK3"
+uri = "file://artifacts/lowcoastal-website/public/images/redfish-action.png"
+type = "image"
+title = "redfish jumping inshore fishing"
+
+[[generated]]
+id = "zZziJkSxgHINBSDODHzMq"
+uri = "file://artifacts/lowcoastal-website/public/images/family-teeth.png"
+type = "image"
+title = "family shark teeth beach finds"
