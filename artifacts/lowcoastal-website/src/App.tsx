@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -81,21 +81,70 @@ function Navbar() {
   );
 }
 
+const heroSlides = [
+  { src: "/images/hero-boat.png", alt: "Aerial view of tour boat on beautiful teal coastal waters" },
+  { src: "/images/kids-teeth.png", alt: "Kids excitedly holding shark teeth they found on the beach" },
+  { src: "/images/dolphins.png", alt: "Dolphins leaping near a tour boat on the SC coast" },
+  { src: "/images/marsh-sunrise.png", alt: "Golden hour over the stunning South Carolina coastal marshes" },
+  { src: "/images/bachelorette.png", alt: "Bachelorette group celebrating on a boat on the water" },
+  { src: "/images/couple-beach.png", alt: "Couple finding shark teeth together on a pristine barrier island beach" },
+];
+
 function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 300]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState<number | null>(null);
+  const [transitioning, setTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTransitioning(true);
+      setPrevSlide(currentSlide);
+      setCurrentSlide(prev => (prev + 1) % heroSlides.length);
+      const timer = setTimeout(() => {
+        setPrevSlide(null);
+        setTransitioning(false);
+      }, 1200);
+      return () => clearTimeout(timer);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentSlide]);
 
   return (
     <section className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex items-center justify-center pt-20" aria-label="Hero Section">
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-        <img 
-          src="/images/hero-boat.png" 
-          alt="Aerial view of tour boat on beautiful coastal waters" 
-          className="w-full h-full object-cover object-center"
+        {prevSlide !== null && (
+          <img
+            key={`prev-${prevSlide}`}
+            src={heroSlides[prevSlide].src}
+            alt={heroSlides[prevSlide].alt}
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ opacity: transitioning ? 0 : 1, transition: "opacity 1.2s ease-in-out" }}
+          />
+        )}
+        <img
+          key={`current-${currentSlide}`}
+          src={heroSlides[currentSlide].src}
+          alt={heroSlides[currentSlide].alt}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ opacity: 1, transition: "opacity 1.2s ease-in-out" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background"></div>
       </motion.div>
+
+      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {heroSlides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setPrevSlide(currentSlide); setCurrentSlide(i); }}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-white w-6" : "bg-white/40"}`}
+            aria-label={`Go to slide ${i + 1}`}
+            data-testid={`hero-slide-dot-${i}`}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
         <motion.div
@@ -148,9 +197,14 @@ function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce text-white/70">
+      <button
+        onClick={() => document.getElementById('experiences')?.scrollIntoView({ behavior: 'smooth' })}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce text-white/70 hover:text-white transition-colors"
+        aria-label="Scroll to experiences"
+        data-testid="hero-scroll-down"
+      >
         <ChevronDown className="h-8 w-8" />
-      </div>
+      </button>
     </section>
   );
 }
