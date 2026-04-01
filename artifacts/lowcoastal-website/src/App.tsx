@@ -208,18 +208,6 @@ function Hero() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-md border border-primary/40 text-white px-4 py-1.5 rounded-full text-sm font-medium mb-6"
-          style={{ boxShadow: "0 0 20px hsl(22 95% 52% / 0.2)" }}
-        >
-          <Waves className="h-4 w-4 text-primary" />
-          <span>South Carolina Lowcountry</span>
-          <MapPin className="h-4 w-4 text-primary" />
-        </motion.div>
-        
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
