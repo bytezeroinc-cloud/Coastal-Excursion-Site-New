@@ -239,46 +239,40 @@ function Hero() {
           Premium boat tours specializing in prehistoric shark tooth hunting, dolphin watching, and authentic coastal adventures on the SC Lowcountry.
         </motion.p>
         
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="flex items-center justify-center gap-6 text-white/80 text-sm"
+        >
+          <div className="flex items-center gap-1.5">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            <span>USCG Certified</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Star className="h-4 w-4 text-primary fill-primary" />
+            <span>4.9 Google Rating</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Heart className="h-4 w-4 text-primary fill-primary" />
+            <span>Family Friendly</span>
+          </div>
+        </motion.div>
+
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+          className="flex items-center justify-center"
         >
           <button 
             onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full sm:w-auto bg-primary text-primary-foreground px-8 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange hover:scale-105 active:scale-100 flex items-center justify-center gap-2"
+            className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange hover:scale-105 active:scale-100 flex items-center justify-center gap-2"
             data-testid="hero-book-btn"
           >
             <Anchor className="h-5 w-5" />
             Book Your Adventure
           </button>
-          <button 
-            onClick={() => document.getElementById('experiences')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-          >
-            Explore Tours <ArrowRight className="h-5 w-5" />
-          </button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="flex items-center justify-center gap-8 mt-12 text-white/70 text-sm"
-        >
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-primary" />
-            <span>USCG Certified</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Star className="h-4 w-4 text-primary fill-primary" />
-            <span>4.9 Google Rating</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Heart className="h-4 w-4 text-primary fill-primary" />
-            <span>Family Friendly</span>
-          </div>
         </motion.div>
       </div>
 
