@@ -96,7 +96,7 @@ export default function FishingPage() {
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-20 pt-20">
         <div className="absolute inset-0 z-0">
-          <img src="/images/fishing.png" alt="Angler with redfish catch in SC marsh" className="w-full h-full object-cover object-center" />
+          <img src="/images/fishing.jpg" alt="Angler with redfish catch in SC marsh" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
         </div>
@@ -124,10 +124,10 @@ export default function FishingPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Included + Species */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
@@ -217,10 +217,10 @@ export default function FishingPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Gallery */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
             <Camera className="h-4 w-4" /> Gallery
@@ -228,9 +228,9 @@ export default function FishingPage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Life on the Marsh</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/fishing.png", alt: "Angler and son with redfish in the marsh" },
-              { src: "/images/redfish-action.png", alt: "Redfish leaping from the water" },
-              { src: "/images/marsh-sunrise.png", alt: "Sunrise over the SC coastal marsh" }
+              { src: "/images/fishing.jpg", alt: "Angler and son with redfish in the marsh" },
+              { src: "/images/redfish-action.jpg", alt: "Redfish leaping from the water" },
+              { src: "/images/marsh-sunrise.jpg", alt: "Sunrise over the SC coastal marsh" }
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -298,10 +298,10 @@ export default function FishingPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* FAQ */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">

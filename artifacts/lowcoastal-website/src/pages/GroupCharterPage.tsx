@@ -96,7 +96,7 @@ export default function GroupCharterPage() {
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-20 pt-20">
         <div className="absolute inset-0 z-0">
-          <img src="/images/bachelorette.png" alt="Group celebrating on a charter boat" className="w-full h-full object-cover object-center" />
+          <img src="/images/bachelorette.jpg" alt="Group celebrating on a charter boat" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
         </div>
@@ -124,10 +124,10 @@ export default function GroupCharterPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Included */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -160,7 +160,7 @@ export default function GroupCharterPage() {
             </div>
             <div className="relative">
               <div className="rounded-3xl overflow-hidden border border-border shadow-2xl shadow-black/30 aspect-[4/5]">
-                <img src="/images/charter-party.png" alt="Celebration on a private charter boat" className="w-full h-full object-cover" />
+                <img src="/images/charter-party.jpg" alt="Celebration on a private charter boat" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-card border border-border rounded-2xl p-5 shadow-xl max-w-[210px]">
                 <div className="text-3xl font-bold text-primary glow-orange-text mb-1">100%</div>
@@ -201,10 +201,10 @@ export default function GroupCharterPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Steps */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
@@ -246,9 +246,9 @@ export default function GroupCharterPage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Life on Charter</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/bachelorette.png", alt: "Bachelorette group celebrating on the boat" },
-              { src: "/images/couple-beach.png", alt: "Couple on a private beach at golden hour" },
-              { src: "/images/marsh-sunrise.png", alt: "Golden sunset over the SC marsh" }
+              { src: "/images/bachelorette.jpg", alt: "Bachelorette group celebrating on the boat" },
+              { src: "/images/couple-beach.jpg", alt: "Couple on a private beach at golden hour" },
+              { src: "/images/marsh-sunrise.jpg", alt: "Golden sunset over the SC marsh" }
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -265,10 +265,10 @@ export default function GroupCharterPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Reviews */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
@@ -346,10 +346,10 @@ export default function GroupCharterPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* CTA */}
-      <section className="py-24 bg-muted text-center">
+      <section className="py-24 light-section text-center">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <Sparkles className="h-12 w-12 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 16px hsl(22 95% 52% / 0.6))" }} />
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">

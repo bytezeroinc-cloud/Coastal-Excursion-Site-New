@@ -103,7 +103,7 @@ export default function SharkToothPage() {
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-20 pt-20">
         <div className="absolute inset-0 z-0">
-          <img src="/images/kids-teeth.png" alt="Kids finding shark teeth on South Carolina beach" className="w-full h-full object-cover object-center" />
+          <img src="/images/kids-teeth.jpg" alt="Kids finding shark teeth on South Carolina beach" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
         </div>
@@ -131,10 +131,10 @@ export default function SharkToothPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* What's Included */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -165,7 +165,7 @@ export default function SharkToothPage() {
             </div>
             <div className="relative">
               <div className="rounded-3xl overflow-hidden border border-border shadow-2xl shadow-black/30 aspect-[4/5]">
-                <img src="/images/teeth-display.png" alt="Collection of fossilized shark teeth" className="w-full h-full object-cover" />
+                <img src="/images/teeth-display.jpg" alt="Collection of fossilized shark teeth" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-5 shadow-xl max-w-[200px]">
                 <div className="text-3xl font-bold text-primary glow-orange-text mb-1">30+</div>
@@ -211,10 +211,10 @@ export default function SharkToothPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Gallery */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
             <Camera className="h-4 w-4" /> Gallery
@@ -222,9 +222,9 @@ export default function SharkToothPage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">The Hunt in Pictures</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/teeth-close.png", alt: "Close-up of fossilized shark teeth found on the beach" },
-              { src: "/images/family-teeth.png", alt: "Family showing off their shark tooth finds" },
-              { src: "/images/barrier-island.png", alt: "Remote barrier island beach accessible only by boat" }
+              { src: "/images/teeth-close.jpg", alt: "Close-up of fossilized shark teeth found on the beach" },
+              { src: "/images/family-teeth.jpg", alt: "Family showing off their shark tooth finds" },
+              { src: "/images/barrier-island.jpg", alt: "Remote barrier island beach accessible only by boat" }
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -294,10 +294,10 @@ export default function SharkToothPage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 40% 13%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* FAQ */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 light-section">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">

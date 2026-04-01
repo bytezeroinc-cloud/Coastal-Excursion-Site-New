@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "7OOexnLZItXuFtVUCbNeG"
@@ -90,3 +89,81 @@ id = "zZziJkSxgHINBSDODHzMq"
 uri = "file://artifacts/lowcoastal-website/public/images/family-teeth.png"
 type = "image"
 title = "family shark teeth beach finds"
+
+[[outputs]]
+id = "pcqqkxQ5GKM6PMSivYGau"
+uri = "file://attached_assets/stock_images/dolphins-boat.jpg"
+type = "image"
+title = "bottlenose dolphins jumping and leaping beside a pontoon boat in calm coastal waters, South Carolina"
+
+[[outputs]]
+id = "epSzEVTXgzapWwUmgOIjy"
+uri = "file://attached_assets/stock_images/couple-beach-sunset.jpg"
+type = "image"
+title = "romantic couple walking on a remote barrier island beach at sunset, golden light, ocean waves"
+
+[[outputs]]
+id = "ElLMWO-Nfx6H2eCRabos4"
+uri = "file://attached_assets/stock_images/family-shark-teeth.jpg"
+type = "image"
+title = "family holding up multiple shark teeth fossils on the beach, smiling parents and children"
+
+[[outputs]]
+id = "ls16300j3wR-_R2qN8PCv"
+uri = "file://attached_assets/stock_images/fossil-teeth-sand.jpg"
+type = "image"
+title = "shark teeth fossils on beach sand, megalodon teeth fossil collection"
+
+[[outputs]]
+id = "TOgpx-3T6IOpsmKxSP5R5"
+uri = "file://attached_assets/stock_images/women-boat-party.jpg"
+type = "image"
+title = "women celebrating on a boat party, group of friends on boat, summer fun on the water"
+
+[[outputs]]
+id = "BehqisGtJbXzF-oqJcBsp"
+uri = "file://attached_assets/stock_images/wildlife-boat-guide.jpg"
+type = "image"
+title = "boat tour guide wildlife watching, nature guide on boat with tourists"
+
+[[outputs]]
+id = "WWCbbb-lGTKNPa03RH05n"
+uri = "file://attached_assets/stock_images/group-pontoon-boat.jpg"
+type = "image"
+title = "people on pontoon boat having fun, group boat trip, lake or river boat party"
+
+[[outputs]]
+id = "c5niDtZ-cQ9rL_pNeSaLZ"
+uri = "file://attached_assets/stock_images/shark-teeth-closeup.jpg"
+type = "image"
+title = "close-up fossilized shark teeth on display, prehistoric fossils natural history"
+
+[[outputs]]
+id = "Z080jszWt7R8lHfjIZb3N"
+uri = "file://attached_assets/stock_images/lowcountry-marsh-sunrise.jpg"
+type = "image"
+title = "coastal marsh sunrise South Carolina, tidal creek golden morning light, lowcountry"
+
+[[outputs]]
+id = "i2vOnIIanqgeFLFIdpUsB"
+uri = "file://attached_assets/stock_images/coastal-angler-fishing.jpg"
+type = "image"
+title = "angler fishing in saltwater marsh, redfish drum catch coastal fishing"
+
+[[outputs]]
+id = "hbmwK42mTMoVaY2VfcjX0"
+uri = "file://attached_assets/stock_images/wild-barrier-beach.jpg"
+type = "image"
+title = "empty wild beach with sea oats and dunes, secluded coastal beach, South Carolina Georgia island"
+
+[[outputs]]
+id = "SE7cr3tFqvX4TWlSa36fp"
+uri = "file://attached_assets/stock_images/charter-fishing-boat.jpg"
+type = "image"
+title = "sport fishing boat on calm coastal water, fishing charter boat on the ocean"
+
+[[outputs]]
+id = "vHp8gVxr1CxBRXUpdoaTp"
+uri = "file://attached_assets/stock_images/bachelorette-boat-party.jpg"
+type = "image"
+title = "bachelorette party boat, women celebrating on a boat with champagne glasses"

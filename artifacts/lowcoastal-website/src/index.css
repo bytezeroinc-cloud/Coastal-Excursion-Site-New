@@ -138,6 +138,21 @@
   }
 }
 
+/* Light section — re-scopes CSS vars so all text, card & border tokens stay readable */
+.light-section {
+  background-color: hsl(214 30% 95%);
+  --background: 214 30% 95%;
+  --foreground: 218 50% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 218 50% 10%;
+  --card-border: 218 20% 82%;
+  --muted: 214 25% 88%;
+  --muted-foreground: 218 30% 38%;
+  --border: 218 20% 82%;
+  --secondary: 214 25% 88%;
+  --secondary-foreground: 218 50% 10%;
+}
+
 /* Wave SVG patterns */
 .wave-top {
   position: absolute;
