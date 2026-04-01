@@ -1,0 +1,56 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "7OOexnLZItXuFtVUCbNeG"
+uri = "file://artifacts/lowcoastal-website/public/images/hero-boat.png"
+type = "image"
+title = "Aerial pontoon boat on teal water"
+
+[[generated]]
+id = "yOYHPGHBZDANi8zTa0mke"
+uri = "file://artifacts/lowcoastal-website/public/images/kids-teeth.png"
+type = "image"
+title = "Kids with shark teeth"
+
+[[generated]]
+id = "9E30F3FowCWpXo3rtdAav"
+uri = "file://artifacts/lowcoastal-website/public/images/family-boat.png"
+type = "image"
+title = "Family on boat deck"
+
+[[generated]]
+id = "sNLPhfxe-4u_bexrtBlPo"
+uri = "file://artifacts/lowcoastal-website/public/images/bachelorette.png"
+type = "image"
+title = "Bachelorette group on boat"
+
+[[generated]]
+id = "BUxbwOpxRWidlxBrwAxkx"
+uri = "file://artifacts/lowcoastal-website/public/images/teeth-close.png"
+type = "image"
+title = "Close up shark teeth"
+
+[[generated]]
+id = "VSiLQ7Iw0EwjIxuq1ySzp"
+uri = "file://artifacts/lowcoastal-website/public/images/couple-beach.png"
+type = "image"
+title = "Couple finding teeth"
+
+[[generated]]
+id = "UEBqGEWTcRn-CU8bcFzgl"
+uri = "file://artifacts/lowcoastal-website/public/images/dolphins.png"
+type = "image"
+title = "Dolphins jumping"
+
+[[generated]]
+id = "zmzzvgTcBjKf_6zXuW4My"
+uri = "file://artifacts/lowcoastal-website/public/images/marsh-sunrise.png"
+type = "image"
+title = "Coastal marsh sunrise"
+
+[[generated]]
+id = "pvF1SiVeAxJxpgmWX0ptT"
+uri = "file://artifacts/lowcoastal-website/public/images/fishing.png"
+type = "image"
+title = "Fishing trip action"
