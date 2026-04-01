@@ -194,20 +194,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[hsl(218,45%,7%)]/30 via-transparent to-[hsl(218,45%,7%)]/20"></div>
       </motion.div>
 
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2">
-        {heroSlides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => { setPrevSlide(currentSlide); setCurrentSlide(i); }}
-            className={`h-2 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-primary w-6" : "bg-white/40 w-2"}`}
-            style={i === currentSlide ? { boxShadow: "0 0 8px hsl(22 95% 52% / 0.7)" } : {}}
-            aria-label={`Go to slide ${i + 1}`}
-            data-testid={`hero-slide-dot-${i}`}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-24 sm:mt-32">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
