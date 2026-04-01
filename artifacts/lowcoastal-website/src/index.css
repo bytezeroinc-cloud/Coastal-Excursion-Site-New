@@ -51,90 +51,66 @@
 }
 
 :root {
-  --button-outline: rgba(0,0,0, .10);
-  --badge-outline: rgba(0,0,0, .05);
+  --button-outline: rgba(255,140,0, .25);
+  --badge-outline: rgba(255,140,0, .10);
   --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .08);
+  --elevate-1: rgba(255,255,255, .04);
+  --elevate-2: rgba(255,255,255, .08);
 
-  /* Warm Sand / Coastal Off-White */
-  --background: 40 33% 98%;
-  --foreground: 220 20% 15%;
+  /* Deep Ocean Navy */
+  --background: 218 45% 7%;
+  --foreground: 210 30% 92%;
 
-  --border: 40 20% 90%;
+  --border: 220 35% 18%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 220 20% 15%;
-  --card-border: 40 20% 90%;
+  /* Slightly lighter navy for cards */
+  --card: 218 42% 11%;
+  --card-foreground: 210 30% 92%;
+  --card-border: 220 35% 20%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 220 20% 15%;
-  --popover-border: 40 20% 90%;
+  --popover: 218 42% 11%;
+  --popover-foreground: 210 30% 92%;
+  --popover-border: 220 35% 20%;
 
-  /* Golden Hour Orange */
-  --primary: 32 90% 55%;
+  /* Glowing Dark Orange */
+  --primary: 22 95% 52%;
   --primary-foreground: 0 0% 100%;
 
-  /* Deep Coastal Teal */
-  --secondary: 195 40% 30%;
-  --secondary-foreground: 0 0% 100%;
+  /* Deep Blue */
+  --secondary: 218 55% 16%;
+  --secondary-foreground: 210 30% 92%;
 
-  /* Warm Sand */
-  --muted: 40 30% 94%;
-  --muted-foreground: 220 15% 40%;
+  /* Dark Muted Navy */
+  --muted: 218 40% 13%;
+  --muted-foreground: 215 25% 60%;
 
-  /* Light Teal Accent */
-  --accent: 195 30% 92%;
-  --accent-foreground: 195 40% 30%;
+  /* Accent Blue */
+  --accent: 218 48% 20%;
+  --accent-foreground: 210 30% 92%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --input: 40 20% 85%;
-  --ring: 32 90% 55%;
+  --input: 220 35% 18%;
+  --ring: 22 95% 52%;
 
   --app-font-sans: 'Plus Jakarta Sans', sans-serif;
   --app-font-serif: 'Playfair Display', serif;
   --radius: 0.5rem;
-}
 
-.dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
-  --opaque-button-border-intensity: 9;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
-
-  --background: 220 25% 10%;
-  --foreground: 40 33% 98%;
-
-  --border: 220 20% 20%;
-
-  --card: 220 25% 12%;
-  --card-foreground: 40 33% 98%;
-  --card-border: 220 20% 20%;
-
-  --popover: 220 25% 12%;
-  --popover-foreground: 40 33% 98%;
-  --popover-border: 220 20% 20%;
-
-  --primary: 32 90% 55%;
-  --primary-foreground: 0 0% 100%;
-
-  --secondary: 195 40% 40%;
-  --secondary-foreground: 0 0% 100%;
-
-  --muted: 220 20% 16%;
-  --muted-foreground: 220 15% 70%;
-
-  --accent: 220 20% 18%;
-  --accent-foreground: 40 33% 98%;
-
-  --destructive: 0 62% 30%;
-  --destructive-foreground: 0 0% 100%;
-
-  --input: 220 20% 20%;
-  --ring: 32 90% 55%;
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-primary-border: hsl(var(--primary));
+  --sidebar-accent-border: hsl(var(--accent));
 }
 
 @layer base {
@@ -147,4 +123,36 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
+}
+
+/* Glowing orange effect for primary elements */
+@layer utilities {
+  .glow-orange {
+    box-shadow: 0 0 20px hsl(22 95% 52% / 0.45), 0 0 60px hsl(22 95% 52% / 0.15);
+  }
+  .glow-orange-text {
+    text-shadow: 0 0 20px hsl(22 95% 52% / 0.6);
+  }
+  .glow-orange-sm {
+    box-shadow: 0 0 10px hsl(22 95% 52% / 0.35), 0 0 30px hsl(22 95% 52% / 0.10);
+  }
+}
+
+/* Wave SVG patterns */
+.wave-top {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-bottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
 }
