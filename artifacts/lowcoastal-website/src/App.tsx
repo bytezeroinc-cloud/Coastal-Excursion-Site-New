@@ -422,7 +422,7 @@ function WhyUs() {
   ];
 
   return (
-    <section id="why-us" className="py-24 bg-muted relative overflow-hidden">
+    <section id="why-us" className="py-24 light-section relative overflow-hidden">
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -615,7 +615,7 @@ function Testimonials() {
   ];
 
   return (
-    <section id="reviews" className="py-24 bg-muted relative overflow-hidden">
+    <section id="reviews" className="py-24 light-section relative overflow-hidden">
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -796,7 +796,7 @@ function LocalSEO() {
   const areas = ["Charleston", "Edisto Beach", "Beaufort", "Hunting Island", "Hilton Head", "Myrtle Beach"];
 
   return (
-    <section className="py-16 bg-muted relative overflow-hidden">
+    <section className="py-16 light-section relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg viewBox="0 0 400 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,200 C100,100 300,300 400,200" stroke="hsl(22 95% 52%)" strokeWidth="2" fill="none" />
@@ -1127,23 +1127,23 @@ function LandingPage() {
       </div>
       <Experiences />
       <div className="relative bg-background">
-        <WaveDivider color="hsl(218 40% 13%)" />
+        <WaveDivider color="hsl(214 30% 95%)" />
       </div>
       <WhyUs />
-      <div className="relative bg-muted">
+      <div className="relative bg-[hsl(214_30%_95%)]">
         <WaveDivider color="hsl(218 45% 7%)" />
       </div>
       <Gallery />
       <div className="relative bg-background">
-        <WaveDivider color="hsl(218 40% 13%)" />
+        <WaveDivider color="hsl(214 30% 95%)" />
       </div>
       <Testimonials />
-      <div className="relative bg-muted">
+      <div className="relative bg-[hsl(214_30%_95%)]">
         <WaveDivider color="hsl(218 45% 7%)" />
       </div>
       <Audience />
       <div className="relative bg-background">
-        <WaveDivider color="hsl(218 40% 13%)" />
+        <WaveDivider color="hsl(214 30% 95%)" />
       </div>
       <LocalSEO />
       <FAQ />
