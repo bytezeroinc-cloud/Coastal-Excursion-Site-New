@@ -40,9 +40,57 @@ import {
   ThumbsUp,
   Sailboat
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 const queryClient = new QueryClient();
+
+const FH_BOOKING_URL = 'https://fareharbor.com/embeds/app/lowcountrycoastalexcursions/?full-items=yes';
+
+function BookingModal() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setOpen(true);
+    window.addEventListener('open-booking', handler);
+    return () => window.removeEventListener('open-booking', handler);
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[200] flex flex-col" style={{ background: 'hsl(218 45% 7%)' }}>
+      <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-card shadow-xl flex-shrink-0">
+        <div className="flex items-center gap-3">
+          <Anchor className="h-5 w-5 text-primary" style={{ filter: 'drop-shadow(0 0 6px hsl(22 95% 52% / 0.6))' }} />
+          <span className="font-serif font-bold text-lg text-foreground">Book Your Adventure</span>
+        </div>
+        <button
+          onClick={() => setOpen(false)}
+          className="p-2 rounded-full hover:bg-muted transition-colors text-foreground"
+          aria-label="Close booking"
+        >
+          <X className="h-6 w-6" />
+        </button>
+      </div>
+      <div className="flex-1 bg-white overflow-hidden">
+        <iframe
+          src={FH_BOOKING_URL}
+          className="w-full h-full border-0"
+          title="Book Your Tour – Low Coastal Country Excursion"
+          allow="payment"
+        />
+      </div>
+    </div>
+  );
+}
 
 function WaveDivider({ flip = false, color = "hsl(218 42% 11%)" }: { flip?: boolean; color?: string }) {
   return (
@@ -108,7 +156,7 @@ function Navbar() {
             <button onClick={() => scrollTo('reviews')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Reviews</button>
             <button onClick={() => scrollTo('faq')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">FAQ</button>
             <button 
-              onClick={() => scrollTo('booking')} 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-booking'))}
               className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:bg-primary/90 transition-all glow-orange-sm hover:glow-orange hover:-translate-y-0.5 active:translate-y-0"
               data-testid="nav-book-btn"
             >
@@ -131,7 +179,7 @@ function Navbar() {
           <button onClick={() => scrollTo('gallery')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Gallery</button>
           <button onClick={() => scrollTo('reviews')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Reviews</button>
           <button onClick={() => scrollTo('faq')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">FAQ</button>
-          <button onClick={() => scrollTo('booking')} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-center w-full mt-2 glow-orange-sm">
+          <button onClick={() => window.dispatchEvent(new CustomEvent('open-booking'))} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-center w-full mt-2 glow-orange-sm">
             Book Now
           </button>
         </div>
@@ -241,7 +289,7 @@ function Hero() {
           className="flex items-center justify-center mt-8"
         >
           <button 
-            onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => window.dispatchEvent(new CustomEvent('open-booking'))}
             className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange hover:scale-105 active:scale-100 flex items-center justify-center gap-2"
             data-testid="hero-book-btn"
           >
@@ -894,21 +942,6 @@ function FAQ() {
 }
 
 function Booking() {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Request Received!",
-        description: "We'll be in touch shortly to confirm your adventure.",
-      });
-      (e.target as HTMLFormElement).reset();
-    }, 1500);
-  };
 
   return (
     <section id="booking" className="py-24 bg-muted relative overflow-hidden">
@@ -922,10 +955,10 @@ function Booking() {
             </div>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">Ready for the water?</h2>
             <p className="text-lg text-muted-foreground mb-10">
-              Fill out the form to request your dates, or give us a call directly. We customize every trip to make sure you have the perfect day on the water.
+              Pick your tour, choose a date, and lock in your spot — all in under 2 minutes. Every booking is confirmed instantly and comes with a waiver and full trip details.
             </p>
-            
-            <div className="space-y-5">
+
+            <div className="space-y-5 mb-10">
               <div className="flex items-center gap-4">
                 <div className="bg-card w-12 h-12 rounded-full flex items-center justify-center shadow-sm text-primary border border-border">
                   <Phone className="h-5 w-5" />
@@ -963,84 +996,45 @@ function Booking() {
                 </div>
               </div>
             </div>
+
+            <div className="space-y-3">
+              {[
+                "Instant booking confirmation",
+                "Digital waiver handled at checkout",
+                "Free cancellation up to 48 hrs",
+                "All ages & abilities welcome",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-foreground/80">
+                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="lg:w-7/12">
-            <div className="bg-card rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/30 border border-border">
-              <div className="flex items-center gap-3 mb-6">
-                <Anchor className="h-6 w-6 text-primary" style={{ filter: "drop-shadow(0 0 6px hsl(22 95% 52% / 0.5))" }} />
-                <h3 className="text-2xl font-serif font-bold text-card-foreground">Request a Booking</h3>
+            <div className="bg-white rounded-3xl overflow-hidden shadow-2xl shadow-black/40 border border-border">
+              <div className="bg-card px-8 py-5 border-b border-border flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Anchor className="h-5 w-5 text-primary" style={{ filter: "drop-shadow(0 0 6px hsl(22 95% 52% / 0.5))" }} />
+                  <h3 className="text-xl font-serif font-bold text-card-foreground">Select Your Tour & Date</h3>
+                </div>
+                <span className="text-xs text-muted-foreground hidden sm:flex items-center gap-1">
+                  <ShieldCheck className="h-3 w-3" /> Secure booking
+                </span>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
-                    <input required id="name" type="text" className="w-full bg-background border border-input rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow text-foreground placeholder:text-muted-foreground" placeholder="Your Name" data-testid="input-name" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium text-foreground">Phone</label>
-                    <input required id="phone" type="tel" className="w-full bg-background border border-input rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow text-foreground placeholder:text-muted-foreground" placeholder="(843) 555-0100" data-testid="input-phone" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
-                    <input required id="email" type="email" className="w-full bg-background border border-input rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow text-foreground placeholder:text-muted-foreground" placeholder="you@example.com" data-testid="input-email" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="date" className="text-sm font-medium text-foreground">Requested Date</label>
-                    <input required id="date" type="date" className="w-full bg-background border border-input rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow text-foreground" data-testid="input-date" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="party" className="text-sm font-medium text-foreground">Party Size</label>
-                    <select required id="party" className="w-full bg-background border border-input rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow appearance-none text-foreground" data-testid="input-party">
-                      <option value="">Select size</option>
-                      <option value="1-2">1-2 People</option>
-                      <option value="3-4">3-4 People</option>
-                      <option value="5-6">5-6 People</option>
-                      <option value="7+">7+ People (Group)</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="tourType" className="text-sm font-medium text-foreground">Tour Type</label>
-                    <select required id="tourType" className="w-full bg-background border border-input rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow appearance-none text-foreground" data-testid="input-tour">
-                      <option value="">Select tour</option>
-                      <option value="shark-teeth">Shark Tooth Hunting</option>
-                      <option value="dolphins">Dolphin & Wildlife Tour</option>
-                      <option value="groups">Bachelorette/Group Charter</option>
-                      <option value="fishing">Inshore Fishing Trip</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="notes" className="text-sm font-medium text-foreground">Special Requests / Notes</label>
-                  <textarea id="notes" rows={3} className="w-full bg-background border border-input rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow resize-none text-foreground placeholder:text-muted-foreground" placeholder="Any kids in the group? Celebrating a special occasion?" data-testid="input-notes"></textarea>
-                </div>
-
-                <button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all glow-orange hover:glow-orange flex justify-center items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                  data-testid="submit-booking"
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <Clock className="animate-spin h-5 w-5" /> Sending...
-                    </span>
-                  ) : (
-                    <>
-                      <Anchor className="h-5 w-5" />
-                      Submit Booking Request
-                    </>
-                  )}
-                </button>
-              </form>
+              <iframe
+                src={FH_BOOKING_URL}
+                className="w-full border-0"
+                style={{ height: 560 }}
+                title="Book Your Tour – Low Coastal Country Excursion"
+                allow="payment"
+              />
             </div>
+            <p className="text-center text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Secure SSL booking powered by FareHarbor
+            </p>
           </div>
         </div>
       </div>
@@ -1194,6 +1188,7 @@ function App() {
           </Switch>
         </WouterRouter>
         <Toaster />
+        <BookingModal />
       </TooltipProvider>
     </QueryClientProvider>
   );

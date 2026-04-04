@@ -338,7 +338,8 @@ export default function SharkToothPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`${base}/#booking`}
+              href="https://fareharbor.com/lowcountrycoastalexcursions/items/"
+              onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('open-booking')); }}
               className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange inline-flex items-center gap-2 justify-center"
             >
               <Anchor className="h-5 w-5" /> Book This Tour
