@@ -43,54 +43,7 @@ import {
 
 const queryClient = new QueryClient();
 
-const FH_BOOKING_URL = 'https://fareharbor.com/embeds/app/lowcountrycoastalexcursions/?full-items=yes';
-
-function BookingModal() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handler = () => setOpen(true);
-    window.addEventListener('open-booking', handler);
-    return () => window.removeEventListener('open-booking', handler);
-  }, []);
-
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [open]);
-
-  if (!open) return null;
-
-  return (
-    <div className="fixed inset-0 z-[200] flex flex-col" style={{ background: 'hsl(218 45% 7%)' }}>
-      <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-card shadow-xl flex-shrink-0">
-        <div className="flex items-center gap-3">
-          <Anchor className="h-5 w-5 text-primary" style={{ filter: 'drop-shadow(0 0 6px hsl(22 95% 52% / 0.6))' }} />
-          <span className="font-serif font-bold text-lg text-foreground">Book Your Adventure</span>
-        </div>
-        <button
-          onClick={() => setOpen(false)}
-          className="p-2 rounded-full hover:bg-muted transition-colors text-foreground"
-          aria-label="Close booking"
-        >
-          <X className="h-6 w-6" />
-        </button>
-      </div>
-      <div className="flex-1 bg-white overflow-hidden">
-        <iframe
-          src={FH_BOOKING_URL}
-          className="w-full h-full border-0"
-          title="Book Your Tour – Low Coastal Country Excursion"
-          allow="payment"
-        />
-      </div>
-    </div>
-  );
-}
+const FH_BOOKING_URL = 'https://fareharbor.com/lowcountrycoastalexcursions/items/';
 
 function WaveDivider({ flip = false, color = "hsl(218 42% 11%)" }: { flip?: boolean; color?: string }) {
   return (
@@ -155,13 +108,15 @@ function Navbar() {
             <button onClick={() => scrollTo('gallery')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Gallery</button>
             <button onClick={() => scrollTo('reviews')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Reviews</button>
             <button onClick={() => scrollTo('faq')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">FAQ</button>
-            <button 
-              onClick={() => window.dispatchEvent(new CustomEvent('open-booking'))}
+            <a
+              href={FH_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:bg-primary/90 transition-all glow-orange-sm hover:glow-orange hover:-translate-y-0.5 active:translate-y-0"
               data-testid="nav-book-btn"
             >
               Book Now
-            </button>
+            </a>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -179,9 +134,9 @@ function Navbar() {
           <button onClick={() => scrollTo('gallery')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Gallery</button>
           <button onClick={() => scrollTo('reviews')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Reviews</button>
           <button onClick={() => scrollTo('faq')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">FAQ</button>
-          <button onClick={() => window.dispatchEvent(new CustomEvent('open-booking'))} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-center w-full mt-2 glow-orange-sm">
+          <a href={FH_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-center w-full mt-2 glow-orange-sm block">
             Book Now
-          </button>
+          </a>
         </div>
       )}
     </nav>
@@ -288,14 +243,16 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
           className="flex items-center justify-center mt-8"
         >
-          <button 
-            onClick={() => window.dispatchEvent(new CustomEvent('open-booking'))}
-            className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange hover:scale-105 active:scale-100 flex items-center justify-center gap-2"
+          <a
+            href={FH_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange hover:scale-105 active:scale-100 inline-flex items-center justify-center gap-2"
             data-testid="hero-book-btn"
           >
             <Anchor className="h-5 w-5" />
             Book Your Adventure
-          </button>
+          </a>
         </motion.div>
       </div>
 
@@ -1013,28 +970,56 @@ function Booking() {
           </div>
 
           <div className="lg:w-7/12">
-            <div className="bg-white rounded-3xl overflow-hidden shadow-2xl shadow-black/40 border border-border">
-              <div className="bg-card px-8 py-5 border-b border-border flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Anchor className="h-5 w-5 text-primary" style={{ filter: "drop-shadow(0 0 6px hsl(22 95% 52% / 0.5))" }} />
-                  <h3 className="text-xl font-serif font-bold text-card-foreground">Select Your Tour & Date</h3>
-                </div>
-                <span className="text-xs text-muted-foreground hidden sm:flex items-center gap-1">
-                  <ShieldCheck className="h-3 w-3" /> Secure booking
-                </span>
+            <div className="bg-card rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/30 border border-border">
+              <div className="flex items-center gap-3 mb-2">
+                <Anchor className="h-6 w-6 text-primary" style={{ filter: "drop-shadow(0 0 6px hsl(22 95% 52% / 0.5))" }} />
+                <h3 className="text-2xl font-serif font-bold text-card-foreground">Choose Your Adventure</h3>
               </div>
-              <iframe
-                src={FH_BOOKING_URL}
-                className="w-full border-0"
-                style={{ height: 560 }}
-                title="Book Your Tour – Low Coastal Country Excursion"
-                allow="payment"
-              />
+              <p className="text-muted-foreground text-sm mb-8">Select a tour below — you'll be taken to our secure booking page to pick your date, party size, and complete checkout.</p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                {[
+                  { name: "Shark Tooth Hunting", desc: "Find prehistoric megalodon teeth", icon: Gem, tag: "Most Popular" },
+                  { name: "Dolphin & Wildlife", desc: "Spot wild dolphins in their habitat", icon: Binoculars, tag: "" },
+                  { name: "Group & Bachelorette", desc: "Private charters for your crew", icon: Users, tag: "Groups" },
+                  { name: "Inshore Fishing", desc: "Target redfish, trout & flounder", icon: Fish, tag: "" },
+                ].map((tour) => (
+                  <a
+                    key={tour.name}
+                    href={FH_BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-4 p-4 rounded-2xl border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition-all"
+                  >
+                    <div className="bg-primary/10 rounded-xl p-3 text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                      <tour.icon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-semibold text-foreground text-sm">{tour.name}</span>
+                        {tour.tag && <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">{tour.tag}</span>}
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-0.5">{tour.desc}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <a
+                href={FH_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-primary text-primary-foreground py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all glow-orange flex justify-center items-center gap-2"
+              >
+                <Anchor className="h-5 w-5" />
+                Check Availability & Book
+              </a>
+
+              <p className="text-center text-xs text-muted-foreground mt-4 flex items-center justify-center gap-1.5">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Secure SSL checkout · Instant confirmation · Free cancellation 48 hrs
+              </p>
             </div>
-            <p className="text-center text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
-              <ShieldCheck className="h-3.5 w-3.5" />
-              Secure SSL booking powered by FareHarbor
-            </p>
           </div>
         </div>
       </div>
@@ -1188,7 +1173,6 @@ function App() {
           </Switch>
         </WouterRouter>
         <Toaster />
-        <BookingModal />
       </TooltipProvider>
     </QueryClientProvider>
   );
