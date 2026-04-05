@@ -9,6 +9,8 @@ const SharkToothPage = lazy(() => import("@/pages/SharkToothPage"));
 const DolphinPage = lazy(() => import("@/pages/DolphinPage"));
 const GroupCharterPage = lazy(() => import("@/pages/GroupCharterPage"));
 const FishingPage = lazy(() => import("@/pages/FishingPage"));
+const SharkToothLandingPage = lazy(() => import("@/pages/SharkToothLandingPage"));
+const DolphinLandingPage = lazy(() => import("@/pages/DolphinLandingPage"));
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   Anchor, 
@@ -1245,6 +1247,16 @@ function App() {
             <Route path="/inshore-fishing">
               <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
                 <FishingPage />
+              </Suspense>
+            </Route>
+            <Route path="/book/shark-tooth-hunting">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <SharkToothLandingPage />
+              </Suspense>
+            </Route>
+            <Route path="/book/dolphin-tours">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <DolphinLandingPage />
               </Suspense>
             </Route>
             <Route>
