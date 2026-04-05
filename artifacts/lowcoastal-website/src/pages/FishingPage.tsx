@@ -96,7 +96,7 @@ export default function FishingPage() {
       <SiteNavbar />
 
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-10 pt-20">
+      <section id="tour-hero" className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-10 pt-20">
         <div className="absolute inset-0 z-0">
           <img src="/images/fishing.jpg" alt="Angler with redfish catch in SC marsh" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />

@@ -161,13 +161,18 @@ function Navbar() {
 
 function MobileBookingBar() {
   const { openBooking } = useBooking();
-  const [visible, setVisible] = useState(false);
+  const [heroPassed, setHeroPassed] = useState(false);
   const [bookingNear, setBookingNear] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const heroEl = document.getElementById("hero");
+    if (!heroEl) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeroPassed(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(heroEl);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -183,7 +188,7 @@ function MobileBookingBar() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${visible && !bookingNear ? "translate-y-0" : "translate-y-full"}`}
+      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${heroPassed && !bookingNear ? "translate-y-0" : "translate-y-full"}`}
     >
       <div className="bg-background/95 backdrop-blur-md border-t border-border px-4 py-3 flex gap-3 items-center shadow-2xl shadow-black/40">
         <a
@@ -238,7 +243,7 @@ function Hero() {
   }, [currentSlide]);
 
   return (
-    <section className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex items-center justify-center pt-20" aria-label="Hero Section">
+    <section id="hero" className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex items-center justify-center pt-20" aria-label="Hero Section">
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         {prevSlide !== null && (
           <img
@@ -309,7 +314,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-          className="flex items-center justify-center mt-8"
+          className="flex flex-col items-center justify-center mt-8 gap-3"
         >
           <button
             onClick={openBooking}
@@ -319,6 +324,7 @@ function Hero() {
             <Anchor className="h-5 w-5" />
             Book Your Adventure
           </button>
+          <p className="text-white/50 text-xs sm:text-sm">Weekend spots filling fast · Free cancellation 48 hrs</p>
         </motion.div>
       </div>
 
@@ -1075,6 +1081,13 @@ function Booking() {
                     </div>
                   </button>
                 ))}
+              </div>
+
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary bg-primary/10 border border-primary/20 rounded-full px-3 py-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse inline-block" />
+                  Spots available this weekend — book before they're gone
+                </span>
               </div>
 
               <button
