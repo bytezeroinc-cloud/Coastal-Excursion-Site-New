@@ -300,48 +300,33 @@ const heroSlides = [
 
 function Hero() {
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 300]);
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [prevSlide, setPrevSlide] = useState<number | null>(null);
-  const [transitioning, setTransitioning] = useState(false);
+  const opacity = useTransform(scrollY, [0, 600], [1, 0]);
   const { openBooking } = useBooking();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTransitioning(true);
-      setPrevSlide(currentSlide);
-      setCurrentSlide(prev => (prev + 1) % heroSlides.length);
-      const timer = setTimeout(() => {
-        setPrevSlide(null);
-        setTransitioning(false);
-      }, 1200);
-      return () => clearTimeout(timer);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [currentSlide]);
 
   return (
     <section id="hero" className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex items-center justify-center pt-20" aria-label="Hero Section">
-      <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-        {prevSlide !== null && (
-          <img
-            key={`prev-${prevSlide}`}
-            src={heroSlides[prevSlide].src}
-            alt={heroSlides[prevSlide].alt}
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            style={{ opacity: transitioning ? 0 : 1, transition: "opacity 1.2s ease-in-out" }}
-          />
-        )}
-        <img
-          key={`current-${currentSlide}`}
-          src={heroSlides[currentSlide].src}
-          alt={heroSlides[currentSlide].alt}
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          style={{ opacity: 1, transition: "opacity 1.2s ease-in-out" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(218,45%,7%)]/70 via-[hsl(218,45%,7%)]/40 to-[hsl(218,45%,7%)]"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(218,45%,7%)]/30 via-transparent to-[hsl(218,45%,7%)]/20"></div>
+      {/* Cinematic video background — plays the ad as a looping hero */}
+      <motion.div style={{ opacity }} className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0" style={{ width: "100%", height: "100%" }}>
+          <Suspense fallback={
+            <div className="absolute inset-0">
+              <img src="/images/hero-boat.png" alt="" className="w-full h-full object-cover" />
+            </div>
+          }>
+            <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
+              <VideoTemplate />
+            </div>
+          </Suspense>
+        </div>
+        {/* Base dark overlay so the video's own text/UI is hidden */}
+        <div className="absolute inset-0 bg-black/65" style={{ zIndex: 10 }} />
+        {/* Top gradient — covers brand watermark and upper scene text */}
+        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/80 to-transparent" style={{ zIndex: 11 }} />
+        {/* Bottom gradient — covers progress dots and lower scene UI */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent" style={{ zIndex: 11 }} />
+        {/* Side vignettes */}
+        <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black/40 to-transparent" style={{ zIndex: 11 }} />
+        <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black/40 to-transparent" style={{ zIndex: 11 }} />
       </motion.div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-24 sm:mt-32">
