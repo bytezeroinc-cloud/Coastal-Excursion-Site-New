@@ -1323,12 +1323,12 @@ function App() {
                 <FishingPage />
               </Suspense>
             </Route>
-            <Route path="/book/shark-tooth-hunting">
+            <Route path="/charleston/shark-tooth-hunting">
               <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
                 <SharkToothLandingPage />
               </Suspense>
             </Route>
-            <Route path="/book/dolphin-tours">
+            <Route path="/charleston/dolphin-tours">
               <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
                 <DolphinLandingPage />
               </Suspense>
