@@ -112,7 +112,7 @@ function Navbar() {
             <button onClick={() => scrollTo('faq')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">FAQ</button>
             <a
               href="tel:+18435550100"
-              className="hidden lg:flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
+              className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
             >
               <Phone className="h-4 w-4 text-primary" />
               (843) 555-0100
