@@ -44,28 +44,28 @@ const faqs = [
 const steps = [
   {
     num: "01",
-    title: "Board & Safety Briefing",
-    desc: "Meet your captain and naturalist guide at the marina. Everyone gets fitted with life jackets and receives a brief on what to watch for and how to interact respectfully with wildlife."
+    title: "Meet at Shem Creek, Mount Pleasant",
+    desc: "Board at the dock at Tavern & Table on Shem Creek (100 Church St., Mt. Pleasant, SC 29464). Dolphin sightings often begin right here in the creek before you even cast off. Your USCG-certified captain fits the group with life jackets and briefs on wildlife etiquette."
   },
   {
     num: "02",
-    title: "Cruise the Tidal Creeks",
-    desc: "Glide through winding Spartina grass creeks and open estuaries. Your guide narrates the ecology of the Lowcountry estuary — one of the most productive marine ecosystems on the East Coast."
+    title: "Into Charleston Harbor",
+    desc: "Glide through iconic Shem Creek, past the Arthur Ravenel Jr. Bridge and The Battery, into the tidal creeks and open estuaries of the SC Lowcountry — one of the most productive marine ecosystems on the East Coast."
   },
   {
     num: "03",
     title: "Dolphin Encounter",
-    desc: "Spot your first fins breaking the surface. Our captains know the feeding corridors. Dolphins often ride the bow wave and come within just a few feet of the boat."
+    desc: "Spot your first fins breaking the surface. Our captains know the feeding corridors where Charleston's bottlenose dolphins hunt and socialize. Dolphins frequently bow-ride, tail-slap, and come within just a few feet of the boat."
   },
   {
     num: "04",
-    title: "Open Water & Bird Watching",
-    desc: "Cruise into wider estuarine waters to spot pelicans, herons, ospreys, and eagles. The guide identifies every species and shares fascinating natural history insights."
+    title: "Open Water & Wildlife Watching",
+    desc: "Cruise into wider estuarine waters spotting pelicans, herons, ospreys, rays, sea turtles, and manatees. Your captain identifies every species and shares real knowledge about Lowcountry marine ecology."
   },
   {
     num: "05",
-    title: "Sunset Return",
-    desc: "Head back through golden-lit tidal creeks as the sky turns pink and orange over the marsh. One of the most photographed sunsets in all of South Carolina."
+    title: "Golden Hour Return to Shem Creek",
+    desc: "Head back through golden-lit marsh grass as the sky turns pink and orange over Charleston Harbor. One of the most photographed sunsets in all of South Carolina. Your Bluetooth playlist sets the perfect vibe."
   }
 ];
 
@@ -112,11 +112,11 @@ export default function DolphinPage() {
       <SiteNavbar />
 
       {/* Hero */}
-      <section id="tour-hero" className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-10 pt-20">
+      <section id="tour-hero" className="relative h-[90vh] min-h-[600px] overflow-hidden flex items-center pt-24 pb-12">
         <div className="absolute inset-0 z-0">
-          <img src="/images/dolphins.jpg" alt="Dolphins leaping in South Carolina coastal waters" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+          <img src="/images/dolphins.jpg" alt="Atlantic bottlenose dolphins leaping in Charleston SC coastal waters near Shem Creek" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <a href={`${base}/`} className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors mb-5">
@@ -124,23 +124,23 @@ export default function DolphinPage() {
           </a>
           <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-white px-3 py-1.5 rounded-full text-sm font-medium mb-3"
             style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.2)" }}>
-            <Waves className="h-4 w-4 text-primary" /> Family Favorite
+            <Waves className="h-4 w-4 text-primary" /> #1-Rated Private Dolphin Experience
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-4 leading-tight">
-            Dolphin &<br />
-            <span className="text-primary glow-orange-text">Wildlife Tours</span>
+            Charleston<br />
+            <span className="text-primary glow-orange-text">Dolphin Tours</span>
           </h1>
           <p className="text-xl text-white/85 max-w-2xl mb-5">
-            Cruise the pristine estuaries of the South Carolina Lowcountry and come face-to-face with wild Atlantic bottlenose dolphins, sea birds, and breathtaking coastal landscapes.
+            Glide through Shem Creek and Charleston Harbor as wild Atlantic bottlenose dolphins leap, bow-ride, and swim right alongside your boat. The most unforgettable private dolphin tour in the SC Lowcountry — for families, couples, and wildlife lovers of all ages.
           </p>
           <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-4">
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2.5–3 Hours</span>
-            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> All Ages</span>
-            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Edisto Island & Beaufort, SC</span>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> Starting at 2 Hours</span>
+            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Up to 23 Guests · Kids Under 5 Free</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Shem Creek, Mt. Pleasant, SC</span>
             <span className="flex items-center gap-2"><Sun className="h-4 w-4 text-primary" /> Morning & Sunset Options</span>
           </div>
           <div className="mb-6">
-            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $59/person</span>
+            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">$375 for 1–4 Guests · +$50/guest after that</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <button
@@ -173,14 +173,16 @@ export default function DolphinPage() {
               </p>
               <ul className="space-y-4">
                 {[
-                  "Naturalist guide with full ecological narration",
-                  "USCG-certified pontoon boat with shade & comfort seating",
-                  "Winding tidal creek & open estuary cruise",
-                  "Dolphin behavior observation & education",
-                  "Bird & marine wildlife identification guide",
-                  "Photography positioning assistance",
-                  "Bottled water on board",
-                  "Morning & golden hour sunset departures available"
+                  "USCG-certified captain with deep Lowcountry local knowledge",
+                  "Roamer IV luxury cruiser (up to 23 guests) or private skiff for smaller groups",
+                  "Full bathroom aboard the Roamer IV — comfort for all ages",
+                  "Shem Creek departure — dolphin sightings often begin before you cast off",
+                  "Bluetooth stereo system — you're the DJ",
+                  "Cooler with ice provided — bring your own beverages & snacks",
+                  "Dolphin behavior narration & wildlife identification",
+                  "Photography positioning by your captain for the best shots",
+                  "Kids under 5 ride FREE (still count in passenger total)",
+                  "Morning, midday & golden hour sunset departure times available"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-foreground/90">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />

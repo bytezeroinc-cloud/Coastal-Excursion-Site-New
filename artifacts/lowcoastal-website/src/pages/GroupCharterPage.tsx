@@ -21,7 +21,7 @@ function GoogleG() {
 const faqs = [
   {
     q: "How many people can the boat hold?",
-    a: "Our pontoons comfortably accommodate up to 10–12 guests per charter, with plenty of room to move, dance, and celebrate. For larger groups we can arrange multiple boats."
+    a: "Our Roamer IV luxury cruiser accommodates up to 23 guests — complete with a full bathroom, shade, and Bluetooth stereo. For smaller groups we also offer our 27' Coastal Skiff and 25' Tidewater. All parties over 12 require the Roamer IV."
   },
   {
     q: "Can we bring alcohol?",
@@ -79,11 +79,11 @@ const reviews = [
 ];
 
 const steps = [
-  { num: "01", title: "Tell Us Your Vision", desc: "Book your charter and share what you want: beach stop, tooth hunting, dolphin spotting, sunset cruise, or all of the above. We build the perfect itinerary for your group." },
-  { num: "02", title: "Board Your Private Boat", desc: "The whole boat is yours. Set up your cooler, connect your music, and head out onto the water with your crew and your dedicated captain." },
-  { num: "03", title: "Cruise & Explore", desc: "Wind through tidal creeks, open estuaries, and coastal waterways. Spot dolphins, herons, and the sweeping beauty of the SC Lowcountry barrier islands." },
-  { num: "04", title: "Private Beach Landing", desc: "Pull up to a remote, boat-access-only barrier island beach. Shark tooth hunt, swim in shallow water, toast your celebration, and soak in the scenery." },
-  { num: "05", title: "Sunset Return", desc: "Head back through glowing golden marsh grass as the sky turns orange and pink. An Instagram moment that belongs in a magazine — or your phone forever." },
+  { num: "01", title: "Tell Us Your Vision", desc: "Book your charter and share what you want: beach stop, shark tooth hunting, dolphin spotting, sunset cruise, or all of the above. We build a fully custom itinerary for your group." },
+  { num: "02", title: "Board at Shem Creek, Mount Pleasant", desc: "Meet your USCG-certified captain at the dock at Tavern & Table on Shem Creek (100 Church St., Mt. Pleasant, SC). The whole boat is yours. Set up your cooler, connect your Bluetooth music, and cast off." },
+  { num: "03", title: "Cruise Charleston's Coastal Waterways", desc: "Wind through iconic Shem Creek, past the Arthur Ravenel Jr. Bridge, and into the tidal creeks and open estuaries of the Lowcountry. Spot dolphins, pelicans, herons, and the stunning barrier island scenery." },
+  { num: "04", title: "Private Beach Landing", desc: "Pull up to a remote, boat-access-only barrier island beach that most Charleston visitors never see. Shark tooth hunt, swim in shallow water, toast your celebration, and soak in complete privacy." },
+  { num: "05", title: "Golden Hour Return to Shem Creek", desc: "Head back through glowing golden marsh grass as the sky turns orange and pink over Charleston Harbor. The Roamer IV's Bluetooth system keeps the vibe going all the way home." },
 ];
 
 export default function GroupCharterPage() {
@@ -96,11 +96,11 @@ export default function GroupCharterPage() {
       <SiteNavbar />
 
       {/* Hero */}
-      <section id="tour-hero" className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-10 pt-20">
+      <section id="tour-hero" className="relative h-[90vh] min-h-[600px] overflow-hidden flex items-center pt-24 pb-12">
         <div className="absolute inset-0 z-0">
-          <img src="/images/bachelorette.jpg" alt="Group celebrating on a charter boat" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+          <img src="/images/bachelorette.jpg" alt="Group celebrating on a private charter boat in Charleston SC" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <a href={`${base}/`} className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors mb-5">
@@ -108,23 +108,23 @@ export default function GroupCharterPage() {
           </a>
           <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-white px-3 py-1.5 rounded-full text-sm font-medium mb-3"
             style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.2)" }}>
-            <Sparkles className="h-4 w-4 text-primary" /> Private Charter
+            <Sparkles className="h-4 w-4 text-primary" /> 100% Private · Charleston's Best Group Charter
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-4 leading-tight">
             Group &<br />
             <span className="text-primary glow-orange-text">Private Charters</span>
           </h1>
           <p className="text-xl text-white/85 max-w-2xl mb-5">
-            Your boat, your crew, your rules. Celebrate your bachelorette party, family reunion, birthday, or corporate retreat on the most stunning waters in South Carolina.
+            Your boat, your crew, your rules. Celebrate bachelorette parties, birthdays, family reunions, and corporate retreats on the stunning waters of Charleston Harbor and Shem Creek. Aboard our luxury Roamer IV — complete with a full bathroom and room for up to 23 guests.
           </p>
           <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-4">
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2–6 Hours (Custom)</span>
-            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Up to 12 Guests</span>
-            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> SC Lowcountry</span>
-            <span className="flex items-center gap-2"><Music className="h-4 w-4 text-primary" /> BYOB & Bluetooth Music</span>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2–6 Hours (Fully Custom)</span>
+            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Up to 23 Guests</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Shem Creek, Mt. Pleasant, SC</span>
+            <span className="flex items-center gap-2"><Music className="h-4 w-4 text-primary" /> BYOB · Bluetooth · Full Bathroom</span>
           </div>
           <div className="mb-6">
-            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $450/boat</span>
+            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">$375 for 1–4 Guests · +$50/guest · Roamer IV for 12+</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <button
@@ -157,16 +157,18 @@ export default function GroupCharterPage() {
               </p>
               <ul className="space-y-4">
                 {[
-                  "100% private pontoon boat — exclusively yours",
-                  "Professional USCG-certified captain & host",
-                  "Customizable itinerary built around your group",
-                  "Bluetooth speaker system — connect your playlist",
-                  "BYOB welcome: cooler space & ice available",
-                  "Private barrier island beach access",
-                  "Shark tooth hunt option (hugely popular!)",
-                  "Dolphin & wildlife spotting en route",
-                  "Sunset & golden hour cruise options",
-                  "Life jackets for all guests, safety briefing included"
+                  "100% private — no strangers, no shared space, ever",
+                  "Roamer IV luxury cruiser: 30-ft, up to 23 guests, full bathroom",
+                  "Also available: 27' Coastal Skiff & 25' Tidewater for smaller groups",
+                  "USCG-certified captain & expert local host",
+                  "Fully custom itinerary built around your group",
+                  "Bluetooth stereo system — connect your playlist",
+                  "BYOB welcome: large cooler with ice provided (no glass please)",
+                  "Private barrier island beach access — places most visitors never see",
+                  "Shark tooth hunting option (most popular group add-on!)",
+                  "Dolphin & wildlife spotting through Shem Creek & Charleston Harbor",
+                  "Sunset & golden hour cruise departure times available",
+                  "Life jackets for all guests · safety briefing included"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-foreground/90">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />

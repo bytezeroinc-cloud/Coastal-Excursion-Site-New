@@ -44,28 +44,28 @@ const faqs = [
 const steps = [
   {
     num: "01",
-    title: "Meet at the Marina",
-    desc: "Arrive at our departure point where your captain will brief the group, fit everyone with life jackets, and share what to expect on the water."
+    title: "Meet at Shem Creek, Mount Pleasant",
+    desc: "Arrive at the dock at Tavern & Table on Shem Creek (100 Church St., Mt. Pleasant, SC). Your USCG-certified captain briefs the group, fits everyone with life jackets, and shares what to expect on the water."
   },
   {
     num: "02",
-    title: "Boat Ride to the Island",
-    desc: "Cruise 15–25 minutes through winding tidal creeks and open estuaries to reach our boat-access-only barrier island beaches — totally inaccessible to the public without a boat."
+    title: "Cruise Charleston's Coastal Waters",
+    desc: "Glide 15–25 minutes through Shem Creek, out past the Ravenel Bridge, and into open barrier island channels. Spot dolphins en route as you cruise through some of the most beautiful coastal scenery in the South."
   },
   {
     num: "03",
     title: "Expert Fossil Hunting Lesson",
-    desc: "Your guide walks the group through the terrain, explains what fossilized teeth look and feel like versus shells and rocks, and shows you the most productive tidal zones."
+    desc: "Your guide walks the group through the terrain, explaining what fossilized shark teeth look and feel like versus shells and rocks, and shows you the most productive tidal zones for finding ancient megalodon teeth."
   },
   {
     num: "04",
-    title: "Open Hunt Time",
-    desc: "Spread out across the beach and hunt freely! Guides circulate to help anyone who needs it. Most guests find their first tooth within the first 10 minutes."
+    title: "Open Hunt on the Beach",
+    desc: "Spread out across a remote, boat-access-only barrier island beach and hunt freely! Guides circulate to help anyone who needs it. Most guests find their first tooth within 10 minutes."
   },
   {
     num: "05",
-    title: "Celebrate & Head Back",
-    desc: "Share your best finds with the group, get the captain's ID on your teeth, and enjoy the scenic cruise back through the marsh. Every tooth is yours to keep!"
+    title: "Celebrate & Head Back to Shem Creek",
+    desc: "Share your best finds with the group, have the captain ID your teeth, and enjoy the scenic cruise back through the Lowcountry marsh. Every tooth, shell, and fossil fragment belongs to you — keep it all!"
   }
 ];
 
@@ -103,11 +103,11 @@ export default function SharkToothPage() {
       <SiteNavbar />
 
       {/* Hero */}
-      <section id="tour-hero" className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-10 pt-20">
+      <section id="tour-hero" className="relative h-[90vh] min-h-[600px] overflow-hidden flex items-center pt-24 pb-12">
         <div className="absolute inset-0 z-0">
-          <img src="/images/kids-teeth.jpg" alt="Kids finding shark teeth on South Carolina beach" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+          <img src="/images/kids-teeth.jpg" alt="Kids finding shark teeth on South Carolina barrier island beach near Charleston" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <a href={`${base}/`} className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors mb-5">
@@ -115,20 +115,20 @@ export default function SharkToothPage() {
           </a>
           <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-white px-3 py-1.5 rounded-full text-sm font-medium mb-3"
             style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.2)" }}>
-            <Gem className="h-4 w-4 text-primary" /> Most Popular Tour
+            <Gem className="h-4 w-4 text-primary" /> #1 Rated Shark Tooth Tour in SC
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-4 leading-tight">
             Shark Tooth<br />
             <span className="text-primary glow-orange-text">Hunting Tours</span>
           </h1>
           <p className="text-xl text-white/85 max-w-2xl mb-5">
-            Discover prehistoric megalodon teeth and ancient shark fossils on remote, boat-access-only South Carolina barrier island beaches. The ultimate coastal treasure hunt.
+            Hunt prehistoric megalodon teeth and ancient fossilized shark teeth on remote, boat-access-only barrier island beaches near Charleston, SC. Departs from Shem Creek, Mount Pleasant — the ultimate Lowcountry treasure hunt.
           </p>
           <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-4">
             <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2.5–3.5 Hours</span>
-            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> All Ages Welcome</span>
-            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Edisto, Beaufort, Hunting Island SC</span>
-            <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> USCG Certified</span>
+            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> All Ages · Kids Under 5 Free</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Shem Creek, Mt. Pleasant, SC</span>
+            <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> USCG Certified Captain</span>
           </div>
           <div className="mb-6">
             <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $65/person</span>

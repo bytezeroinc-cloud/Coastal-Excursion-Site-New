@@ -55,11 +55,11 @@ const faqs = [
 ];
 
 const steps = [
-  { num: "01", title: "Pre-Trip Briefing", desc: "Meet your captain at the marina. Discuss the conditions, target species, tide timing, and your group's experience levels so we can tailor the day perfectly." },
-  { num: "02", title: "Gear Up", desc: "Your captain sets up rods, rigs bait, and walks everyone through the basics — or the finer points for experienced anglers. All tackle is tournament-ready." },
-  { num: "03", title: "Head to the Hotspot", desc: "Navigate through winding marsh creeks, tidal flats, and oyster bars to our proven inshore fishing spots. We know the spots the fish are using — not just where they used to be." },
-  { num: "04", title: "Fish the Tide", desc: "Inshore fishing is all about timing. We fish the most productive tidal phases — often having non-stop action within the first 30 minutes. Live bait, soft plastics, and topwater lures." },
-  { num: "05", title: "Land, Photo & Release (or Keep!)", desc: "Land your fish, get the perfect hero shot, and decide: catch-and-release or take it home? The captain handles fish safely and teaches proper handling throughout." },
+  { num: "01", title: "Meet at Shem Creek, Mount Pleasant", desc: "Meet your captain at the dock at Tavern & Table on Shem Creek (100 Church St., Mt. Pleasant, SC 29464). Discuss conditions, target species, tide timing, and experience levels so every minute counts." },
+  { num: "02", title: "Gear Up on Board", desc: "Your captain sets up tournament-ready rods, rigs live bait, and walks everyone through casting basics — or fine-tunes technique for experienced anglers. SC saltwater fishing licenses are included for every guest." },
+  { num: "03", title: "Navigate to the Hotspot", desc: "Wind through Shem Creek's tidal flats, oyster bars, and marsh channels to proven inshore spots. Our captains know the Lowcountry waters intimately — fishing where redfish and trout are feeding right now." },
+  { num: "04", title: "Fish the Tide", desc: "Inshore fishing near Charleston is all about tide timing. We fish the most productive tidal phases — often with non-stop action within the first 30 minutes. Live bait, soft plastics, and topwater lures." },
+  { num: "05", title: "Land, Photo & Release (or Keep!)", desc: "Land your fish, get the perfect hero shot, and decide: catch-and-release or take it home? The captain handles all fish safely and can recommend local fish cleaning stations if you want to cook your catch." },
 ];
 
 const reviews = [
@@ -96,11 +96,11 @@ export default function FishingPage() {
       <SiteNavbar />
 
       {/* Hero */}
-      <section id="tour-hero" className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-10 pt-20">
+      <section id="tour-hero" className="relative h-[90vh] min-h-[600px] overflow-hidden flex items-center pt-24 pb-12">
         <div className="absolute inset-0 z-0">
-          <img src="/images/fishing.jpg" alt="Angler with redfish catch in SC marsh" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+          <img src="/images/fishing.jpg" alt="Angler catching redfish in the South Carolina marsh near Charleston" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <a href={`${base}/`} className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors mb-5">
@@ -108,20 +108,20 @@ export default function FishingPage() {
           </a>
           <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-white px-3 py-1.5 rounded-full text-sm font-medium mb-3"
             style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.2)" }}>
-            <Fish className="h-4 w-4 text-primary" /> Anglers Choice
+            <Fish className="h-4 w-4 text-primary" /> Angler's Choice · Private Fishing Charters
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-4 leading-tight">
-            Inshore<br />
-            <span className="text-primary glow-orange-text">Fishing Trips</span>
+            Charleston<br />
+            <span className="text-primary glow-orange-text">Inshore Fishing</span>
           </h1>
           <p className="text-xl text-white/85 max-w-2xl mb-5">
-            Target trophy redfish, speckled trout, and flounder in the nutrient-rich marsh creeks of the South Carolina Lowcountry. Expert local captains. All skill levels welcome.
+            Target trophy redfish, speckled trout, and flounder in the nutrient-rich tidal creeks and oyster bars of the SC Lowcountry — departing from Shem Creek in Mount Pleasant. SC fishing license included. All tackle provided. All skill levels welcome.
           </p>
           <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-4">
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 4–8 Hours</span>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 4–8 Hours (Half or Full Day)</span>
             <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Up to 6 Anglers</span>
-            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> SC Lowcountry Marshes</span>
-            <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> License & Tackle Included</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Shem Creek, Mt. Pleasant, SC</span>
+            <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> SC License & All Tackle Included</span>
           </div>
           <div className="mb-6">
             <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $350/half-day</span>
