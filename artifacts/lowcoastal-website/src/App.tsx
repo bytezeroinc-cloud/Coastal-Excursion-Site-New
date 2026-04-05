@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BookingProvider, useBooking } from "@/components/BookingModal";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -80,6 +81,7 @@ function WaveDividerTop({ color = "hsl(218 45% 7%)" }: { color?: string }) {
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openBooking } = useBooking();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 30);
@@ -108,15 +110,13 @@ function Navbar() {
             <button onClick={() => scrollTo('gallery')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Gallery</button>
             <button onClick={() => scrollTo('reviews')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Reviews</button>
             <button onClick={() => scrollTo('faq')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">FAQ</button>
-            <a
-              href={FH_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={openBooking}
               className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:bg-primary/90 transition-all glow-orange-sm hover:glow-orange hover:-translate-y-0.5 active:translate-y-0"
               data-testid="nav-book-btn"
             >
               Book Now
-            </a>
+            </button>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -134,9 +134,9 @@ function Navbar() {
           <button onClick={() => scrollTo('gallery')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Gallery</button>
           <button onClick={() => scrollTo('reviews')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Reviews</button>
           <button onClick={() => scrollTo('faq')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">FAQ</button>
-          <a href={FH_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-center w-full mt-2 glow-orange-sm block">
+          <button onClick={openBooking} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-center w-full mt-2 glow-orange-sm block">
             Book Now
-          </a>
+          </button>
         </div>
       )}
     </nav>
@@ -159,6 +159,7 @@ function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [prevSlide, setPrevSlide] = useState<number | null>(null);
   const [transitioning, setTransitioning] = useState(false);
+  const { openBooking } = useBooking();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -243,16 +244,14 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
           className="flex items-center justify-center mt-8"
         >
-          <a
-            href={FH_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={openBooking}
             className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange hover:scale-105 active:scale-100 inline-flex items-center justify-center gap-2"
             data-testid="hero-book-btn"
           >
             <Anchor className="h-5 w-5" />
             Book Your Adventure
-          </a>
+          </button>
         </motion.div>
       </div>
 
@@ -899,6 +898,7 @@ function FAQ() {
 }
 
 function Booking() {
+  const { openBooking } = useBooking();
 
   return (
     <section id="booking" className="py-24 bg-muted relative overflow-hidden">
@@ -984,12 +984,10 @@ function Booking() {
                   { name: "Group & Bachelorette", desc: "Private charters for your crew", icon: Users, tag: "Groups" },
                   { name: "Inshore Fishing", desc: "Target redfish, trout & flounder", icon: Fish, tag: "" },
                 ].map((tour) => (
-                  <a
+                  <button
                     key={tour.name}
-                    href={FH_BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-start gap-4 p-4 rounded-2xl border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition-all"
+                    onClick={openBooking}
+                    className="group flex items-start gap-4 p-4 rounded-2xl border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition-all text-left w-full"
                   >
                     <div className="bg-primary/10 rounded-xl p-3 text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                       <tour.icon className="h-5 w-5" />
@@ -1001,19 +999,17 @@ function Booking() {
                       </div>
                       <p className="text-xs text-muted-foreground mt-0.5">{tour.desc}</p>
                     </div>
-                  </a>
+                  </button>
                 ))}
               </div>
 
-              <a
-                href={FH_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={openBooking}
                 className="w-full bg-primary text-primary-foreground py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all glow-orange flex justify-center items-center gap-2"
               >
                 <Anchor className="h-5 w-5" />
                 Check Availability & Book
-              </a>
+              </button>
 
               <p className="text-center text-xs text-muted-foreground mt-4 flex items-center justify-center gap-1.5">
                 <ShieldCheck className="h-3.5 w-3.5" />
@@ -1138,6 +1134,7 @@ function LandingPage() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <BookingProvider>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
           <Switch>
@@ -1174,6 +1171,7 @@ function App() {
         </WouterRouter>
         <Toaster />
       </TooltipProvider>
+      </BookingProvider>
     </QueryClientProvider>
   );
 }

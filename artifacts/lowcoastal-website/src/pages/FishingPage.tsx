@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useBooking } from "@/components/BookingModal";
 import { motion } from "framer-motion";
 import {
   Fish, CheckCircle2, ChevronDown, Star, ArrowRight, Anchor, MapPin,
@@ -86,6 +87,7 @@ const reviews = [
 ];
 
 export default function FishingPage() {
+  const { openBooking } = useBooking();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
 
@@ -341,9 +343,9 @@ export default function FishingPage() {
             Half-day and full-day options available. All experience levels, all ages. Book now — the fish are waiting.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://fareharbor.com/lowcountrycoastalexcursions/items/" target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange inline-flex items-center gap-2 justify-center">
+            <button onClick={openBooking} className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange inline-flex items-center gap-2 justify-center">
               <Anchor className="h-5 w-5" /> Book This Trip
-            </a>
+            </button>
             <a href={`${base}/`} className="bg-card text-foreground px-10 py-4 rounded-full text-lg font-semibold border border-border hover:border-primary/40 transition-all inline-flex items-center gap-2 justify-center">
               View All Tours <ArrowRight className="h-5 w-5" />
             </a>
