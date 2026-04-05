@@ -285,10 +285,10 @@ export function SiteFooter() {
               Premium boat tours specializing in shark tooth hunting, dolphin watching, and authentic South Carolina coastal adventures. Making memories that last a lifetime.
             </p>
             <div className="flex gap-3 mb-5">
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
+              <a href="https://www.instagram.com/lowcountry_coastal_excursions/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
+              <a href="https://www.facebook.com/lowcountrycoastalexcursions" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
                 <Facebook className="h-5 w-5" />
               </a>
             </div>

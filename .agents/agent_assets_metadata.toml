@@ -90,6 +90,36 @@ uri = "file://artifacts/lowcoastal-website/public/images/family-teeth.png"
 type = "image"
 title = "family shark teeth beach finds"
 
+[[generated]]
+id = "hZIpCErB-xTCMX1VDRWRS"
+uri = "file://artifacts/lowcoastal-website/public/images/scene2-bridge.png"
+type = "image"
+title = "Bridge flyover"
+
+[[generated]]
+id = "c6yu3-AJGV_Np1kuqhiNP"
+uri = "file://artifacts/lowcoastal-website/public/images/scene5-family.png"
+type = "image"
+title = "Family on boat"
+
+[[generated]]
+id = "Sa-ZQzsVx3wnxUSAz4KrQ"
+uri = "file://artifacts/lowcoastal-website/public/images/scene6-teeth.png"
+type = "image"
+title = "Kids with shark teeth"
+
+[[generated]]
+id = "kwb9ntfd1BiZ_ukK2kU2-"
+uri = "file://artifacts/lowcoastal-website/public/images/scene7-party.png"
+type = "image"
+title = "Bachelorette party boat"
+
+[[generated]]
+id = "220H4XQmbR14EucrCHPK-"
+uri = "file://artifacts/lowcoastal-website/public/images/scene9-reveal.png"
+type = "image"
+title = "Brand reveal boat"
+
 [[outputs]]
 id = "pcqqkxQ5GKM6PMSivYGau"
 uri = "file://attached_assets/stock_images/dolphins-boat.jpg"

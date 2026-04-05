@@ -11,6 +11,7 @@ const GroupCharterPage = lazy(() => import("@/pages/GroupCharterPage"));
 const FishingPage = lazy(() => import("@/pages/FishingPage"));
 const SharkToothLandingPage = lazy(() => import("@/pages/SharkToothLandingPage"));
 const DolphinLandingPage = lazy(() => import("@/pages/DolphinLandingPage"));
+const VideoTemplate = lazy(() => import("@/components/video/VideoTemplate"));
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   Anchor, 
@@ -651,54 +652,128 @@ function WhyUs() {
 }
 
 function Gallery() {
-  const images = [
-    { src: "/images/teeth-close.png", alt: "Close up of fossilized shark teeth on sand", span: "" },
-    { src: "/images/couple-beach.png", alt: "Couple walking on beach finding teeth", span: "" },
-    { src: "/images/marsh-sunrise.png", alt: "Beautiful coastal marsh at golden hour", span: "" },
-    { src: "/images/dolphins.png", alt: "Dolphins leaping beside the tour boat", span: "md:col-span-2" },
-    { src: "/images/fishing.png", alt: "Angler and son with redfish catch", span: "" },
-    { src: "/images/hero-boat.png", alt: "Aerial view of boat on coastal waters", span: "" },
+  const igHandle = "lowcountry_coastal_excursions";
+  const igUrl = `https://www.instagram.com/${igHandle}/`;
+
+  const posts = [
+    {
+      src: "/images/hero-boat.png",
+      alt: "Roamer IV luxury boat cruising Shem Creek, Mt. Pleasant SC",
+      caption: "Another gorgeous morning on Shem Creek. Who's ready to find some shark teeth? 🦷",
+      likes: 312, span: "md:col-span-2 md:row-span-2",
+    },
+    {
+      src: "/images/teeth-close.png",
+      alt: "Collection of fossilized shark teeth found on a SC beach",
+      caption: "Look at this haul! Megalodon fragments and a dozen assorted shark teeth from today's hunt 🦈",
+      likes: 287, span: "",
+    },
+    {
+      src: "/images/dolphins.png",
+      alt: "Dolphins swimming alongside boat near Charleston harbor",
+      caption: "They love the boat just as much as we do 💙 Dolphin season is in full swing!",
+      likes: 419, span: "",
+    },
+    {
+      src: "/images/couple-beach.png",
+      alt: "Guests exploring the beach on a shark tooth hunting tour",
+      caption: "Perfect sunrise finds with the best view in the Lowcountry ☀️",
+      likes: 203, span: "",
+    },
+    {
+      src: "/images/marsh-sunrise.png",
+      alt: "Golden hour over the South Carolina coastal marsh from the boat",
+      caption: "There's no better office than this. Sunset cruise magic 🌅",
+      likes: 376, span: "",
+    },
+    {
+      src: "/images/fishing.png",
+      alt: "Father and son holding a redfish catch on inshore fishing charter",
+      caption: "Dad & son redfish teamwork! First fish ever — we can see the memories forming in real time ❤️",
+      likes: 241, span: "",
+    },
   ];
 
   return (
-    <section id="gallery" className="py-24 bg-background">
+    <section id="gallery" className="py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-3">
-              <Camera className="h-4 w-4" />
-              <span>The Gallery</span>
+              <Instagram className="h-4 w-4" />
+              <span>From Our Instagram</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">Glimpses of the Coast</h2>
-            <p className="text-lg text-muted-foreground">Follow us <a href="#" className="text-primary hover:underline font-medium">@LowCoastalExcursion</a> for daily adventures and trip highlights.</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">Life On The Water</h2>
+            <p className="text-lg text-muted-foreground">
+              Follow{" "}
+              <a href={igUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
+                @{igHandle}
+              </a>{" "}
+              for daily adventures, trip highlights, and Lowcountry magic.
+            </p>
           </div>
-          <button className="flex items-center gap-2 text-primary font-bold hover:text-primary/80 transition-colors shrink-0">
+          <a
+            href={igUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#f09433] via-[#e6683c] to-[#bc1888] text-white font-bold px-6 py-3 rounded-full hover:opacity-90 transition-opacity shrink-0 shadow-lg"
+          >
             <Instagram className="h-5 w-5" />
-            View Full Gallery <ArrowRight className="h-5 w-5" />
-          </button>
+            Follow on Instagram
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {images.map((img, i) => (
-            <motion.div 
+        {/* Instagram-style grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-[auto] gap-3">
+          {posts.map((post, i) => (
+            <motion.a
               key={i}
+              href={igUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`rounded-2xl overflow-hidden group cursor-pointer aspect-[4/3] border border-border/50 ${img.span}`}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className={`group relative rounded-xl overflow-hidden border border-border/40 bg-card ${post.span} ${i === 0 ? "aspect-[4/3]" : "aspect-square"}`}
             >
-              <div className="relative w-full h-full">
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-primary/90 backdrop-blur-sm rounded-full p-1.5" style={{ boxShadow: "0 0 10px hsl(22 95% 52% / 0.5)" }}>
-                    <Instagram className="h-4 w-4 text-white" />
+              <img
+                src={post.src}
+                alt={post.alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/55 transition-all duration-300 flex flex-col justify-end p-4">
+                <div className="translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                  <p className="text-white text-xs md:text-sm leading-snug line-clamp-2 mb-2">{post.caption}</p>
+                  <div className="flex items-center gap-1.5 text-white/80 text-xs font-medium">
+                    <Heart className="h-3.5 w-3.5 fill-red-400 text-red-400" />
+                    {post.likes.toLocaleString()} likes
                   </div>
                 </div>
               </div>
-            </motion.div>
+              {/* Instagram badge */}
+              <div className="absolute top-2.5 right-2.5 bg-black/40 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Instagram className="h-3.5 w-3.5 text-white" />
+              </div>
+            </motion.a>
           ))}
+        </div>
+
+        {/* Bottom CTA strip */}
+        <div className="mt-8 flex items-center justify-center gap-4 bg-gradient-to-r from-[#f09433]/10 via-[#bc1888]/10 to-[#f09433]/10 border border-border/60 rounded-2xl py-5 px-6">
+          <Instagram className="h-7 w-7 text-[#e6683c]" />
+          <span className="text-foreground font-medium">See more adventures every day on Instagram —</span>
+          <a
+            href={igUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary font-bold hover:underline"
+          >
+            @{igHandle}
+          </a>
         </div>
       </div>
     </section>
@@ -1187,23 +1262,26 @@ function Booking() {
 }
 
 function Footer() {
+  const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
   return (
     <footer className="bg-card text-foreground py-16 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-2">
+            <div className="flex items-center gap-2 mb-5">
               <Anchor className="h-8 w-8 text-primary" style={{ filter: "drop-shadow(0 0 8px hsl(22 95% 52% / 0.5))" }} />
               <span className="font-serif font-bold text-2xl tracking-tight">Low Coastal</span>
             </div>
-            <p className="text-muted-foreground max-w-sm mb-8 leading-relaxed text-sm">
-              Premium boat tours specializing in shark tooth hunting, dolphin watching, and authentic South Carolina coastal adventures. Making memories that last a lifetime.
+            <p className="text-muted-foreground max-w-sm mb-6 leading-relaxed text-sm">
+              Charleston SC's premier private boat tour company — dolphin tours, shark tooth hunting, sunset cruises, and group charters departing from Shem Creek, Mount Pleasant.
             </p>
-            <div className="flex gap-3 mb-6">
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
+            <div className="flex gap-3 mb-5">
+              <a href="https://www.instagram.com/lowcountry_coastal_excursions/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
+              <a href="https://www.facebook.com/lowcountrycoastalexcursions" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:glow-orange-sm border border-border">
                 <Facebook className="h-5 w-5" />
               </a>
             </div>
@@ -1213,38 +1291,60 @@ function Footer() {
             </div>
           </div>
 
+          {/* Our Tours */}
           <div>
-            <h4 className="font-bold text-base mb-6 flex items-center gap-2">
+            <h4 className="font-bold text-base mb-5 flex items-center gap-2">
               <Compass className="h-4 w-4 text-primary" />
-              Quick Links
+              Our Tours
             </h4>
             <ul className="space-y-3">
-              <li><button onClick={() => document.getElementById('experiences')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm">Our Tours</button></li>
-              <li><button onClick={() => document.getElementById('why-us')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm">Why Choose Us</button></li>
-              <li><button onClick={() => document.getElementById('gallery')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm">Gallery</button></li>
-              <li><button onClick={() => document.getElementById('reviews')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm">Reviews</button></li>
-              <li><button onClick={() => document.getElementById('faq')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm">FAQ</button></li>
+              <li><a href={`${base}/shark-tooth-hunting`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Shark Tooth Hunting</a></li>
+              <li><a href={`${base}/dolphin-wildlife`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Dolphin & Wildlife</a></li>
+              <li><a href={`${base}/group-charters`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Group & Private Charters</a></li>
+              <li><a href={`${base}/inshore-fishing`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Inshore Fishing</a></li>
             </ul>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-base mb-6 flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-primary" />
-              Service Area
+            <h4 className="font-bold text-base mb-5 flex items-center gap-2">
+              <Waves className="h-4 w-4 text-primary" />
+              Quick Links
             </h4>
-            <ul className="space-y-2 text-muted-foreground text-sm">
-              {["Charleston", "Edisto Beach", "Beaufort", "Hunting Island", "Hilton Head", "Myrtle Beach"].map(loc => (
-                <li key={loc} className="flex items-center gap-1.5">
-                  <span className="w-1 h-1 rounded-full bg-primary inline-block" />
-                  {loc}, SC
-                </li>
-              ))}
+            <ul className="space-y-3">
+              <li><button onClick={() => document.getElementById('why-us')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm text-left">Why Choose Us</button></li>
+              <li><button onClick={() => document.getElementById('gallery')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm text-left">Photo Gallery</button></li>
+              <li><button onClick={() => document.getElementById('reviews')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm text-left">Guest Reviews</button></li>
+              <li><button onClick={() => document.getElementById('faq')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm text-left">FAQ</button></li>
+              <li><button onClick={() => document.getElementById('booking')?.scrollIntoView({behavior:'smooth'})} className="text-muted-foreground hover:text-primary transition-colors text-sm text-left">Book a Tour</button></li>
+            </ul>
+          </div>
+
+          {/* Pick-Up Location */}
+          <div>
+            <h4 className="font-bold text-base mb-5 flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" />
+              Pick-Up Location
+            </h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                <span>100 Church St. (Tavern & Table)<br />Mt. Pleasant, SC 29464</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-primary shrink-0" />
+                <a href="tel:+18435081600" className="hover:text-primary transition-colors">(843) 508-1600</a>
+              </li>
+              <li className="flex items-start gap-2">
+                <Clock className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                <span>Mon – Sun<br />8:00 am – 8:00 pm</span>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Low Coastal Country Excursion. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} LowCountry Coastal Excursions. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
@@ -1331,6 +1431,11 @@ function App() {
             <Route path="/charleston/dolphin-tours">
               <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
                 <DolphinLandingPage />
+              </Suspense>
+            </Route>
+            <Route path="/advertisement">
+              <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center"><div className="text-[#D4A843] text-lg font-serif">Loading...</div></div>}>
+                <VideoTemplate />
               </Suspense>
             </Route>
             <Route>
