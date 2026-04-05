@@ -5,7 +5,7 @@ import {
   Gem, CheckCircle2, ChevronDown, Star, ArrowRight, Anchor, MapPin,
   Clock, Users, BadgeCheck, Shield, Sun, Waves, ChevronLeft, Camera, Sparkles
 } from "lucide-react";
-import { SiteNavbar, SiteFooter, WaveDivider } from "@/components/layout";
+import { SiteNavbar, SiteFooter, WaveDivider, SiteMobileBookingBar } from "@/components/layout";
 
 function GoogleG() {
   return (
@@ -103,17 +103,17 @@ export default function SharkToothPage() {
       <SiteNavbar />
 
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-20 pt-20">
+      <section className="relative h-[80vh] min-h-[560px] overflow-hidden flex items-end pb-10 pt-20">
         <div className="absolute inset-0 z-0">
           <img src="/images/kids-teeth.jpg" alt="Kids finding shark teeth on South Carolina beach" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <a href={`${base}/`} className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors mb-6">
+          <a href={`${base}/`} className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors mb-5">
             <ChevronLeft className="h-4 w-4" /> Back to All Tours
           </a>
-          <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-white px-3 py-1.5 rounded-full text-sm font-medium mb-4"
+          <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-white px-3 py-1.5 rounded-full text-sm font-medium mb-3"
             style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.2)" }}>
             <Gem className="h-4 w-4 text-primary" /> Most Popular Tour
           </div>
@@ -121,14 +121,26 @@ export default function SharkToothPage() {
             Shark Tooth<br />
             <span className="text-primary glow-orange-text">Hunting Tours</span>
           </h1>
-          <p className="text-xl text-white/85 max-w-2xl mb-8">
+          <p className="text-xl text-white/85 max-w-2xl mb-5">
             Discover prehistoric megalodon teeth and ancient shark fossils on remote, boat-access-only South Carolina barrier island beaches. The ultimate coastal treasure hunt.
           </p>
-          <div className="flex flex-wrap gap-4 text-sm text-white/70">
+          <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-6">
             <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2.5–3.5 Hours</span>
             <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> All Ages Welcome</span>
             <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Edisto, Beaufort, Hunting Island SC</span>
             <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> USCG Certified</span>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={openBooking}
+              className="bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-bold text-base hover:bg-primary/90 transition-all glow-orange inline-flex items-center gap-2"
+            >
+              <Anchor className="h-5 w-5" /> Book Now — Spots Filling Fast
+            </button>
+            <div className="flex items-center gap-2 text-white/60 text-sm self-center">
+              <Star className="h-4 w-4 fill-primary text-primary" />
+              <span>4.9 stars · 127 Google reviews</span>
+            </div>
           </div>
         </div>
       </section>
@@ -332,12 +344,15 @@ export default function SharkToothPage() {
       <section className="py-24 bg-background text-center">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <Gem className="h-12 w-12 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 16px hsl(22 95% 52% / 0.6))" }} />
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
             Ready to Find Your <span className="text-primary glow-orange-text">Megalodon?</span>
           </h2>
-          <p className="text-lg text-muted-foreground mb-10">
+          <p className="text-lg text-muted-foreground mb-3">
             Spots fill fast — especially on weekends and during peak season. Book your shark tooth hunting adventure today.
           </p>
+          <div className="inline-flex items-center gap-2 text-sm text-primary font-semibold bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-8">
+            <Clock className="h-4 w-4" /> Weekend dates booking out fast — secure yours now
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={openBooking}
@@ -352,10 +367,14 @@ export default function SharkToothPage() {
               View All Tours <ArrowRight className="h-5 w-5" />
             </a>
           </div>
+          <p className="text-sm text-muted-foreground mt-6 flex items-center justify-center gap-2">
+            <CheckCircle2 className="h-4 w-4 text-primary" /> Instant confirmation · Free cancellation up to 48 hrs
+          </p>
         </div>
       </section>
 
       <SiteFooter />
+      <SiteMobileBookingBar />
     </div>
   );
 }

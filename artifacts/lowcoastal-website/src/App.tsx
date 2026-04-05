@@ -104,12 +104,19 @@ function Navbar() {
             <span className="font-serif font-bold text-xl tracking-tight text-foreground">Low Coastal</span>
           </div>
           
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollTo('experiences')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Experiences</button>
             <button onClick={() => scrollTo('why-us')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Why Us</button>
             <button onClick={() => scrollTo('gallery')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Gallery</button>
             <button onClick={() => scrollTo('reviews')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Reviews</button>
             <button onClick={() => scrollTo('faq')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">FAQ</button>
+            <a
+              href="tel:+18435550100"
+              className="hidden lg:flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              (843) 555-0100
+            </a>
             <button
               onClick={openBooking}
               className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:bg-primary/90 transition-all glow-orange-sm hover:glow-orange hover:-translate-y-0.5 active:translate-y-0"
@@ -119,7 +126,10 @@ function Navbar() {
             </button>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-3">
+            <a href="tel:+18435550100" className="p-2 text-primary" aria-label="Call us">
+              <Phone className="h-5 w-5" />
+            </a>
             <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-foreground" aria-label="Toggle menu">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -128,18 +138,58 @@ function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur border-b border-border p-4 flex flex-col gap-4">
+        <div className="md:hidden bg-background/95 backdrop-blur border-b border-border p-4 flex flex-col gap-2">
           <button onClick={() => scrollTo('experiences')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Experiences</button>
           <button onClick={() => scrollTo('why-us')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Why Us</button>
           <button onClick={() => scrollTo('gallery')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Gallery</button>
           <button onClick={() => scrollTo('reviews')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Reviews</button>
           <button onClick={() => scrollTo('faq')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">FAQ</button>
-          <button onClick={openBooking} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-center w-full mt-2 glow-orange-sm block">
-            Book Now
-          </button>
+          <div className="border-t border-border pt-3 mt-1 flex flex-col gap-2">
+            <a href="tel:+18435550100" className="flex items-center gap-2 font-bold py-2 text-foreground hover:text-primary transition-colors">
+              <Phone className="h-4 w-4 text-primary" />
+              (843) 555-0100 — Call or Text
+            </a>
+            <button onClick={openBooking} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-center w-full glow-orange-sm block">
+              Book Now — Check Availability
+            </button>
+          </div>
         </div>
       )}
     </nav>
+  );
+}
+
+function MobileBookingBar() {
+  const { openBooking } = useBooking();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  return (
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${visible ? "translate-y-0" : "translate-y-full"}`}
+    >
+      <div className="bg-background/95 backdrop-blur-md border-t border-border px-4 py-3 flex gap-3 items-center shadow-2xl shadow-black/40">
+        <a
+          href="tel:+18435550100"
+          className="flex items-center justify-center gap-2 flex-1 py-3 rounded-full border border-border font-semibold text-sm text-foreground hover:border-primary/40 transition-all"
+        >
+          <Phone className="h-4 w-4 text-primary" />
+          Call / Text
+        </a>
+        <button
+          onClick={openBooking}
+          className="flex-1 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm glow-orange hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
+        >
+          <Anchor className="h-4 w-4" />
+          Book Now
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -1127,6 +1177,7 @@ function LandingPage() {
       </div>
       <Booking />
       <Footer />
+      <MobileBookingBar />
     </div>
   );
 }
