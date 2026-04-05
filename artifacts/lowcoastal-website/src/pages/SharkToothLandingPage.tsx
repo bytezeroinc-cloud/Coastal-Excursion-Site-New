@@ -135,15 +135,18 @@ export default function SharkToothLandingPage() {
                 Check Availability & Book Now
               </button>
               <a
-                href="tel:+18435550100"
+                href="tel:+18435081600"
                 className="flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold border-2 border-white/30 text-white hover:border-primary hover:text-primary transition-all"
               >
                 <Phone className="h-5 w-5" />
-                (843) 555-0100
+                (843) 508-1600
               </a>
             </div>
 
-            <p className="text-white/50 text-sm">Weekend spots filling fast — instant confirmation after booking</p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-white/55">
+              <span className="flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 text-primary shrink-0" /> Pick-up: 100 Church St., Mt. Pleasant, SC 29464</span>
+              <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-primary shrink-0" /> Mon – Sun, 8 am – 8 pm</span>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -217,11 +220,11 @@ export default function SharkToothLandingPage() {
               </div>
 
               <a
-                href="tel:+18435550100"
+                href="tel:+18435081600"
                 className="flex items-center justify-center gap-3 w-full py-4 rounded-xl border-2 border-primary/40 bg-primary/5 text-foreground font-bold hover:border-primary hover:bg-primary/10 transition-all"
               >
                 <Phone className="h-5 w-5 text-primary" />
-                <span>Call or Text: <span className="text-primary">(843) 555-0100</span></span>
+                <span>Call or Text: <span className="text-primary">(843) 508-1600</span></span>
               </a>
             </div>
           </div>
@@ -339,11 +342,11 @@ export default function SharkToothLandingPage() {
               Check Availability & Book Now
             </button>
             <a
-              href="tel:+18435550100"
+              href="tel:+18435081600"
               className="flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold border-2 border-border text-foreground hover:border-primary hover:text-primary transition-all"
             >
               <Phone className="h-5 w-5" />
-              (843) 555-0100
+              (843) 508-1600
             </a>
           </div>
           <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
@@ -359,7 +362,7 @@ export default function SharkToothLandingPage() {
             <Anchor className="h-4 w-4 text-primary" />
             <span>© {new Date().getFullYear()} Low Coastal Country Excursion — SC Lowcountry Boat Tours</span>
           </div>
-          <a href="tel:+18435550100" className="text-primary font-semibold hover:underline">(843) 555-0100</a>
+          <a href="tel:+18435081600" className="text-primary font-semibold hover:underline">(843) 508-1600</a>
         </div>
       </footer>
 

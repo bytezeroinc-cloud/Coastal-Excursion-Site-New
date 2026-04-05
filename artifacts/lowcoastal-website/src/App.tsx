@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BookingProvider, useBooking } from "@/components/BookingModal";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -80,15 +80,36 @@ function WaveDividerTop({ color = "hsl(218 45% 7%)" }: { color?: string }) {
   );
 }
 
+const HOME_TOURS = [
+  { label: "Shark Tooth Hunting", href: "/shark-tooth-hunting", icon: Gem },
+  { label: "Dolphin & Wildlife", href: "/dolphin-wildlife", icon: Binoculars },
+  { label: "Group Charters", href: "/group-charters", icon: Users },
+  { label: "Inshore Fishing", href: "/inshore-fishing", icon: Fish },
+];
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [toursOpen, setToursOpen] = useState(false);
+  const [mobileToursOpen, setMobileToursOpen] = useState(false);
+  const toursRef = useRef<HTMLDivElement>(null);
   const { openBooking } = useBooking();
+  const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (toursRef.current && !toursRef.current.contains(e.target as Node)) {
+        setToursOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -106,18 +127,49 @@ function Navbar() {
             <span className="font-serif font-bold text-xl tracking-tight text-foreground">Low Coastal</span>
           </div>
           
-          <div className="hidden md:flex items-center gap-6">
-            <button onClick={() => scrollTo('experiences')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Experiences</button>
+          <div className="hidden md:flex items-center gap-5">
+            {/* Our Tours dropdown */}
+            <div ref={toursRef} className="relative">
+              <button
+                onClick={() => setToursOpen(v => !v)}
+                className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >
+                Our Tours <ChevronDown className={`h-3.5 w-3.5 mt-0.5 transition-transform ${toursOpen ? "rotate-180" : ""}`} />
+              </button>
+              {toursOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-background/98 backdrop-blur-md border border-border rounded-2xl shadow-2xl shadow-black/40 p-2 z-50">
+                  {HOME_TOURS.map(({ label, href, icon: Icon }) => (
+                    <a
+                      key={href}
+                      href={`${base}${href}`}
+                      onClick={() => setToursOpen(false)}
+                      className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-foreground/80 hover:text-primary hover:bg-primary/8 transition-all"
+                    >
+                      <Icon className="h-4 w-4 text-primary shrink-0" />
+                      {label}
+                    </a>
+                  ))}
+                  <div className="border-t border-border mt-1 pt-1">
+                    <button
+                      onClick={() => { setToursOpen(false); scrollTo('experiences'); }}
+                      className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-muted-foreground hover:text-primary hover:bg-primary/8 transition-all w-full text-left"
+                    >
+                      View all tours overview ↓
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             <button onClick={() => scrollTo('why-us')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Why Us</button>
             <button onClick={() => scrollTo('gallery')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Gallery</button>
             <button onClick={() => scrollTo('reviews')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Reviews</button>
             <button onClick={() => scrollTo('faq')} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">FAQ</button>
             <a
-              href="tel:+18435550100"
+              href="tel:+18435081600"
               className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
             >
               <Phone className="h-4 w-4 text-primary" />
-              (843) 555-0100
+              (843) 508-1600
             </a>
             <button
               onClick={openBooking}
@@ -129,7 +181,7 @@ function Navbar() {
           </div>
 
           <div className="md:hidden flex items-center gap-3">
-            <a href="tel:+18435550100" className="p-2 text-primary" aria-label="Call us">
+            <a href="tel:+18435081600" className="p-2 text-primary" aria-label="Call us">
               <Phone className="h-5 w-5" />
             </a>
             <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-foreground" aria-label="Toggle menu">
@@ -140,16 +192,38 @@ function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur border-b border-border p-4 flex flex-col gap-2">
-          <button onClick={() => scrollTo('experiences')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Experiences</button>
+        <div className="md:hidden bg-background/95 backdrop-blur border-b border-border p-4 flex flex-col gap-1">
+          {/* Mobile Our Tours */}
+          <button
+            className="flex items-center justify-between w-full text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors"
+            onClick={() => setMobileToursOpen(v => !v)}
+          >
+            Our Tours
+            <ChevronDown className={`h-4 w-4 text-primary transition-transform ${mobileToursOpen ? "rotate-180" : ""}`} />
+          </button>
+          {mobileToursOpen && (
+            <div className="ml-4 flex flex-col gap-1 pb-1 border-l border-border pl-3">
+              {HOME_TOURS.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={href}
+                  href={`${base}${href}`}
+                  onClick={() => { setIsOpen(false); setMobileToursOpen(false); }}
+                  className="flex items-center gap-2 py-1.5 text-sm text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Icon className="h-3.5 w-3.5 text-primary shrink-0" />
+                  {label}
+                </a>
+              ))}
+            </div>
+          )}
           <button onClick={() => scrollTo('why-us')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Why Us</button>
           <button onClick={() => scrollTo('gallery')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Gallery</button>
           <button onClick={() => scrollTo('reviews')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">Reviews</button>
           <button onClick={() => scrollTo('faq')} className="text-left font-medium py-2 text-foreground/80 hover:text-primary transition-colors">FAQ</button>
           <div className="border-t border-border pt-3 mt-1 flex flex-col gap-2">
-            <a href="tel:+18435550100" className="flex items-center gap-2 font-bold py-2 text-foreground hover:text-primary transition-colors">
+            <a href="tel:+18435081600" className="flex items-center gap-2 font-bold py-2 text-foreground hover:text-primary transition-colors">
               <Phone className="h-4 w-4 text-primary" />
-              (843) 555-0100 — Call or Text
+              (843) 508-1600 — Call or Text
             </a>
             <button onClick={openBooking} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-center w-full glow-orange-sm block">
               Book Now — Check Availability
@@ -194,7 +268,7 @@ function MobileBookingBar() {
     >
       <div className="bg-background/95 backdrop-blur-md border-t border-border px-4 py-3 flex gap-3 items-center shadow-2xl shadow-black/40">
         <a
-          href="tel:+18435550100"
+          href="tel:+18435081600"
           className="flex items-center justify-center gap-2 flex-1 py-3 rounded-full border border-border font-semibold text-sm text-foreground hover:border-primary/40 transition-all"
         >
           <Phone className="h-4 w-4 text-primary" />
@@ -1004,7 +1078,25 @@ function Booking() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground font-medium">Call or Text Us</p>
-                  <p className="text-xl font-bold text-foreground">(843) 555-0100</p>
+                  <a href="tel:+18435081600" className="text-xl font-bold text-foreground hover:text-primary transition-colors">(843) 508-1600</a>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="bg-card w-12 h-12 rounded-full flex items-center justify-center shadow-sm text-primary border border-border">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground font-medium">Pick-Up Location</p>
+                  <p className="text-lg font-bold text-foreground">100 Church St., Mt. Pleasant, SC 29464</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="bg-card w-12 h-12 rounded-full flex items-center justify-center shadow-sm text-primary border border-border">
+                  <Clock className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground font-medium">Hours</p>
+                  <p className="text-lg font-bold text-foreground">Mon – Sun, 8:00 am – 8:00 pm</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -1014,24 +1106,6 @@ function Booking() {
                 <div>
                   <p className="text-sm text-muted-foreground font-medium">Email</p>
                   <p className="text-xl font-bold text-foreground">hello@lowcoastal.com</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="bg-card w-12 h-12 rounded-full flex items-center justify-center shadow-sm text-primary border border-border">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-medium">Departure Location</p>
-                  <p className="text-lg font-bold text-foreground">Low Country Coast, SC</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="bg-card w-12 h-12 rounded-full flex items-center justify-center shadow-sm text-primary border border-border">
-                  <Clock className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-medium">Tour Duration</p>
-                  <p className="text-lg font-bold text-foreground">2.5 – 3.5 Hours</p>
                 </div>
               </div>
             </div>
