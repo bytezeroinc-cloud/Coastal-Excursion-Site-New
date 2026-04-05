@@ -12,6 +12,7 @@ const FishingPage = lazy(() => import("@/pages/FishingPage"));
 const SharkToothLandingPage = lazy(() => import("@/pages/SharkToothLandingPage"));
 const DolphinLandingPage = lazy(() => import("@/pages/DolphinLandingPage"));
 const VideoTemplate = lazy(() => import("@/components/video/VideoTemplate"));
+const SunsetPage = lazy(() => import("@/pages/SunsetPage"));
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   Anchor, 
@@ -84,6 +85,7 @@ function WaveDividerTop({ color = "hsl(218 45% 7%)" }: { color?: string }) {
 const HOME_TOURS = [
   { label: "Shark Tooth Hunting", href: "/shark-tooth-hunting", icon: Gem },
   { label: "Dolphin & Wildlife", href: "/dolphin-wildlife", icon: Binoculars },
+  { label: "Sunset Cruise", href: "/sunset-cruise", icon: Sun },
   { label: "Group Charters", href: "/group-charters", icon: Users },
   { label: "Inshore Fishing", href: "/inshore-fishing", icon: Fish },
 ];
@@ -440,6 +442,17 @@ const experiences = [
     icon: <Waves className="h-6 w-6" />,
     badge: "Family Favorite",
     features: ["Golden hour options", "Bird & dolphin watching", "Ecological insights", "Photography spots"]
+  },
+  {
+    id: "sunset",
+    path: "/sunset-cruise",
+    title: "Sunset Cruise",
+    fromPrice: "From $65/person",
+    desc: "Watch the SC Lowcountry sky ignite over Charleston Harbor. Dolphins feed at golden hour, the Ravenel Bridge glows orange, and the marsh turns to pure gold. The most romantic 2 hours in Charleston.",
+    image: "/images/marsh-sunrise.png",
+    icon: <Sun className="h-6 w-6" />,
+    badge: "Most Romantic",
+    features: ["Golden hour dolphin spotting", "Ravenel Bridge views", "Shared or private option", "BYOB on private charters"]
   },
   {
     id: "groups",
@@ -1300,6 +1313,7 @@ function Footer() {
             <ul className="space-y-3">
               <li><a href={`${base}/shark-tooth-hunting`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Shark Tooth Hunting</a></li>
               <li><a href={`${base}/dolphin-wildlife`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Dolphin & Wildlife</a></li>
+              <li><a href={`${base}/sunset-cruise`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Sunset Cruise</a></li>
               <li><a href={`${base}/group-charters`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Group & Private Charters</a></li>
               <li><a href={`${base}/inshore-fishing`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Inshore Fishing</a></li>
             </ul>
@@ -1355,6 +1369,36 @@ function Footer() {
   );
 }
 
+function VideoSection() {
+  const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
+  return (
+    <section className="bg-[hsl(218_45%_7%)] py-16 px-4">
+      <div className="max-w-5xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-3">
+          <Sailboat className="h-4 w-4" /> See It For Yourself
+        </div>
+        <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+          Life on the <span className="text-primary glow-orange-text">Water</span>
+        </h2>
+        <p className="text-white/60 text-lg mb-8 max-w-xl mx-auto">
+          Two minutes of Lowcountry magic — dolphins, barrier islands, golden sunsets, and unforgettable moments.
+        </p>
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl mx-auto" style={{ maxWidth: 900, aspectRatio: "16/9" }}>
+          <Suspense fallback={<div className="w-full h-full bg-[hsl(218_45%_7%)] flex items-center justify-center text-white/40">Loading...</div>}>
+            <VideoTemplate />
+          </Suspense>
+        </div>
+        <a
+          href={`${base}/advertisement`}
+          className="inline-flex items-center gap-2 mt-6 text-sm text-white/50 hover:text-primary transition-colors"
+        >
+          Watch full screen <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+    </section>
+  );
+}
+
 function LandingPage() {
   return (
     <div className="min-h-screen w-full bg-background selection:bg-primary/30">
@@ -1372,6 +1416,7 @@ function LandingPage() {
         <WaveDivider color="hsl(218 45% 7%)" />
       </div>
       <Gallery />
+      <VideoSection />
       <div className="relative bg-background">
         <WaveDivider color="hsl(214 30% 95%)" />
       </div>
@@ -1421,6 +1466,11 @@ function App() {
             <Route path="/inshore-fishing">
               <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
                 <FishingPage />
+              </Suspense>
+            </Route>
+            <Route path="/sunset-cruise">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <SunsetPage />
               </Suspense>
             </Route>
             <Route path="/charleston/shark-tooth-hunting">

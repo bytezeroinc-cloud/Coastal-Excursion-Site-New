@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Anchor, MapPin, Phone, Mail, Instagram, Facebook, Menu, X, Compass, Waves,
-  Clock, ChevronDown, Fish, Gem, Binoculars, Users
+  Clock, ChevronDown, Fish, Gem, Binoculars, Users, Sun
 } from "lucide-react";
 import { useBooking } from "@/components/BookingModal";
 
@@ -35,6 +35,7 @@ function GoogleG() {
 const TOURS = [
   { label: "Shark Tooth Hunting", href: "/shark-tooth-hunting", icon: Gem },
   { label: "Dolphin & Wildlife", href: "/dolphin-wildlife", icon: Binoculars },
+  { label: "Sunset Cruise", href: "/sunset-cruise", icon: Sun },
   { label: "Group Charters", href: "/group-charters", icon: Users },
   { label: "Inshore Fishing", href: "/inshore-fishing", icon: Fish },
 ];
@@ -307,6 +308,7 @@ export function SiteFooter() {
             <ul className="space-y-3">
               <li><a href={`${base}/shark-tooth-hunting`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Shark Tooth Hunting</a></li>
               <li><a href={`${base}/dolphin-wildlife`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Dolphin & Wildlife</a></li>
+              <li><a href={`${base}/sunset-cruise`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Sunset Cruise</a></li>
               <li><a href={`${base}/group-charters`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Group Charters</a></li>
               <li><a href={`${base}/inshore-fishing`} className="text-muted-foreground hover:text-primary transition-colors text-sm">Inshore Fishing</a></li>
             </ul>
