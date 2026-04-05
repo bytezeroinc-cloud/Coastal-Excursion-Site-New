@@ -117,11 +117,14 @@ export default function GroupCharterPage() {
           <p className="text-xl text-white/85 max-w-2xl mb-5">
             Your boat, your crew, your rules. Celebrate your bachelorette party, family reunion, birthday, or corporate retreat on the most stunning waters in South Carolina.
           </p>
-          <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-6">
+          <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-4">
             <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2–6 Hours (Custom)</span>
             <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Up to 12 Guests</span>
             <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> SC Lowcountry</span>
             <span className="flex items-center gap-2"><Music className="h-4 w-4 text-primary" /> BYOB & Bluetooth Music</span>
+          </div>
+          <div className="mb-6">
+            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $450/boat</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <button
@@ -363,7 +366,7 @@ export default function GroupCharterPage() {
       <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* CTA */}
-      <section className="py-24 light-section text-center">
+      <section id="tour-cta" className="py-24 light-section text-center">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <Sparkles className="h-12 w-12 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 16px hsl(22 95% 52% / 0.6))" }} />
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">

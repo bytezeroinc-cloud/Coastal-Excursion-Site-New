@@ -116,16 +116,28 @@ export function SiteNavbar() {
 export function SiteMobileBookingBar() {
   const { openBooking } = useBooking();
   const [visible, setVisible] = useState(false);
+  const [ctaNear, setCtaNear] = useState(false);
 
   useEffect(() => {
-    const handler = () => setVisible(window.scrollY > 400);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ctaEl = document.getElementById("tour-cta") || document.getElementById("booking");
+    if (!ctaEl) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setCtaNear(entry.isIntersecting),
+      { rootMargin: "0px 0px -50px 0px", threshold: 0.1 }
+    );
+    observer.observe(ctaEl);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${visible ? "translate-y-0" : "translate-y-full"}`}
+      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${visible && !ctaNear ? "translate-y-0" : "translate-y-full"}`}
     >
       <div className="bg-background/95 backdrop-blur-md border-t border-border px-4 py-3 flex gap-3 items-center shadow-2xl shadow-black/40">
         <a

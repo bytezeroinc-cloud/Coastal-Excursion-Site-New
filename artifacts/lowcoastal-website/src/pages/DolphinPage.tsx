@@ -133,11 +133,14 @@ export default function DolphinPage() {
           <p className="text-xl text-white/85 max-w-2xl mb-5">
             Cruise the pristine estuaries of the South Carolina Lowcountry and come face-to-face with wild Atlantic bottlenose dolphins, sea birds, and breathtaking coastal landscapes.
           </p>
-          <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-6">
+          <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-4">
             <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2.5–3 Hours</span>
             <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> All Ages</span>
             <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Edisto Island & Beaufort, SC</span>
             <span className="flex items-center gap-2"><Sun className="h-4 w-4 text-primary" /> Morning & Sunset Options</span>
+          </div>
+          <div className="mb-6">
+            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $59/person</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <button
@@ -359,7 +362,7 @@ export default function DolphinPage() {
       <WaveDivider color="hsl(218 45% 7%)" />
 
       {/* CTA */}
-      <section className="py-24 bg-background text-center">
+      <section id="tour-cta" className="py-24 bg-background text-center">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <Waves className="h-12 w-12 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 16px hsl(22 95% 52% / 0.6))" }} />
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">

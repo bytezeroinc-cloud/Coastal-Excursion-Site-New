@@ -162,16 +162,28 @@ function Navbar() {
 function MobileBookingBar() {
   const { openBooking } = useBooking();
   const [visible, setVisible] = useState(false);
+  const [bookingNear, setBookingNear] = useState(false);
 
   useEffect(() => {
-    const handler = () => setVisible(window.scrollY > 400);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const bookingEl = document.getElementById("booking");
+    if (!bookingEl) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setBookingNear(entry.isIntersecting),
+      { rootMargin: "0px 0px -50px 0px", threshold: 0.1 }
+    );
+    observer.observe(bookingEl);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${visible ? "translate-y-0" : "translate-y-full"}`}
+      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${visible && !bookingNear ? "translate-y-0" : "translate-y-full"}`}
     >
       <div className="bg-background/95 backdrop-blur-md border-t border-border px-4 py-3 flex gap-3 items-center shadow-2xl shadow-black/40">
         <a
@@ -272,19 +284,24 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="flex items-center justify-center gap-6 text-white/80 text-sm"
+          className="flex items-center justify-center gap-3 sm:gap-5 text-white/80 text-xs sm:text-sm"
         >
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck className="h-4 w-4 text-primary" />
-            <span>USCG Certified</span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
+            <span className="hidden sm:inline">USCG Certified</span>
+            <span className="sm:hidden">USCG</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <Star className="h-4 w-4 text-primary fill-primary" />
-            <span>4.9 Google Rating</span>
+          <span className="text-white/30 shrink-0">·</span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <Star className="h-4 w-4 text-primary fill-primary shrink-0" />
+            <span className="hidden sm:inline">4.9 Google Rating</span>
+            <span className="sm:hidden">4.9 ★</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <Heart className="h-4 w-4 text-primary fill-primary" />
-            <span>Family Friendly</span>
+          <span className="text-white/30 shrink-0">·</span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <Heart className="h-4 w-4 text-primary fill-primary shrink-0" />
+            <span className="hidden sm:inline">Family Friendly</span>
+            <span className="sm:hidden">All Ages</span>
           </div>
         </motion.div>
 
@@ -323,6 +340,7 @@ const experiences = [
     id: "shark-teeth",
     path: "/shark-tooth-hunting",
     title: "Shark Tooth Hunting",
+    fromPrice: "From $65/person",
     desc: "Our hero experience. We take you to remote, boat-access-only barrier island beaches where prehistoric megalodon teeth wash ashore. Perfect for all ages — every fossil hunter's dream.",
     image: "/images/kids-teeth.png",
     icon: <Gem className="h-6 w-6" />,
@@ -333,6 +351,7 @@ const experiences = [
     id: "dolphins",
     path: "/dolphin-wildlife",
     title: "Dolphin & Wildlife Tours",
+    fromPrice: "From $59/person",
     desc: "Cruise the pristine estuarine waters and winding creeks to witness Atlantic bottlenose dolphins feeding and playing in their natural habitat, alongside eagles and pelicans.",
     image: "/images/dolphins.png",
     icon: <Waves className="h-6 w-6" />,
@@ -343,6 +362,7 @@ const experiences = [
     id: "groups",
     path: "/group-charters",
     title: "Bachelorette & Group Charters",
+    fromPrice: "From $450/boat",
     desc: "Celebrate on the water! A private charter for your bachelorette party, family reunion, or corporate retreat. Bring your drinks, play your music, and let us handle the rest.",
     image: "/images/bachelorette.png",
     icon: <Sparkles className="h-6 w-6" />,
@@ -353,6 +373,7 @@ const experiences = [
     id: "fishing",
     path: "/inshore-fishing",
     title: "Inshore Fishing Trips",
+    fromPrice: "From $350/half-day",
     desc: "Target redfish, trout, and flounder in the nutrient-rich marshes. Whether you're a seasoned angler or teaching the kids to cast, our captains know exactly where the fish are biting.",
     image: "/images/fishing.png",
     icon: <Fish className="h-6 w-6" />,
@@ -402,7 +423,10 @@ function Experiences() {
                 </div>
               </div>
               <div className="p-8">
-                <h4 className="text-2xl font-serif font-bold mb-3 text-card-foreground">{exp.title}</h4>
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h4 className="text-2xl font-serif font-bold text-card-foreground">{exp.title}</h4>
+                  <span className="text-primary font-bold text-sm whitespace-nowrap bg-primary/10 border border-primary/20 rounded-full px-3 py-1 shrink-0">{exp.fromPrice}</span>
+                </div>
                 <p className="text-muted-foreground mb-6 leading-relaxed">{exp.desc}</p>
                 <ul className="space-y-2 mb-8">
                   {exp.features.map((feature, i) => (
