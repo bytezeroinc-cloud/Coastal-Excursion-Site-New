@@ -310,7 +310,7 @@ function Hero() {
         <div className="absolute inset-0" style={{ width: "100%", height: "100%" }}>
           <Suspense fallback={
             <div className="absolute inset-0">
-              <img src="/images/hero-boat.png" alt="" className="w-full h-full object-cover" />
+              <img src="/images/lccx-ravenel-bridge.webp" alt="" className="w-full h-full object-cover" />
             </div>
           }>
             <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
@@ -423,7 +423,7 @@ const experiences = [
     title: "Dolphin & Wildlife Tours",
     fromPrice: "From $59/person",
     desc: "Cruise the pristine estuarine waters and winding creeks to witness Atlantic bottlenose dolphins feeding and playing in their natural habitat, alongside eagles and pelicans.",
-    image: "/images/dolphins.png",
+    image: "/images/lccx-dolphin-leap.webp",
     icon: <Waves className="h-6 w-6" />,
     badge: "Family Favorite",
     features: ["Golden hour options", "Bird & dolphin watching", "Ecological insights", "Photography spots"]
@@ -434,7 +434,7 @@ const experiences = [
     title: "Sunset Cruise",
     fromPrice: "From $65/person",
     desc: "Watch the SC Lowcountry sky ignite over Charleston Harbor. Dolphins feed at golden hour, the Ravenel Bridge glows orange, and the marsh turns to pure gold. The most romantic 2 hours in Charleston.",
-    image: "/images/marsh-sunrise.png",
+    image: "/images/lccx-charleston-sunset.webp",
     icon: <Sun className="h-6 w-6" />,
     badge: "Most Romantic",
     features: ["Golden hour dolphin spotting", "Ravenel Bridge views", "Shared or private option", "BYOB on private charters"]
@@ -445,7 +445,7 @@ const experiences = [
     title: "Bachelorette & Group Charters",
     fromPrice: "From $450/boat",
     desc: "Celebrate on the water! A private charter for your bachelorette party, family reunion, or corporate retreat. Bring your drinks, play your music, and let us handle the rest.",
-    image: "/images/bachelorette.png",
+    image: "/images/lccx-bachelorette-boat.webp",
     icon: <Sparkles className="h-6 w-6" />,
     badge: "Private Charter",
     features: ["Fully private boat", "Customizable itinerary", "Bluetooth sound system", "BYOB welcome"]
@@ -456,7 +456,7 @@ const experiences = [
     title: "Inshore Fishing Trips",
     fromPrice: "From $350/half-day",
     desc: "Target redfish, trout, and flounder in the nutrient-rich marshes. Whether you're a seasoned angler or teaching the kids to cast, our captains know exactly where the fish are biting.",
-    image: "/images/fishing.png",
+    image: "/images/lccx-fishing-redfish.webp",
     icon: <Fish className="h-6 w-6" />,
     badge: "Anglers Choice",
     features: ["Bait & tackle provided", "Licenses included", "Expert local guidance", "All skill levels"]
@@ -655,40 +655,40 @@ function Gallery() {
 
   const posts = [
     {
-      src: "/images/hero-boat.png",
-      alt: "Roamer IV luxury boat cruising Shem Creek, Mt. Pleasant SC",
-      caption: "Another gorgeous morning on Shem Creek. Who's ready to find some shark teeth? 🦷",
-      likes: 312, span: "md:col-span-2 md:row-span-2",
+      src: "/images/lccx-dolphin-leap.webp",
+      alt: "Bottlenose dolphin leaping alongside a tour boat on the SC Lowcountry coast",
+      caption: "These guys leap right next to the boat — almost every single trip 🐬 #LowcountryLife #Charleston",
+      likes: 419, span: "md:col-span-2 md:row-span-2",
     },
     {
-      src: "/images/teeth-close.png",
-      alt: "Collection of fossilized shark teeth found on a SC beach",
-      caption: "Look at this haul! Megalodon fragments and a dozen assorted shark teeth from today's hunt 🦈",
-      likes: 287, span: "",
-    },
-    {
-      src: "/images/dolphins.png",
-      alt: "Dolphins swimming alongside boat near Charleston harbor",
-      caption: "They love the boat just as much as we do 💙 Dolphin season is in full swing!",
-      likes: 419, span: "",
-    },
-    {
-      src: "/images/couple-beach.png",
-      alt: "Guests exploring the beach on a shark tooth hunting tour",
-      caption: "Perfect sunrise finds with the best view in the Lowcountry ☀️",
-      likes: 203, span: "",
-    },
-    {
-      src: "/images/marsh-sunrise.png",
-      alt: "Golden hour over the South Carolina coastal marsh from the boat",
-      caption: "There's no better office than this. Sunset cruise magic 🌅",
+      src: "/images/lccx-charleston-sunset.webp",
+      alt: "Stunning golden hour sunset over Charleston Harbor SC from the water",
+      caption: "No filter. Just the Lowcountry doing its thing at golden hour 🌅 #CharlestonSunset",
       likes: 376, span: "",
     },
     {
-      src: "/images/fishing.png",
-      alt: "Father and son holding a redfish catch on inshore fishing charter",
-      caption: "Dad & son redfish teamwork! First fish ever — we can see the memories forming in real time ❤️",
+      src: "/images/lccx-bachelorette-boat.webp",
+      alt: "Bachelorette party celebrating on a private charter boat near the Ravenel Bridge Charleston SC",
+      caption: "Bachelorette done right 🥂 Private boat, best views, best crew. You know where to find us 💛",
+      likes: 512, span: "",
+    },
+    {
+      src: "/images/lccx-ravenel-bridge.webp",
+      alt: "Tour boat passing Charleston Harbor with the Arthur Ravenel Jr Bridge in the background",
+      caption: "The Holy City from the water. Ravenel Bridge never gets old 🌉 #CharlestonHarbor",
+      likes: 287, span: "",
+    },
+    {
+      src: "/images/lccx-fishing-redfish.webp",
+      alt: "Happy anglers holding a large redfish catch on an inshore fishing charter in Charleston SC",
+      caption: "REDFISH CAUGHT ✅ Inshore season is going OFF right now 🎣 Bait & tackle provided, all skill levels!",
       likes: 241, span: "",
+    },
+    {
+      src: "/images/lccx-shark-release.jpg",
+      alt: "LCCX captain releasing a shark back into the ocean during a shark fishing charter",
+      caption: "Catch and release — respecting the ocean one fish at a time 🦈 #CharlestonFishing #Conservation",
+      likes: 198, span: "",
     },
   ];
 
