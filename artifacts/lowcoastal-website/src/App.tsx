@@ -13,6 +13,7 @@ const SharkToothLandingPage = lazy(() => import("@/pages/SharkToothLandingPage")
 const DolphinLandingPage = lazy(() => import("@/pages/DolphinLandingPage"));
 const VideoTemplate = lazy(() => import("@/components/video/VideoTemplate"));
 const SunsetPage = lazy(() => import("@/pages/SunsetPage"));
+const BachelorettePage = lazy(() => import("@/pages/BachelorettePage"));
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   Anchor, 
@@ -290,111 +291,186 @@ function MobileBookingBar() {
 }
 
 const heroSlides = [
-  { src: "/images/hero-boat.png", alt: "Aerial view of tour boat on beautiful teal coastal waters" },
-  { src: "/images/kids-teeth.png", alt: "Kids excitedly holding shark teeth they found on the beach" },
-  { src: "/images/dolphins.png", alt: "Dolphins leaping near a tour boat on the SC coast" },
-  { src: "/images/marsh-sunrise.png", alt: "Golden hour over the stunning South Carolina coastal marshes" },
-  { src: "/images/bachelorette.png", alt: "Bachelorette group celebrating on a boat on the water" },
-  { src: "/images/couple-beach.png", alt: "Couple finding shark teeth together on a pristine barrier island beach" },
+  {
+    image: "/images/lccx-img1016.jpg",
+    tag: "Most Popular",
+    tour: "Shark Tooth Hunting",
+    headline: "Hunt for Fossilized Megalodon Teeth on a Private Barrier Island",
+    sub: "Remote, boat-access-only beaches · Expert fossil guides · Keep every tooth you find",
+    price: "From $65/person",
+    cta: "Book the Hunt",
+    path: "/shark-tooth-hunting",
+  },
+  {
+    image: "/images/lccx-dolphin-leap.webp",
+    tag: "Family Favorite",
+    tour: "Dolphin & Wildlife Tours",
+    headline: "Wild Bottlenose Dolphins Up Close — Every Single Trip",
+    sub: "Shem Creek to Charleston Harbor · Pelicans, eagles & sea turtles · Morning & sunset options",
+    price: "From $65/person",
+    cta: "Meet the Dolphins",
+    path: "/dolphin-wildlife",
+  },
+  {
+    image: "/images/lccx-charleston-sunset.webp",
+    tag: "Most Romantic",
+    tour: "Sunset Cruise",
+    headline: "Watch Charleston Harbor Ignite at Golden Hour",
+    sub: "Ravenel Bridge views · Dolphins at dusk · Golden marshes · BYOB on private charters",
+    price: "From $65/person",
+    cta: "Book a Sunset",
+    path: "/sunset-cruise",
+  },
+  {
+    image: "/images/lccx-bachelorette-boat.webp",
+    tag: "Private Charter",
+    tour: "Bachelorette & Group Charters",
+    headline: "100% Private — Your Crew, Your Music, Your Celebration",
+    sub: "Up to 23 guests · Bluetooth stereo · BYOB welcome · Full bathroom on Roamer IV",
+    price: "From $375/boat",
+    cta: "Plan Your Party",
+    path: "/bachelorette-party-cruise",
+  },
+  {
+    image: "/images/lccx-fishing-redfish.webp",
+    tag: "Angler's Choice",
+    tour: "Inshore Fishing",
+    headline: "Trophy Redfish & Speckled Trout in the SC Lowcountry",
+    sub: "All tackle & SC license included · Expert local captain · Half & full day trips available",
+    price: "From $350/half-day",
+    cta: "Book a Fishing Trip",
+    path: "/inshore-fishing",
+  },
 ];
 
 function Hero() {
+  const [current, setCurrent] = useState(0);
+  const [fading, setFading] = useState(false);
+  const { openBooking } = useBooking();
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 600], [1, 0]);
-  const { openBooking } = useBooking();
+  const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
+  const total = heroSlides.length;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setCurrent(c => (c + 1) % total);
+        setFading(false);
+      }, 450);
+    }, 5800);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  const goTo = (idx: number) => {
+    if (idx === current || fading) return;
+    setFading(true);
+    setTimeout(() => {
+      setCurrent(idx);
+      setFading(false);
+    }, 450);
+  };
+
+  const slide = heroSlides[current];
 
   return (
     <section id="hero" className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex items-center justify-center pt-20" aria-label="Hero Section">
-      {/* Cinematic video background — plays the ad as a looping hero */}
-      <motion.div style={{ opacity }} className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0" style={{ width: "100%", height: "100%" }}>
-          <Suspense fallback={
-            <div className="absolute inset-0">
-              <img src="/images/lccx-ravenel-bridge.webp" alt="" className="w-full h-full object-cover" />
-            </div>
-          }>
-            <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
-              <VideoTemplate />
-            </div>
-          </Suspense>
-        </div>
-        {/* Base dark overlay so the video's own text/UI is hidden */}
-        <div className="absolute inset-0 bg-black/65" style={{ zIndex: 10 }} />
-        {/* Top gradient — covers brand watermark and upper scene text */}
-        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/80 to-transparent" style={{ zIndex: 11 }} />
-        {/* Bottom gradient — covers progress dots and lower scene UI */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent" style={{ zIndex: 11 }} />
-        {/* Side vignettes */}
-        <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black/40 to-transparent" style={{ zIndex: 11 }} />
-        <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black/40 to-transparent" style={{ zIndex: 11 }} />
+      <motion.div style={{ opacity }} className="absolute inset-0 z-0">
+        {heroSlides.map((s, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 transition-opacity duration-700"
+            style={{ opacity: i === current ? 1 : 0 }}
+          >
+            <img src={s.image} alt={s.tour} className="w-full h-full object-cover object-center" />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
       </motion.div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-24 sm:mt-32">
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-[1.1] tracking-tight"
-        >
-          Find Your Megalodon.<br />
-          <span className="text-primary glow-orange-text">Make Your Memory.</span>
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-lg md:text-2xl text-white/85 max-w-2xl mx-auto mb-10 font-light"
-        >
-          Premium boat tours specializing in prehistoric shark tooth hunting, dolphin watching, and authentic coastal adventures on the SC Lowcountry.
-        </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="flex items-center justify-center gap-3 sm:gap-5 text-white/80 text-xs sm:text-sm"
-        >
-          <div className="flex items-center gap-1.5 shrink-0">
-            <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
-            <span className="hidden sm:inline">USCG Certified</span>
-            <span className="sm:hidden">USCG</span>
-          </div>
-          <span className="text-white/30 shrink-0">·</span>
-          <div className="flex items-center gap-1.5 shrink-0">
-            <Star className="h-4 w-4 text-primary fill-primary shrink-0" />
-            <span className="hidden sm:inline">4.9 Google Rating</span>
-            <span className="sm:hidden">4.9 ★</span>
-          </div>
-          <span className="text-white/30 shrink-0">·</span>
-          <div className="flex items-center gap-1.5 shrink-0">
-            <Heart className="h-4 w-4 text-primary fill-primary shrink-0" />
-            <span className="hidden sm:inline">Family Friendly</span>
-            <span className="sm:hidden">All Ages</span>
-          </div>
-        </motion.div>
+      <button
+        onClick={() => goTo((current - 1 + total) % total)}
+        className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-full bg-black/30 text-white/70 hover:text-white hover:bg-black/55 transition-all"
+        aria-label="Previous tour"
+      >
+        <ChevronDown className="h-6 w-6 rotate-90" />
+      </button>
+      <button
+        onClick={() => goTo((current + 1) % total)}
+        className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-full bg-black/30 text-white/70 hover:text-white hover:bg-black/55 transition-all"
+        aria-label="Next tour"
+      >
+        <ChevronDown className="h-6 w-6 -rotate-90" />
+      </button>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-          className="flex flex-col items-center justify-center mt-8 gap-3"
+      <div
+        className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 text-center"
+        style={{ transition: "opacity 0.45s, transform 0.45s", opacity: fading ? 0 : 1, transform: fading ? "translateY(12px)" : "translateY(0)" }}
+      >
+        <div
+          className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5"
+          style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.3)" }}
         >
+          {slide.tag} · {slide.tour}
+        </div>
+
+        <h1 className="text-4xl md:text-6xl lg:text-[4.25rem] font-serif font-bold text-white mb-5 leading-[1.1] tracking-tight">
+          {slide.headline}
+        </h1>
+
+        <p className="text-base md:text-xl text-white/75 max-w-2xl mx-auto mb-3 font-light leading-relaxed">{slide.sub}</p>
+
+        <div className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-8 bg-black/30 px-4 py-1.5 rounded-full border border-primary/30">
+          {slide.price}
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
           <button
             onClick={openBooking}
             className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange hover:scale-105 active:scale-100 inline-flex items-center justify-center gap-2"
             data-testid="hero-book-btn"
           >
             <Anchor className="h-5 w-5" />
-            Book Your Adventure
+            {slide.cta}
           </button>
-          <p className="text-white/50 text-xs sm:text-sm">Weekend spots filling fast · Free cancellation 48 hrs</p>
-        </motion.div>
+          <a
+            href={`${base}${slide.path}`}
+            className="text-white/65 hover:text-white text-sm font-medium transition-colors underline-offset-4 hover:underline px-2 py-1"
+          >
+            See full tour details →
+          </a>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 mb-4">
+          {Array.from({ length: total }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className="transition-all duration-300 rounded-full"
+              style={{
+                width: i === current ? 28 : 8,
+                height: 8,
+                background: i === current ? "hsl(22 95% 52%)" : "rgba(255,255,255,0.3)",
+              }}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-3 text-white/45 text-xs">
+          <span className="flex items-center gap-1"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> USCG Certified</span>
+          <span className="text-white/20">·</span>
+          <span className="flex items-center gap-1"><Star className="h-3.5 w-3.5 fill-primary text-primary" /> 4.9 Google Rating</span>
+          <span className="text-white/20">·</span>
+          <span className="flex items-center gap-1"><Heart className="h-3.5 w-3.5 text-primary fill-primary" /> Family Friendly</span>
+        </div>
       </div>
 
       <button
         onClick={() => document.getElementById('experiences')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce text-primary/80 hover:text-primary transition-colors"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce text-primary/80 hover:text-primary transition-colors"
         aria-label="Scroll to experiences"
         data-testid="hero-scroll-down"
         style={{ filter: "drop-shadow(0 0 6px hsl(22 95% 52% / 0.5))" }}
@@ -441,7 +517,7 @@ const experiences = [
   },
   {
     id: "groups",
-    path: "/group-charters",
+    path: "/bachelorette-party-cruise",
     title: "Bachelorette & Group Charters",
     fromPrice: "From $450/boat",
     desc: "Celebrate on the water! A private charter for your bachelorette party, family reunion, or corporate retreat. Bring your drinks, play your music, and let us handle the rest.",
@@ -1354,31 +1430,37 @@ function Footer() {
   );
 }
 
-function VideoSection() {
-  const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
+function PhotoSection() {
   return (
     <section className="bg-[hsl(218_45%_7%)] py-16 px-4">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-3">
-          <Sailboat className="h-4 w-4" /> See It For Yourself
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-3">
+            <Camera className="h-4 w-4" /> Life on the Water
+          </div>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+            The Lowcountry at Its <span className="text-primary glow-orange-text">Best</span>
+          </h2>
+          <p className="text-white/60 text-lg max-w-xl mx-auto">
+            Real moments from real trips — wild dolphins, golden sunsets, trophy catches, and memories built on the water.
+          </p>
         </div>
-        <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-          Life on the <span className="text-primary glow-orange-text">Water</span>
-        </h2>
-        <p className="text-white/60 text-lg mb-8 max-w-xl mx-auto">
-          Two minutes of Lowcountry magic — dolphins, barrier islands, golden sunsets, and unforgettable moments.
-        </p>
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl mx-auto" style={{ maxWidth: 900, aspectRatio: "16/9" }}>
-          <Suspense fallback={<div className="w-full h-full bg-[hsl(218_45%_7%)] flex items-center justify-center text-white/40">Loading...</div>}>
-            <VideoTemplate />
-          </Suspense>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { src: "/images/lccx-dolphin-leap.webp", alt: "Dolphin leaping beside the boat" },
+            { src: "/images/lccx-bachelorette-boat.webp", alt: "Bachelorette group on private charter" },
+            { src: "/images/lccx-fishing-redfish.webp", alt: "Happy angler with a big redfish" },
+            { src: "/images/lccx-charleston-sunset.webp", alt: "Golden hour over Charleston Harbor" },
+          ].map((img, i) => (
+            <div key={i} className="aspect-square rounded-xl overflow-hidden group">
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+          ))}
         </div>
-        <a
-          href={`${base}/advertisement`}
-          className="inline-flex items-center gap-2 mt-6 text-sm text-white/50 hover:text-primary transition-colors"
-        >
-          Watch full screen <ArrowRight className="h-4 w-4" />
-        </a>
       </div>
     </section>
   );
@@ -1401,7 +1483,7 @@ function LandingPage() {
         <WaveDivider color="hsl(218 45% 7%)" />
       </div>
       <Gallery />
-      <VideoSection />
+      <PhotoSection />
       <div className="relative bg-background">
         <WaveDivider color="hsl(214 30% 95%)" />
       </div>
@@ -1446,6 +1528,11 @@ function App() {
             <Route path="/group-charters">
               <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
                 <GroupCharterPage />
+              </Suspense>
+            </Route>
+            <Route path="/bachelorette-party-cruise">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <BachelorettePage />
               </Suspense>
             </Route>
             <Route path="/inshore-fishing">

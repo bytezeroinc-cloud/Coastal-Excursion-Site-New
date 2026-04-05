@@ -209,7 +209,7 @@ export default function DolphinPage() {
                 ))}
               </div>
               <div className="mt-8 rounded-2xl overflow-hidden border border-border shadow-xl aspect-[16/9]">
-                <img src="/images/dolphin-guide.jpg" alt="Guide pointing out dolphins to guests" className="w-full h-full object-cover" />
+                <img src="/images/lccx-img8589.webp" alt="Guests watching dolphins from the tour boat on Shem Creek" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -261,9 +261,9 @@ export default function DolphinPage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Life on the Water</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/dolphins.jpg", alt: "Dolphins leaping beside the tour boat" },
-              { src: "/images/marsh-sunrise.jpg", alt: "Golden hour over the SC coastal marsh" },
-              { src: "/images/hero-boat.png", alt: "Aerial view of pontoon boat in coastal waters" }
+              { src: "/images/lccx-dolphin-leap.webp", alt: "Bottlenose dolphin leaping beside the tour boat near Charleston SC" },
+              { src: "/images/lccx-on-water.webp", alt: "Tour boat cruising through Shem Creek and Charleston Harbor" },
+              { src: "/images/lccx-ravenel-bridge.webp", alt: "Tour boat passing the Arthur Ravenel Jr Bridge at golden hour" }
             ].map((img, i) => (
               <motion.div
                 key={i}

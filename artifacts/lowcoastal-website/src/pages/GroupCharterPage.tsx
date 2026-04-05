@@ -179,7 +179,7 @@ export default function GroupCharterPage() {
             </div>
             <div className="relative">
               <div className="rounded-3xl overflow-hidden border border-border shadow-2xl shadow-black/30 aspect-[4/5]">
-                <img src="/images/charter-party.jpg" alt="Celebration on a private charter boat" className="w-full h-full object-cover" />
+                <img src="/images/lccx-group-shot.webp" alt="Happy group celebrating on a private charter boat in Charleston SC" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-card border border-border rounded-2xl p-5 shadow-xl max-w-[210px]">
                 <div className="text-3xl font-bold text-primary glow-orange-text mb-1">100%</div>
@@ -265,9 +265,9 @@ export default function GroupCharterPage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Life on Charter</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/bachelorette.jpg", alt: "Bachelorette group celebrating on the boat" },
-              { src: "/images/couple-beach.jpg", alt: "Couple on a private beach at golden hour" },
-              { src: "/images/marsh-sunrise.jpg", alt: "Golden sunset over the SC marsh" }
+              { src: "/images/lccx-bachelorette-boat.webp", alt: "Bachelorette party celebrating on a private charter in Charleston SC" },
+              { src: "/images/lccx-group-shot.webp", alt: "Happy group enjoying a private boat charter on the SC coast" },
+              { src: "/images/lccx-charleston-sunset.webp", alt: "Golden sunset over Charleston Harbor from the water" }
             ].map((img, i) => (
               <motion.div
                 key={i}

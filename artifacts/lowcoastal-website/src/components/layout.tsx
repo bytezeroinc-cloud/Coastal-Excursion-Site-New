@@ -36,6 +36,7 @@ const TOURS = [
   { label: "Shark Tooth Hunting", href: "/shark-tooth-hunting", icon: Gem },
   { label: "Dolphin & Wildlife", href: "/dolphin-wildlife", icon: Binoculars },
   { label: "Sunset Cruise", href: "/sunset-cruise", icon: Sun },
+  { label: "Bachelorette & Bachelor Charters", href: "/bachelorette-party-cruise", icon: Users },
   { label: "Group Charters", href: "/group-charters", icon: Users },
   { label: "Inshore Fishing", href: "/inshore-fishing", icon: Fish },
 ];

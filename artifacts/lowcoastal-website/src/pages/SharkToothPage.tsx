@@ -182,7 +182,7 @@ export default function SharkToothPage() {
             </div>
             <div className="relative">
               <div className="rounded-3xl overflow-hidden border border-border shadow-2xl shadow-black/30 aspect-[4/5]">
-                <img src="/images/teeth-display.jpg" alt="Collection of fossilized shark teeth" className="w-full h-full object-cover" />
+                <img src="/images/lccx-img2579.jpg" alt="Shark tooth hunters exploring a South Carolina barrier island beach" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-5 shadow-xl max-w-[200px]">
                 <div className="text-3xl font-bold text-primary glow-orange-text mb-1">30+</div>
@@ -239,9 +239,9 @@ export default function SharkToothPage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">The Hunt in Pictures</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/teeth-close.jpg", alt: "Close-up of fossilized shark teeth found on the beach" },
-              { src: "/images/family-teeth.jpg", alt: "Family showing off their shark tooth finds" },
-              { src: "/images/barrier-island.jpg", alt: "Remote barrier island beach accessible only by boat" }
+              { src: "/images/lccx-img1016.jpg", alt: "Guests finding shark teeth on a South Carolina barrier island beach" },
+              { src: "/images/ta-photo-1.jpg", alt: "LCCX guests with their shark tooth collection after a tour" },
+              { src: "/images/lccx-shark-release.jpg", alt: "Captain with a shark caught and released on a SC coastal tour" }
             ].map((img, i) => (
               <motion.div
                 key={i}
