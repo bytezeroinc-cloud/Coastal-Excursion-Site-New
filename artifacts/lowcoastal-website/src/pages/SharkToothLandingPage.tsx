@@ -363,7 +363,7 @@ export default function SharkToothLandingPage() {
         </div>
       </footer>
 
-      <LandingMobileBar onBook={openBooking} />
+      <LandingMobileBar />
     </div>
   );
 }

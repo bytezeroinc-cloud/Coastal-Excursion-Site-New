@@ -379,7 +379,7 @@ export default function DolphinLandingPage() {
         </div>
       </footer>
 
-      <LandingMobileBar onBook={openBooking} />
+      <LandingMobileBar />
     </div>
   );
 }

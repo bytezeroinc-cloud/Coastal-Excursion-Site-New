@@ -188,7 +188,7 @@ export function LandingNavbar() {
   );
 }
 
-export function LandingMobileBar({ onBook }: { onBook: () => void }) {
+export function LandingMobileBar() {
   return (
     <div className="fixed top-16 left-0 right-0 z-40 md:hidden">
       <a
