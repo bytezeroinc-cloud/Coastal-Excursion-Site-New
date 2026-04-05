@@ -164,7 +164,7 @@ export function SiteMobileBookingBar() {
   );
 }
 
-export function LandingNavbar({ onBook }: { onBook: () => void }) {
+export function LandingNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
 
@@ -177,27 +177,11 @@ export function LandingNavbar({ onBook }: { onBook: () => void }) {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-lg shadow-black/30 border-b border-border/60" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18 py-4">
+        <div className="flex justify-center items-center h-16 py-4">
           <a href={`${base}/`} className="flex items-center gap-2" aria-label="Low Coastal home">
             <Anchor className="h-6 w-6 text-primary" style={{ filter: "drop-shadow(0 0 8px hsl(22 95% 52% / 0.6))" }} />
             <span className="font-serif font-bold text-xl tracking-tight text-foreground">Low Coastal</span>
           </a>
-          <div className="flex items-center gap-3 sm:gap-5">
-            <a
-              href="tel:+18435550100"
-              className="flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
-            >
-              <Phone className="h-4 w-4 text-primary" />
-              <span className="hidden sm:inline">(843) 555-0100</span>
-            </a>
-            <button
-              onClick={onBook}
-              className="bg-primary text-primary-foreground px-5 py-2.5 rounded-full font-bold text-sm hover:bg-primary/90 transition-all glow-orange-sm hover:glow-orange flex items-center gap-2"
-            >
-              <Anchor className="h-4 w-4" />
-              Book Now
-            </button>
-          </div>
         </div>
       </div>
     </nav>
@@ -205,51 +189,15 @@ export function LandingNavbar({ onBook }: { onBook: () => void }) {
 }
 
 export function LandingMobileBar({ onBook }: { onBook: () => void }) {
-  const [heroPassed, setHeroPassed] = useState(false);
-  const [ctaNear, setCtaNear] = useState(false);
-
-  useEffect(() => {
-    const heroEl = document.getElementById("lp-hero");
-    if (!heroEl) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setHeroPassed(!entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(heroEl);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const ctaEl = document.getElementById("lp-cta");
-    if (!ctaEl) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setCtaNear(entry.isIntersecting),
-      { rootMargin: "0px 0px -50px 0px", threshold: 0.1 }
-    );
-    observer.observe(ctaEl);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div
-      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 ${heroPassed && !ctaNear ? "translate-y-0" : "translate-y-full"}`}
-    >
-      <div className="bg-background/95 backdrop-blur-md border-t border-border px-4 py-3 flex gap-3 items-center shadow-2xl shadow-black/40">
-        <a
-          href="tel:+18435550100"
-          className="flex items-center justify-center gap-2 flex-1 py-3 rounded-full border border-border font-semibold text-sm text-foreground hover:border-primary/40 transition-all"
-        >
-          <Phone className="h-4 w-4 text-primary" />
-          Call / Text
-        </a>
-        <button
-          onClick={onBook}
-          className="flex-1 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm glow-orange hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
-        >
-          <Anchor className="h-4 w-4" />
-          Book Now
-        </button>
-      </div>
+    <div className="fixed top-16 left-0 right-0 z-40 md:hidden">
+      <a
+        href="tel:+18435550100"
+        className="flex items-center justify-center gap-2 w-full py-2.5 bg-primary text-primary-foreground font-bold text-sm glow-orange shadow-lg shadow-black/30"
+      >
+        <Phone className="h-4 w-4" />
+        Tap to Call or Text — (843) 555-0100
+      </a>
     </div>
   );
 }

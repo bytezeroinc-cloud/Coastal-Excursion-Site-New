@@ -75,7 +75,7 @@ export default function SharkToothLandingPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <LandingNavbar onBook={openBooking} />
+      <LandingNavbar />
 
       {/* Hero */}
       <section id="lp-hero" className="relative min-h-[100dvh] overflow-hidden flex items-center pb-12 pt-24">
@@ -353,16 +353,13 @@ export default function SharkToothLandingPage() {
         </div>
       </section>
 
-      <footer className="bg-card border-t border-border py-8">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+      <footer className="bg-card border-t border-border py-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
             <Anchor className="h-4 w-4 text-primary" />
             <span>© {new Date().getFullYear()} Low Coastal Country Excursion — SC Lowcountry Boat Tours</span>
           </div>
-          <div className="flex items-center gap-4">
-            <a href="tel:+18435550100" className="text-primary font-semibold hover:underline">(843) 555-0100</a>
-            <a href={`${import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}/`} className="hover:text-primary transition-colors">View All Tours</a>
-          </div>
+          <a href="tel:+18435550100" className="text-primary font-semibold hover:underline">(843) 555-0100</a>
         </div>
       </footer>
 
