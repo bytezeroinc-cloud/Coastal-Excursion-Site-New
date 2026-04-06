@@ -14,6 +14,7 @@ const DolphinLandingPage = lazy(() => import("@/pages/DolphinLandingPage"));
 const VideoTemplate = lazy(() => import("@/components/video/VideoTemplate"));
 const SunsetPage = lazy(() => import("@/pages/SunsetPage"));
 const BachelorettePage = lazy(() => import("@/pages/BachelorettePage"));
+const BirthdayPage = lazy(() => import("@/pages/BirthdayPage"));
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   Anchor, 
@@ -44,6 +45,7 @@ import {
   Camera,
   Gem,
   ThumbsUp,
+  Gift,
   Sailboat
 } from "lucide-react";
 
@@ -87,6 +89,8 @@ const HOME_TOURS = [
   { label: "Shark Tooth Hunting", href: "/shark-tooth-hunting", icon: Gem },
   { label: "Dolphin & Wildlife", href: "/dolphin-wildlife", icon: Binoculars },
   { label: "Sunset Cruise", href: "/sunset-cruise", icon: Sun },
+  { label: "Bachelorette & Bachelor Charters", href: "/bachelorette-party-cruise", icon: Sparkles },
+  { label: "Birthday Party Cruises", href: "/birthday-party-cruise", icon: Gift },
   { label: "Group Charters", href: "/group-charters", icon: Users },
   { label: "Inshore Fishing", href: "/inshore-fishing", icon: Fish },
 ];
@@ -1533,6 +1537,11 @@ function App() {
             <Route path="/bachelorette-party-cruise">
               <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
                 <BachelorettePage />
+              </Suspense>
+            </Route>
+            <Route path="/birthday-party-cruise">
+              <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="text-primary text-lg font-serif">Loading...</div></div>}>
+                <BirthdayPage />
               </Suspense>
             </Route>
             <Route path="/inshore-fishing">

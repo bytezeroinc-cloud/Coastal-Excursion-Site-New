@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useBooking } from "@/components/BookingModal";
 import { motion } from "framer-motion";
 import {
-  Sparkles, CheckCircle2, ChevronDown, Star, ArrowRight, Anchor, MapPin,
-  Clock, Users, BadgeCheck, Camera, ChevronLeft, Heart, Music, Wine, Trophy, Gift, Waves, Gem, Sun
+  Gift, CheckCircle2, ChevronDown, Star, ArrowRight, Anchor, MapPin,
+  Clock, Users, BadgeCheck, Camera, ChevronLeft, Heart, Music, Wine, Sparkles, Waves, Sun, Gem
 } from "lucide-react";
 import { SiteNavbar, SiteFooter, WaveDivider, SiteMobileBookingBar } from "@/components/layout";
 
@@ -20,110 +20,110 @@ function GoogleG() {
 
 const faqs = [
   {
-    q: "How many people can come on the bachelorette charter?",
-    a: "Our Roamer IV luxury cruiser accommodates up to 23 guests — complete with a full bathroom, shade, Bluetooth stereo, and plenty of deck space to celebrate. For smaller groups we also offer our 27' Coastal Skiff and 25' Tidewater."
+    q: "How many people can come on the birthday cruise?",
+    a: "Birthday party cruises accommodate up to 12 guests on our private skiff. For groups larger than 12, we recommend upgrading to our Roamer IV charter (up to 23 guests) — ask us about availability when booking."
+  },
+  {
+    q: "Can we bring a birthday cake or food?",
+    a: "Absolutely! You're welcome to bring food, a birthday cake, and anything else to make the celebration special. We provide a large cooler with ice for drinks. No glass bottles on deck please."
   },
   {
     q: "Can we bring alcohol?",
-    a: "Absolutely! BYOB is fully welcome on private charters. Bring champagne, wine, seltzers, whatever fits the vibe — we just ask guests enjoy responsibly. No glass bottles on deck. We provide a large cooler with ice."
+    a: "Yes! BYOB is fully welcome on private charters. Bring champagne, wine, seltzers — whatever fits the mood. We ask guests to enjoy responsibly as our captain is USCG certified and guest safety is always priority one."
   },
   {
     q: "Can we play our own music?",
-    a: "Yes! The Roamer IV has a Bluetooth speaker system. Connect your playlist and set the tone. Your boat, your soundtrack, your celebration."
+    a: "Yes — Bluetooth speaker on board. Connect your phone, play your birthday playlist, and set the perfect party vibe. Your boat, your music."
   },
   {
-    q: "What's the best time of year for a bachelorette cruise in Charleston?",
-    a: "Anytime is beautiful in the Lowcountry, but April through October offer the warmest water and the most stunning golden hours. Spring and fall have the most comfortable temperatures. Summer sunsets are absolutely unforgettable."
-  },
-  {
-    q: "Can we combine the cruise with a shark tooth hunt or beach stop?",
-    a: "Yes — and we highly recommend it! Our most popular bachelorette package combines a private cruise, a remote barrier island beach stop, and a shark tooth hunt all in one trip. Just let us know when booking."
+    q: "What if we want to do a shark tooth hunt or beach stop?",
+    a: "That's one of our most popular birthday add-ons! We can incorporate a private barrier island beach stop for shark tooth hunting into the 3-hour and 4-hour packages. Just let us know when booking."
   },
   {
     q: "How far in advance should we book?",
-    a: "For bachelorette and bachelor parties, we strongly recommend booking 4–8 weeks in advance for weekend dates. Peak season (April–September) books out especially fast — don't wait!"
+    a: "We recommend booking 2–4 weeks in advance, and 4–6 weeks for summer weekends and peak season. Birthday cruises are popular — don't wait too long!"
   },
   {
-    q: "Is the boat 100% private for our group?",
-    a: "Yes, always. On a private charter it's exclusively your group — no strangers, no shared space. The whole boat is yours from the moment you board to when you return to the dock."
+    q: "Is the boat 100% private?",
+    a: "Yes, always. Your birthday cruise is exclusively for your group — no strangers, no shared space. The entire boat is yours from departure to return."
   }
 ];
 
 const packageOptions = [
   {
     icon: <Waves className="h-6 w-6" />,
-    title: "2-Hour Party Cruise",
+    title: "2-Hour Birthday Cruise",
     duration: "2 Hours",
-    desc: "Glide through Shem Creek and Charleston Harbor. Dolphins often appear at golden hour. Perfect for a quick champagne cruise that still packs in dolphins, the Ravenel Bridge, and unforgettable Lowcountry views.",
+    desc: "Cruise through Shem Creek and Charleston Harbor, spot dolphins, and celebrate against the backdrop of the Ravenel Bridge. Perfect for a memorable birthday with your closest friends.",
     priceRange: "$350 – $1,200",
-    note: "Up to 23 guests",
-    tag: "Most Popular",
+    note: "Up to 12 guests",
+    tag: "Quick Celebration",
     color: "text-blue-400"
   },
   {
     icon: <Gem className="h-6 w-6" />,
-    title: "3-Hour Party Cruise",
+    title: "3-Hour Birthday Cruise",
     duration: "3 Hours",
-    desc: "Add a stop at a remote, boat-access-only barrier island beach. Shark tooth hunt, swim in shallow water, and celebrate on a private beach most Charleston visitors never see.",
+    desc: "Add a remote beach stop to your birthday — shark tooth hunting, swimming in shallow water, and a private barrier island most Charleston visitors never see. Wildly memorable.",
     priceRange: "$450 – $1,750",
-    note: "Up to 23 guests",
+    note: "Up to 12 guests",
     tag: "Most Popular",
     color: "text-primary"
   },
   {
     icon: <Sun className="h-6 w-6" />,
-    title: "4-Hour Party Cruise",
+    title: "4-Hour Birthday Cruise",
     duration: "4 Hours",
-    desc: "The ultimate celebration: beach stop, dolphin spotting, shark tooth hunting, and a full sunset cruise — all in one extraordinary day. Total privacy, total customization.",
+    desc: "The full birthday experience: private beach, shark tooth hunt, dolphin watching, and a golden hour sunset cruise back to Shem Creek. An extraordinary birthday that everyone will talk about for years.",
     priceRange: "$550 – $2,200",
-    note: "Up to 23 guests",
-    tag: "Best Value",
+    note: "Up to 12 guests",
+    tag: "Best Experience",
     color: "text-yellow-400"
   }
 ];
 
-const whyWater = [
-  { icon: <Heart className="h-5 w-5" />, title: "100% Private — No Strangers", desc: "The whole boat belongs to your group. No crowds, no sharing, just your crew and the open water." },
-  { icon: <Music className="h-5 w-5" />, title: "Your Playlist, Your Vibe", desc: "Bluetooth stereo on the Roamer IV. Connect your phone and set the perfect party atmosphere." },
-  { icon: <Wine className="h-5 w-5" />, title: "BYOB Welcome", desc: "Bring champagne, wine, seltzers — whatever fits the celebration. Large cooler with ice provided." },
-  { icon: <Camera className="h-5 w-5" />, title: "Unforgettable Photos", desc: "Wild dolphins, the Ravenel Bridge, golden marshes — every backdrop is a postcard. Your Instagram will thank you." },
-  { icon: <Trophy className="h-5 w-5" />, title: "Beats Every Bar Crawl", desc: "No cover, no lines, no sharing a venue with strangers. Just your people and some of the most beautiful coastal scenery in the South." },
-  { icon: <Gift className="h-5 w-5" />, title: "Fully Customizable", desc: "Tell us what you want and we'll build the perfect itinerary — beach stop, dolphin watching, shark tooth hunt, sunset, or all of the above." },
+const whyUs = [
+  { icon: <Heart className="h-5 w-5" />, title: "100% Private — Just Your Crew", desc: "No strangers, no shared space. The entire boat is yours for the birthday celebration." },
+  { icon: <Music className="h-5 w-5" />, title: "Bluetooth Stereo", desc: "Connect your playlist and set the birthday vibe. Your music, your boat, your day." },
+  { icon: <Wine className="h-5 w-5" />, title: "BYOB Welcome", desc: "Bring champagne, wine, birthday cake — whatever makes the day special. Large cooler with ice provided." },
+  { icon: <Camera className="h-5 w-5" />, title: "Incredible Photo Backdrops", desc: "Wild dolphins, the Ravenel Bridge, golden Lowcountry marshes — every backdrop is Instagram-worthy." },
+  { icon: <Gift className="h-5 w-5" />, title: "Fully Customizable", desc: "Beach stop, shark tooth hunt, dolphin cruise, sunset — tell us what the birthday person wants and we'll make it happen." },
+  { icon: <Gem className="h-5 w-5" />, title: "Shark Tooth Hunt Option", desc: "Add a remote barrier island beach stop and hunt prehistoric megalodon teeth — the most unique birthday activity in Charleston." },
 ];
 
 const steps = [
-  { num: "01", title: "Book Your Date", desc: "Reserve your private charter online or by phone. Tell us your group size, preferred duration, and any special requests — beach stop, shark tooth hunt, sunset timing, etc." },
-  { num: "02", title: "Board at Shem Creek, Mt. Pleasant", desc: "Meet your USCG-certified captain at the dock at Tavern & Table on Shem Creek (100 Church St., Mt. Pleasant, SC). Set up your cooler, connect your Bluetooth music, and cast off — the whole boat is yours." },
-  { num: "03", title: "Cruise Charleston's Iconic Waterways", desc: "Wind through Shem Creek, past the Arthur Ravenel Jr. Bridge, and into the tidal creeks and estuaries of the Lowcountry. Dolphins often appear in the first 15 minutes. Pelicans, herons, and ospreys fly overhead." },
-  { num: "04", title: "Private Beach Landing (Optional)", desc: "Pull up to a remote, boat-access-only barrier island beach most visitors never see. Shark tooth hunt, swim, take photos on a completely private beach — the ultimate bachelorette experience." },
-  { num: "05", title: "Golden Hour Return", desc: "Head back through glowing orange and pink skies over the Lowcountry marsh. Toast the bride-to-be as the Bluetooth playlist keeps the vibe going all the way back to Shem Creek." },
+  { num: "01", title: "Book Your Date", desc: "Reserve your private birthday cruise online or by phone. Tell us your group size, preferred duration, and any special requests — beach stop, shark tooth hunt, golden hour timing, or a surprise element." },
+  { num: "02", title: "Board at Shem Creek, Mt. Pleasant", desc: "Meet your USCG-certified captain at the dock at Tavern & Table on Shem Creek (100 Church St., Mt. Pleasant, SC 29464). Set up your cooler, connect your Bluetooth playlist, and cast off — it's your birthday!" },
+  { num: "03", title: "Cruise Charleston's Beautiful Waterways", desc: "Wind through iconic Shem Creek, past the Arthur Ravenel Jr. Bridge, and into the pristine tidal creeks of the Lowcountry. Dolphins often appear within the first 15 minutes. Pelicans, herons, and osprey fill the sky above." },
+  { num: "04", title: "Beach Landing & Activities (Optional)", desc: "Pull up to a remote, boat-access-only barrier island beach — a place most Charleston visitors never see. Shark tooth hunt, swim in shallow water, or simply relax on a completely private stretch of South Carolina coast." },
+  { num: "05", title: "Celebrate & Head Home", desc: "Toast the birthday person as the Lowcountry sun sinks below the marsh. The Bluetooth playlist keeps the good vibes going all the way back to Shem Creek. Happy Birthday!" },
 ];
 
 const reviews = [
   {
-    name: "Jessica T.",
-    location: "Charlotte, NC",
-    text: "Booked for my sister's bachelorette and it was INCREDIBLE. We brought champagne, cruised gorgeous waterways, saw dolphins up close, and had a blast on the private beach. Way better than any bar in Charleston!",
-    date: "February 2025",
+    name: "Taylor M.",
+    location: "Atlanta, GA",
+    text: "Booked this for my sister's 30th birthday and it was absolutely perfect. We saw dolphins on the way out, hunted shark teeth on a private beach, and toasted her at sunset. Everyone is STILL talking about it.",
+    date: "April 2025",
     rating: 5
   },
   {
-    name: "Megan R.",
+    name: "Chris & Laura P.",
     location: "Raleigh, NC",
-    text: "11 of us for a bachelorette cruise and every single person had the time of their life. The captain was so fun and accommodating. We saw dolphins, found shark teeth on the beach, and toasted at sunset. Perfect in every way.",
-    date: "May 2025",
+    text: "We surprised my husband with a birthday boat cruise and he was blown away. The captain was incredible — so fun and knowledgeable. Dolphins appeared right next to the boat. Best birthday gift I've ever given.",
+    date: "August 2024",
     rating: 5
   },
   {
-    name: "Brittany K.",
-    location: "Nashville, TN",
-    text: "We did the sunset cruise for a bach party of 14 and it was absolutely magical. Dolphins showed up during our champagne toast!! The Bluetooth speaker is great and the boat is clean and comfortable. 10/10 would book again.",
-    date: "October 2024",
+    name: "The Hendersons",
+    location: "Columbia, SC",
+    text: "Did the 4-hour cruise for a milestone birthday — beach stop, shark teeth, dolphins, and a sunset. The whole family was there, ages 8 to 65, and every single person had the time of their life. The captain made the birthday person feel so special.",
+    date: "June 2024",
     rating: 5
   }
 ];
 
-export default function BachelorettePage() {
+export default function BirthdayPage() {
   const { openBooking } = useBooking();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const base = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
@@ -135,7 +135,7 @@ export default function BachelorettePage() {
       {/* Hero */}
       <section id="tour-hero" className="relative h-[90vh] min-h-[600px] overflow-hidden flex items-center pt-24 pb-12">
         <div className="absolute inset-0 z-0">
-          <img src="/images/lccx-bachelorette-boat.webp" alt="Bachelorette party celebrating on a private charter boat near the Ravenel Bridge in Charleston SC" className="w-full h-full object-cover object-center" />
+          <img src="/images/lccx-group-shot.webp" alt="Happy group celebrating a birthday on a private charter boat in Charleston SC" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent" />
         </div>
@@ -145,66 +145,35 @@ export default function BachelorettePage() {
           </a>
           <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-white px-3 py-1.5 rounded-full text-sm font-medium mb-3"
             style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.2)" }}>
-            <Sparkles className="h-4 w-4 text-primary" /> Charleston's Best Bachelorette & Bachelor Party Experience
+            <Gift className="h-4 w-4 text-primary" /> Charleston's Most Memorable Birthday Experience
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-4 leading-tight">
-            Bachelorette &<br />
-            <span className="text-primary glow-orange-text">Bachelor Party Cruises</span>
+            Birthday Party<br />
+            <span className="text-primary glow-orange-text">Boat Cruises</span>
           </h1>
           <p className="text-xl text-white/85 max-w-2xl mb-5">
-            100% private boat charter on the stunning waters of Charleston Harbor and Shem Creek. Bring your crew, your drinks, and your playlist. We'll handle the rest — dolphins, private beaches, and golden sunsets included.
+            Celebrate a birthday the way it deserves — on a 100% private boat charter through the stunning waters of Charleston Harbor and Shem Creek. Dolphins, private beaches, golden sunsets, and the whole crew to yourself.
           </p>
           <div className="flex flex-wrap gap-3 text-sm text-white/70 mb-4">
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2–6 Hours (Fully Custom)</span>
-            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Up to 23 Guests</span>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 2, 3, or 4 Hours</span>
+            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Up to 12 Guests</span>
             <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Shem Creek, Mt. Pleasant, SC</span>
-            <span className="flex items-center gap-2"><Music className="h-4 w-4 text-primary" /> BYOB · Bluetooth · Full Bathroom</span>
+            <span className="flex items-center gap-2"><Music className="h-4 w-4 text-primary" /> BYOB · Bluetooth · 100% Private</span>
           </div>
           <div className="mb-6">
-            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $350 · Up to 23 Guests · 100% Private</span>
+            <span className="inline-block bg-primary/20 border border-primary/40 text-primary font-bold text-sm px-4 py-1.5 rounded-full">From $350 · Up to 12 Guests · 100% Private</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={openBooking}
               className="bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-bold text-base hover:bg-primary/90 transition-all glow-orange inline-flex items-center gap-2"
             >
-              <Anchor className="h-5 w-5" /> Book Your Party Charter
+              <Anchor className="h-5 w-5" /> Book the Birthday Cruise
             </button>
             <div className="flex items-center gap-2 text-white/60 text-sm self-center">
               <Star className="h-4 w-4 fill-primary text-primary" />
               <span>4.9 stars · 127 Google reviews</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <WaveDivider color="hsl(214 30% 95%)" />
-
-      {/* Why the Water */}
-      <section className="py-20 light-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
-              <Heart className="h-4 w-4" /> Why Celebrate on the Water
-            </div>
-            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Better Than Any Bar in Charleston</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">No cover charge, no strangers, no waiting in line. Just your people, incredible scenery, and memories you'll still be talking about 10 years from now.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyWater.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all group"
-              >
-                <div className="text-primary mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-                <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -216,10 +185,10 @@ export default function BachelorettePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
-              <Sparkles className="h-4 w-4" /> Choose Your Experience
+              <Gift className="h-4 w-4" /> Choose Your Package
             </div>
-            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Bachelorette & Bachelor Party Packages</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">All packages are 100% private — no strangers, ever. Fully customizable itinerary built around what your group wants most.</p>
+            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Birthday Party Packages</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">All packages are 100% private. Pick your duration and we'll build the perfect itinerary around what you want most.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {packageOptions.map((pkg, i) => (
@@ -259,41 +228,71 @@ export default function BachelorettePage() {
           </div>
           <div className="mt-10 text-center">
             <p className="text-muted-foreground text-sm">
-              2 hrs: $350–$1,200 · 3 hrs: $450–$1,750 · 4 hrs: $550–$2,200 · Up to 23 guests
+              2 hrs: $350–$1,200 · 3 hrs: $450–$1,750 · 4 hrs: $550–$2,200 · Up to 12 guests
             </p>
-            <p className="text-xs text-muted-foreground mt-1">Groups over 12 require the Roamer IV (30-ft, full bathroom, up to 23 guests) · Kids under 5 ride FREE</p>
+            <p className="text-xs text-muted-foreground mt-1">Need more than 12 guests? Ask us about upgrading to the Roamer IV (up to 23 guests) · Kids under 5 ride FREE</p>
           </div>
         </div>
       </section>
 
       <WaveDivider color="hsl(214 30% 95%)" />
 
-      {/* What's Included */}
+      {/* Why Us */}
       <section className="py-20 light-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
+              <Sparkles className="h-4 w-4" /> Why a Birthday Cruise
+            </div>
+            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">The Birthday They'll Never Forget</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">Skip the restaurant. Skip the bar. Give them a birthday that no gift card or dinner reservation can compete with.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyUs.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all group"
+              >
+                <div className="text-primary mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <WaveDivider color="hsl(218 45% 7%)" />
+
+      {/* What's Included */}
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
                 <Sparkles className="h-4 w-4" /> What's Included
               </div>
-              <h2 className="text-4xl font-serif font-bold text-foreground mb-6">The Full Private Experience</h2>
+              <h2 className="text-4xl font-serif font-bold text-foreground mb-6">Everything Taken Care Of</h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                Every charter is 100% private — no strangers, no shared space. Just your group, a professional captain, and the most beautiful coastal scenery in South Carolina.
+                Every birthday charter is 100% private — no strangers, no shared space, no compromises. Just your people, a professional captain, and the most beautiful coastal scenery in the Lowcountry.
               </p>
               <ul className="space-y-4">
                 {[
-                  "100% private boat — no strangers, no shared space, ever",
-                  "Roamer IV luxury cruiser: 30-ft, up to 23 guests, full onboard bathroom",
-                  "Also available: 27' Coastal Skiff & 25' Tidewater for smaller groups",
-                  "USCG-certified captain with expert local knowledge",
-                  "Fully custom itinerary built around your group's wishes",
-                  "Bluetooth stereo system — connect your playlist and set the vibe",
+                  "100% private boat — exclusively your group for the entire trip",
+                  "USCG-certified captain with expert knowledge of the Lowcountry",
+                  "Private skiff up to 12 guests (or upgrade to Roamer IV for larger groups)",
+                  "Fully custom itinerary — beach stop, dolphin watch, sunset, or all of the above",
+                  "Bluetooth stereo — play your birthday playlist",
                   "BYOB welcome: large cooler with ice provided (no glass on deck)",
-                  "Private barrier island beach access (shark tooth hunt option!)",
+                  "Private barrier island beach access (optional shark tooth hunt!)",
                   "Dolphin & wildlife spotting through Shem Creek & Charleston Harbor",
-                  "Sunset & golden hour departure times available",
+                  "Sunset departure times available — golden hour is magical on the water",
                   "Life jackets for all guests · safety briefing included",
-                  "Kids under 5 ride FREE (still count in passenger total)"
+                  "Kids under 5 ride FREE (count in passenger total)"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-foreground/90">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
@@ -304,7 +303,7 @@ export default function BachelorettePage() {
             </div>
             <div className="relative">
               <div className="rounded-3xl overflow-hidden border border-border shadow-2xl shadow-black/30 aspect-[4/5]">
-                <img src="/images/lccx-bachelorette-boat.webp" alt="Bachelorette party group on a private charter boat near Charleston SC" className="w-full h-full object-cover" />
+                <img src="/images/lccx-charleston-sunset.webp" alt="Beautiful golden sunset over Charleston Harbor from a private charter boat" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-card border border-border rounded-2xl p-5 shadow-xl max-w-[210px]">
                 <div className="text-3xl font-bold text-primary glow-orange-text mb-1">100%</div>
@@ -315,16 +314,16 @@ export default function BachelorettePage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 45% 7%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Steps */}
-      <section className="py-20 bg-background">
+      <section className="py-20 light-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
-              <Anchor className="h-4 w-4" /> Your Day on the Water
+              <Anchor className="h-4 w-4" /> How It Works
             </div>
-            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">How It All Goes Down</h2>
+            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Your Birthday on the Water</h2>
           </div>
           <div className="space-y-6">
             {steps.map((step, i) => (
@@ -349,20 +348,20 @@ export default function BachelorettePage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(214 30% 95%)" />
+      <WaveDivider color="hsl(218 45% 7%)" />
 
       {/* Gallery */}
-      <section className="py-20 light-section">
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
             <Camera className="h-4 w-4" /> Gallery
           </div>
-          <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Parties on the Water</h2>
+          <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Birthdays on the Water</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/lccx-bachelorette-boat.webp", alt: "Bachelorette party on a private charter boat near Charleston SC" },
-              { src: "/images/lccx-group-shot.webp", alt: "Happy group celebrating on the water in the Lowcountry" },
-              { src: "/images/lccx-charleston-sunset.webp", alt: "Golden sunset over Charleston Harbor from the boat" }
+              { src: "/images/lccx-group-shot.webp", alt: "Happy group celebrating on a private charter boat in Charleston SC" },
+              { src: "/images/lccx-dolphin-leap.webp", alt: "Wild bottlenose dolphin leaping beside the tour boat" },
+              { src: "/images/lccx-charleston-sunset.webp", alt: "Golden hour sunset over Charleston Harbor from the water" }
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -379,16 +378,16 @@ export default function BachelorettePage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 45% 7%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* Reviews */}
-      <section className="py-20 bg-background">
+      <section className="py-20 light-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
               <Star className="h-4 w-4" /> Guest Reviews
             </div>
-            <h2 className="text-4xl font-serif font-bold text-foreground mb-3">Real Bachelorette Parties Love It</h2>
+            <h2 className="text-4xl font-serif font-bold text-foreground mb-3">Real Birthday Celebrations</h2>
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
               <GoogleG />
               <span>Verified Google reviews from real guests</span>
@@ -422,7 +421,7 @@ export default function BachelorettePage() {
                     <h4 className="font-bold text-sm">{r.name}</h4>
                     <p className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="h-3 w-3" />{r.location}</p>
                   </div>
-                  <div className="bg-secondary/60 text-foreground/80 px-3 py-1 rounded-full text-xs font-medium border border-border">Bachelorette Charter</div>
+                  <div className="bg-secondary/60 text-foreground/80 px-3 py-1 rounded-full text-xs font-medium border border-border">Birthday Cruise</div>
                 </div>
               </motion.div>
             ))}
@@ -430,16 +429,16 @@ export default function BachelorettePage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(214 30% 95%)" />
+      <WaveDivider color="hsl(218 45% 7%)" />
 
       {/* FAQ */}
-      <section className="py-20 light-section">
+      <section className="py-20 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
-              <Sparkles className="h-4 w-4" /> Questions
+              <Gift className="h-4 w-4" /> Questions
             </div>
-            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Bachelorette Charter FAQs</h2>
+            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Birthday Cruise FAQs</h2>
           </div>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
@@ -460,24 +459,24 @@ export default function BachelorettePage() {
         </div>
       </section>
 
-      <WaveDivider color="hsl(218 45% 7%)" />
+      <WaveDivider color="hsl(214 30% 95%)" />
 
       {/* CTA */}
-      <section id="tour-cta" className="py-24 bg-background text-center">
+      <section id="tour-cta" className="py-24 light-section text-center">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
-          <Sparkles className="h-12 w-12 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 16px hsl(22 95% 52% / 0.6))" }} />
+          <Gift className="h-12 w-12 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 16px hsl(22 95% 52% / 0.6))" }} />
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
-            Book the <span className="text-primary glow-orange-text">Perfect Party</span>
+            Give Them a Birthday <span className="text-primary glow-orange-text">They'll Never Forget</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-3">
-            Bachelorette and bachelor dates fill fast — especially weekends and peak season. Lock in your date before it's gone.
+            Weekend dates and summer slots book out fast. Reserve your private birthday cruise before your date is gone.
           </p>
           <div className="inline-flex items-center gap-2 text-sm text-primary font-semibold bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-8">
-            <Clock className="h-4 w-4" /> Weekend dates book out weeks in advance — don't wait
+            <Clock className="h-4 w-4" /> Book early — birthday cruise dates fill up quickly
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={openBooking} className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all glow-orange inline-flex items-center gap-2 justify-center">
-              <Anchor className="h-5 w-5" /> Book Your Charter
+              <Anchor className="h-5 w-5" /> Book the Birthday Cruise
             </button>
             <a href={`${base}/`} className="bg-card text-foreground px-10 py-4 rounded-full text-lg font-semibold border border-border hover:border-primary/40 transition-all inline-flex items-center gap-2 justify-center">
               View All Tours <ArrowRight className="h-5 w-5" />
