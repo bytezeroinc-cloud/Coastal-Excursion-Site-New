@@ -217,6 +217,91 @@ export function Immersion() {
         </div>
       </section>
 
+      {/* 7b. All 7 Experiences — compact access rail */}
+      <section className="py-24 md:py-28 px-6 md:px-12 bg-[#faf8f3] border-t border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="font-['Playfair_Display'] text-sm italic text-gray-500 tracking-wider">All our experiences</span>
+            <h2 className="font-['Playfair_Display'] text-3xl md:text-4xl mt-2 text-[#1a1008]">Seven ways to get on the water</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-0 border border-gray-200">
+            {[
+              {
+                name: "Dolphin & Wildlife",
+                price: "From $59/person",
+                tag: "2 hrs · Up to 23",
+                note: "Wild dolphins on every trip.",
+                img: "/__mockup/images/lccx-dolphin-leap.webp",
+              },
+              {
+                name: "Shark Tooth Hunting",
+                price: "From $65/person",
+                tag: "3 hrs · Up to 20",
+                note: "Keep every fossil you find.",
+                img: "/__mockup/images/lccx-img1016.jpg",
+              },
+              {
+                name: "Sunset Cruise",
+                price: "From $65/person",
+                tag: "2 hrs · Up to 23",
+                note: "Golden hour on Charleston Harbor.",
+                img: "/__mockup/images/lccx-charleston-sunset.webp",
+              },
+              {
+                name: "Bachelorette & Group",
+                price: "From $450/boat",
+                tag: "2–4 hrs · Up to 23",
+                note: "BYOB, Bluetooth, full boat buyout.",
+                img: "/__mockup/images/lccx-bachelorette-boat.webp",
+              },
+              {
+                name: "Birthday Party Cruise",
+                price: "From $375/boat",
+                tag: "2 hrs · Up to 23",
+                note: "Private celebration on the water.",
+                img: "/__mockup/images/family-boat.png",
+              },
+              {
+                name: "Group Charter",
+                price: "From $375/boat",
+                tag: "Flexible · Up to 23",
+                note: "Corporate, family, fully custom.",
+                img: "/__mockup/images/lccx-group-shot.webp",
+              },
+              {
+                name: "Inshore Fishing",
+                price: "From $350/half-day",
+                tag: "4 hrs · Up to 4",
+                note: "Redfish & trout. All gear included.",
+                img: "/__mockup/images/lccx-fishing-redfish.webp",
+              },
+            ].map((t, i) => (
+              <div key={i} className="relative group overflow-hidden border-r border-b border-gray-200 last:border-r-0 bg-white">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={t.img} 
+                    alt={t.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                  <p className="font-['Playfair_Display'] text-lg leading-tight mb-0.5">{t.name}</p>
+                  <p className="text-xs text-white/70 mb-1">{t.tag}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold">{t.price}</span>
+                    <button className="text-[#f97316] text-xs font-semibold uppercase tracking-wider hover:text-orange-300 transition-colors">
+                      Book →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 8. The Close */}
       <section className="py-32 px-6 md:px-12 bg-[#0d1623] text-white text-center">
         <div className="max-w-3xl mx-auto">

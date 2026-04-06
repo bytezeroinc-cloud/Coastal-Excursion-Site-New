@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Anchor, Phone, Star, Clock, Users, Target, CheckCircle2, ChevronDown, Instagram, Facebook, Twitter, MapPin } from "lucide-react";
+import { Anchor, Phone, Star, Clock, Users, Target, CheckCircle2, ChevronDown, ChevronUp, Instagram, Facebook, Twitter, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export function PlannerBoard() {
   const [activeFilter, setActiveFilter] = useState("All Tours");
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const filters = ["All Tours", "Family", "Private Charter", "Romantic", "Adventure", "Fishing"];
 
@@ -12,84 +13,91 @@ export function PlannerBoard() {
     {
       id: 1,
       name: "Shark Tooth Hunting",
-      price: "$65/person",
+      price: "From $65/person",
       duration: "3 hrs",
       groupSize: "Up to 20",
       bestFor: "All ages",
       highlight: "Fossils",
-      desc: "Remote beach access, keep every tooth you find.",
+      desc: "Boat out to a remote barrier island and hunt for megalodon teeth. Keep every tooth you find — there's no road access to this beach.",
+      perks: ["Keep all teeth you find", "Remote island access by boat only", "Family friendly", "All equipment provided"],
       image: "/__mockup/images/lccx-img1016.jpg",
       categories: ["Family", "Adventure"],
     },
     {
       id: 2,
       name: "Dolphin & Wildlife",
-      price: "$59/person",
+      price: "From $59/person",
       duration: "2 hrs",
       groupSize: "Up to 23",
       bestFor: "All ages",
       highlight: "Wildlife",
-      desc: "Wild dolphins guaranteed on every trip.",
+      desc: "Wild dolphin encounters in Charleston Harbor and Shem Creek. Expect close-range sightings on every trip — these are wild dolphins, not trained performers.",
+      perks: ["Wild dolphins on every trip", "Charleston Harbor & Shem Creek", "Family friendly", "Captain narrates wildlife"],
       image: "/__mockup/images/lccx-dolphin-leap.webp",
       categories: ["Family", "Adventure"],
     },
     {
       id: 3,
       name: "Sunset Cruise",
-      price: "$65/person",
+      price: "From $65/person",
       duration: "2 hrs",
       groupSize: "Up to 23",
-      bestFor: "Romantic",
+      bestFor: "Couples & groups",
       highlight: "Views",
-      desc: "Charleston Harbor at golden hour with dolphins.",
+      desc: "Golden hour on Charleston Harbor with dolphins in the last warm light. Ravenel Bridge, marsh, and a sky that will stop conversation entirely.",
+      perks: ["Golden hour timing", "Dolphin sightings", "Ravenel Bridge views", "BYOB welcome"],
       image: "/__mockup/images/lccx-charleston-sunset.webp",
       categories: ["Romantic"],
     },
     {
       id: 4,
-      name: "Bachelorette Charter",
-      price: "$450/boat",
+      name: "Bachelorette & Group Charter",
+      price: "From $450/boat",
       duration: "2–4 hrs",
       groupSize: "Up to 23",
-      bestFor: "Private",
+      bestFor: "Private group",
       highlight: "Party",
-      desc: "Your boat, your music, BYOB welcome.",
+      desc: "The whole boat is yours. Bring your crew, your music, and your drinks. Private bathroom on board. We handle the rest.",
+      perks: ["Full boat buyout", "BYOB welcome", "Bluetooth stereo", "Private restroom on board"],
       image: "/__mockup/images/lccx-bachelorette-boat.webp",
       categories: ["Private Charter"],
     },
     {
       id: 5,
-      name: "Birthday Cruise",
-      price: "$375/boat",
+      name: "Birthday Party Cruise",
+      price: "From $375/boat",
       duration: "2 hrs",
       groupSize: "Up to 23",
-      bestFor: "Private",
+      bestFor: "Private celebration",
       highlight: "Celebrate",
-      desc: "Private celebration on the water.",
+      desc: "Private boat for your birthday celebration. Decorate the boat, bring your guests and a cooler — celebrate on the water.",
+      perks: ["Private boat", "Decorate the vessel", "BYOB coolers welcome", "Up to 23 guests"],
       image: "/__mockup/images/family-boat.png",
       categories: ["Private Charter", "Family"],
     },
     {
       id: 6,
       name: "Group Charter",
-      price: "$375/boat",
+      price: "From $375/boat",
       duration: "Flexible",
       groupSize: "Up to 23",
-      bestFor: "Private",
+      bestFor: "Corporate & family",
       highlight: "Custom",
-      desc: "Fully custom for corporate or family groups.",
+      desc: "Fully custom for corporate events, family reunions, or any large group. You pick the experience — we design the trip around you.",
+      perks: ["Fully customizable itinerary", "Corporate & family groups", "BYOB coolers welcome", "Up to 23 guests"],
       image: "/__mockup/images/lccx-group-shot.webp",
       categories: ["Private Charter"],
     },
     {
       id: 7,
       name: "Inshore Fishing",
-      price: "$350/half-day",
+      price: "From $350/half-day",
       duration: "4 hrs",
       groupSize: "Up to 4",
-      bestFor: "Fishing",
-      highlight: "Action",
-      desc: "Trophy redfish & speckled trout, all gear included.",
+      bestFor: "Anglers",
+      highlight: "Redfish & Trout",
+      desc: "Trophy redfish and speckled trout in the SC Lowcountry back country. All gear included, USCG certified captain, fish cleaning available.",
+      perks: ["All rods, tackle & gear included", "USCG certified captain", "Redfish & speckled trout", "Fish cleaning available"],
       image: "/__mockup/images/lccx-fishing-redfish.webp",
       categories: ["Fishing", "Adventure"],
     },
@@ -199,55 +207,88 @@ export function PlannerBoard() {
       {/* Tour Cards */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[50vh]">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTours.map((tour) => (
-            <div 
-              key={tour.id} 
-              className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group"
-            >
-              <div className="relative aspect-video overflow-hidden bg-slate-100">
-                <img 
-                  src={tour.image} 
-                  alt={tour.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-[#0d1b35] shadow-sm">
-                  {tour.price}
+          {filteredTours.map((tour) => {
+            const isExpanded = expandedId === tour.id;
+            return (
+              <div 
+                key={tour.id} 
+                className={cn(
+                  "bg-white rounded-2xl border overflow-hidden transition-all duration-300 flex flex-col group",
+                  isExpanded ? "border-orange-400 shadow-lg ring-1 ring-orange-400/30" : "border-slate-200 hover:shadow-md"
+                )}
+              >
+                <div className="relative aspect-video overflow-hidden bg-slate-100">
+                  <img 
+                    src={tour.image} 
+                    alt={tour.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-[#0d1b35] shadow-sm">
+                    {tour.price}
+                  </div>
+                </div>
+                
+                <div className="p-5 flex flex-col flex-grow">
+                  <h3 className="font-bold text-lg mb-3 text-[#0d1b35]">{tour.name}</h3>
+                  
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
+                      <Clock className="w-3.5 h-3.5" /> {tour.duration}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
+                      <Users className="w-3.5 h-3.5" /> {tour.groupSize}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
+                      <Star className="w-3.5 h-3.5" /> {tour.bestFor}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
+                      <Target className="w-3.5 h-3.5" /> {tour.highlight}
+                    </span>
+                  </div>
+                  
+                  <p className="text-slate-600 text-sm mb-4 flex-grow">
+                    {tour.desc}
+                  </p>
+
+                  {/* Expanded detail panel */}
+                  {isExpanded && (
+                    <div className="mb-4 bg-slate-50 rounded-xl p-4 border border-slate-200 animate-in slide-in-from-top-1 duration-200">
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">What's included</p>
+                      <ul className="space-y-2">
+                        {tour.perks.map((perk, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                            <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
+                            {perk}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  <div className="grid grid-cols-2 gap-3 mt-auto">
+                    <button
+                      onClick={() => setExpandedId(isExpanded ? null : tour.id)}
+                      className={cn(
+                        "flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg border text-sm font-semibold transition-all duration-200",
+                        isExpanded
+                          ? "border-orange-400 text-orange-600 bg-orange-50 hover:bg-orange-100"
+                          : "border-slate-300 text-[#0d1b35] hover:bg-slate-50"
+                      )}
+                    >
+                      {isExpanded ? (
+                        <><ChevronUp className="w-4 h-4" /> Hide</>
+                      ) : (
+                        <><ChevronDown className="w-4 h-4" /> Details</>
+                      )}
+                    </button>
+                    <Button className="bg-orange-500 hover:bg-orange-600 text-white shadow-sm">
+                      Book Now
+                    </Button>
+                  </div>
                 </div>
               </div>
-              
-              <div className="p-5 flex flex-col flex-grow">
-                <h3 className="font-bold text-lg mb-4 text-[#0d1b35]">{tour.name}</h3>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                    <Clock className="w-3.5 h-3.5" /> {tour.duration}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                    <Users className="w-3.5 h-3.5" /> {tour.groupSize}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                    <Star className="w-3.5 h-3.5" /> {tour.bestFor}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                    <Target className="w-3.5 h-3.5" /> {tour.highlight}
-                  </span>
-                </div>
-                
-                <p className="text-slate-600 text-sm mb-6 flex-grow">
-                  {tour.desc}
-                </p>
-                
-                <div className="grid grid-cols-2 gap-3 mt-auto">
-                  <Button variant="outline" className="border-slate-300 text-[#0d1b35] hover:bg-slate-50">
-                    Details <ChevronDown className="w-4 h-4 ml-1" />
-                  </Button>
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white shadow-sm">
-                    Book Now
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
