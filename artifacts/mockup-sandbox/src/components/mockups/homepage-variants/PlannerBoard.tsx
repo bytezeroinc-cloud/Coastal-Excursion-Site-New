@@ -204,91 +204,121 @@ export function PlannerBoard() {
         </div>
       </section>
 
-      {/* Tour Cards */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[50vh]">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTours.map((tour) => {
-            const isExpanded = expandedId === tour.id;
-            return (
-              <div 
-                key={tour.id} 
-                className={cn(
-                  "bg-white rounded-2xl border overflow-hidden transition-all duration-300 flex flex-col group",
-                  isExpanded ? "border-orange-400 shadow-lg ring-1 ring-orange-400/30" : "border-slate-200 hover:shadow-md"
-                )}
-              >
-                <div className="relative aspect-video overflow-hidden bg-slate-100">
-                  <img 
-                    src={tour.image} 
-                    alt={tour.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-[#0d1b35] shadow-sm">
-                    {tour.price}
-                  </div>
-                </div>
-                
-                <div className="p-5 flex flex-col flex-grow">
-                  <h3 className="font-bold text-lg mb-3 text-[#0d1b35]">{tour.name}</h3>
-                  
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                      <Clock className="w-3.5 h-3.5" /> {tour.duration}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                      <Users className="w-3.5 h-3.5" /> {tour.groupSize}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                      <Star className="w-3.5 h-3.5" /> {tour.bestFor}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-medium text-slate-700">
-                      <Target className="w-3.5 h-3.5" /> {tour.highlight}
-                    </span>
-                  </div>
-                  
-                  <p className="text-slate-600 text-sm mb-4 flex-grow">
-                    {tour.desc}
-                  </p>
+      {/* Tour Comparison Board — horizontal scroll lane */}
+      <section className="py-10 min-h-[50vh]">
+        {/* Scroll hint */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center justify-between">
+          <p className="text-sm text-slate-500 font-medium">
+            {filteredTours.length} tour{filteredTours.length !== 1 ? "s" : ""} — scroll to compare →
+          </p>
+          {expandedId !== null && (
+            <button
+              onClick={() => setExpandedId(null)}
+              className="text-xs text-orange-600 font-semibold hover:text-orange-700 underline"
+            >
+              Collapse all
+            </button>
+          )}
+        </div>
 
-                  {/* Expanded detail panel */}
-                  {isExpanded && (
-                    <div className="mb-4 bg-slate-50 rounded-xl p-4 border border-slate-200 animate-in slide-in-from-top-1 duration-200">
-                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">What's included</p>
-                      <ul className="space-y-2">
-                        {tour.perks.map((perk, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
-                            <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
-                            {perk}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+        {/* Horizontal scroll container — all tours visible simultaneously */}
+        <div className="overflow-x-auto pb-6 px-4 sm:px-6 lg:px-8">
+          <div
+            className="flex gap-5 min-w-max"
+            style={{ paddingRight: "2rem" }}
+          >
+            {filteredTours.map((tour) => {
+              const isExpanded = expandedId === tour.id;
+              return (
+                <div
+                  key={tour.id}
+                  className={cn(
+                    "bg-white rounded-2xl border overflow-hidden transition-all duration-300 flex flex-col group shrink-0",
+                    "w-72 sm:w-80",
+                    isExpanded
+                      ? "border-orange-400 shadow-xl ring-1 ring-orange-400/30"
+                      : "border-slate-200 hover:shadow-md hover:border-slate-300"
                   )}
-                  
-                  <div className="grid grid-cols-2 gap-3 mt-auto">
-                    <button
-                      onClick={() => setExpandedId(isExpanded ? null : tour.id)}
-                      className={cn(
-                        "flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg border text-sm font-semibold transition-all duration-200",
-                        isExpanded
-                          ? "border-orange-400 text-orange-600 bg-orange-50 hover:bg-orange-100"
-                          : "border-slate-300 text-[#0d1b35] hover:bg-slate-50"
-                      )}
-                    >
-                      {isExpanded ? (
-                        <><ChevronUp className="w-4 h-4" /> Hide</>
-                      ) : (
-                        <><ChevronDown className="w-4 h-4" /> Details</>
-                      )}
-                    </button>
-                    <Button className="bg-orange-500 hover:bg-orange-600 text-white shadow-sm">
-                      Book Now
-                    </Button>
+                >
+                  {/* Image */}
+                  <div className="relative h-44 overflow-hidden bg-slate-100">
+                    <img
+                      src={tour.image}
+                      alt={tour.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-[#0d1b35] shadow-sm">
+                      {tour.price}
+                    </div>
+                  </div>
+
+                  {/* Attribute bar — always visible, key comparison row */}
+                  <div className="flex items-center gap-px bg-slate-100 text-xs font-medium text-slate-600 border-b border-slate-200">
+                    <span className="flex-1 flex items-center gap-1 justify-center py-2 px-1 bg-white">
+                      <Clock className="w-3 h-3" /> {tour.duration}
+                    </span>
+                    <span className="flex-1 flex items-center gap-1 justify-center py-2 px-1 bg-white">
+                      <Users className="w-3 h-3" /> {tour.groupSize}
+                    </span>
+                    <span className="flex-1 flex items-center gap-1 justify-center py-2 px-1 bg-white">
+                      <Target className="w-3 h-3" /> {tour.highlight}
+                    </span>
+                  </div>
+
+                  {/* Card body */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    <h3 className="font-bold text-base mb-2 text-[#0d1b35] leading-snug">{tour.name}</h3>
+                    <p className="text-xs text-slate-500 font-medium mb-3">Best for: {tour.bestFor}</p>
+
+                    <p className="text-slate-600 text-sm mb-4 leading-relaxed flex-grow">
+                      {tour.desc}
+                    </p>
+
+                    {/* Inline expanded details */}
+                    {isExpanded && (
+                      <div className="mb-4 bg-orange-50 rounded-xl p-4 border border-orange-200">
+                        <p className="text-xs font-bold text-orange-700 uppercase tracking-wider mb-3">
+                          What's included
+                        </p>
+                        <ul className="space-y-2">
+                          {tour.perks.map((perk, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-2 text-sm text-slate-700"
+                            >
+                              <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
+                              {perk}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-2.5 mt-auto">
+                      <button
+                        onClick={() => setExpandedId(isExpanded ? null : tour.id)}
+                        className={cn(
+                          "flex items-center justify-center gap-1 py-2 rounded-lg border text-sm font-semibold transition-all duration-200",
+                          isExpanded
+                            ? "border-orange-400 text-orange-600 bg-orange-50 hover:bg-orange-100"
+                            : "border-slate-300 text-[#0d1b35] hover:bg-slate-50"
+                        )}
+                      >
+                        {isExpanded ? (
+                          <><ChevronUp className="w-4 h-4" /> Hide</>
+                        ) : (
+                          <><ChevronDown className="w-4 h-4" /> Details</>
+                        )}
+                      </button>
+                      <Button className="bg-orange-500 hover:bg-orange-600 text-white shadow-sm text-sm">
+                        Book Now
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
