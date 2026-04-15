@@ -296,33 +296,27 @@ function MobileBookingBar() {
 
 const heroSlides = [
   {
-    image: "/images/ta-photo-2.jpg",
-    tag: "Most Popular",
+    image: "/images/lccx-group-shot.webp",
     tour: "Shark Tooth Hunting",
-    headline: "Find Fossilized Megalodon Teeth on a Remote Barrier Island",
-    sub: "Boat access only · 65 million year old fossils · Keep every tooth you find",
+    headline: "Hunt Megalodon Teeth on a Barrier Island",
     price: "From $65/person",
     cta: "Book the Hunt",
     path: "/shark-tooth-hunting",
     objectPosition: "center",
   },
   {
-    image: "/images/lccx-shark-release.jpg",
-    tag: "Our Signature Experience",
+    image: "/images/lccx-img8589.webp",
     tour: "Shark Tooth Hunting",
-    headline: "SC Lowcountry's Premier Fossil Hunting Adventure",
-    sub: "Expert guides · Private barrier island beaches · All ages welcome · Since 2018",
+    headline: "Expert Guides. Remote Beaches. Real Fossils.",
     price: "From $65/person",
     cta: "Book the Hunt",
     path: "/shark-tooth-hunting",
     objectPosition: "center top",
   },
   {
-    image: "/images/ta-photo-3.jpg",
-    tag: "Family Favorite",
-    tour: "Dolphin & Wildlife Tours",
-    headline: "Wild Dolphins Up Close — Every Single Trip",
-    sub: "Shem Creek to Charleston Harbor · Pelicans, eagles & sea turtles · Morning & sunset departures",
+    image: "/images/lccx-dolphin-leap.webp",
+    tour: "Dolphin & Wildlife",
+    headline: "Wild Dolphins, Every Single Trip",
     price: "From $59/person",
     cta: "Meet the Dolphins",
     path: "/dolphin-wildlife",
@@ -330,10 +324,8 @@ const heroSlides = [
   },
   {
     image: "/images/lccx-charleston-sunset.webp",
-    tag: "Most Romantic",
     tour: "Sunset Cruise",
     headline: "Charleston Harbor at Golden Hour",
-    sub: "Ravenel Bridge views · Dolphins at dusk · Golden marshes · BYOB on private charters",
     price: "From $65/person",
     cta: "Book a Sunset",
     path: "/sunset-cruise",
@@ -341,21 +333,17 @@ const heroSlides = [
   },
   {
     image: "/images/lccx-bachelorette-boat.webp",
-    tag: "Private Charter",
-    tour: "Bachelorette & Group Charters",
-    headline: "Your Crew, Your Music, Your Celebration",
-    sub: "Up to 23 guests · Bluetooth stereo · BYOB welcome · Full bathroom on board",
+    tour: "Private Charters",
+    headline: "Your Crew. Your Celebration.",
     price: "From $375/boat",
     cta: "Plan Your Party",
     path: "/bachelorette-party-cruise",
-    objectPosition: "center",
+    objectPosition: "center top",
   },
   {
     image: "/images/lccx-on-water.webp",
-    tag: "Angler's Choice",
     tour: "Inshore Fishing",
-    headline: "Trophy Redfish & Speckled Trout in the Lowcountry",
-    sub: "All tackle & SC license included · Expert local captain · Half & full day trips",
+    headline: "Trophy Redfish in the Lowcountry",
     price: "From $350/half-day",
     cta: "Book a Fishing Trip",
     path: "/inshore-fishing",
@@ -436,28 +424,19 @@ function Hero() {
         style={{ transition: "opacity 0.45s, transform 0.45s", opacity: fading ? 0 : 1, transform: fading ? "translateY(12px)" : "translateY(0)" }}
       >
         <div
-          className="inline-flex items-center gap-1.5 bg-black/40 border border-primary/50 text-primary text-xs font-semibold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-5 backdrop-blur-sm"
+          className="inline-flex items-center gap-1.5 bg-black/40 border border-primary/50 text-primary text-xs font-semibold tracking-[0.18em] uppercase px-3.5 py-1.5 rounded-full mb-6 backdrop-blur-sm"
         >
-          <span className="opacity-70">{slide.tag}</span>
-          <span className="text-primary/40 text-[10px]">●</span>
-          <span>{slide.tour}</span>
+          {slide.tour}
         </div>
 
         <h1
-          className="text-[2.5rem] md:text-5xl lg:text-[3.5rem] font-serif font-bold text-white mb-5 leading-[1.12] tracking-tight"
+          className="text-[2.4rem] md:text-[3rem] lg:text-[3.5rem] font-serif font-bold text-white mb-8 leading-[1.12] tracking-tight"
           style={{ textShadow: "0 2px 20px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5)" }}
         >
           {slide.headline}
         </h1>
 
-        <p
-          className="text-base md:text-[1.15rem] text-white/85 max-w-2xl mx-auto mb-4 font-normal leading-relaxed"
-          style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
-        >
-          {slide.sub}
-        </p>
-
-        <div className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-8 bg-black/35 backdrop-blur-sm px-4 py-1.5 rounded-full border border-primary/25">
+        <div className="inline-flex items-center gap-2 text-primary/90 text-sm font-semibold mb-8 bg-black/35 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
           {slide.price}
         </div>
 
