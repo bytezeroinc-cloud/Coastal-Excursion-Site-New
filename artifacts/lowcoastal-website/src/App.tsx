@@ -383,7 +383,7 @@ function Hero() {
   const slide = heroSlides[current];
 
   return (
-    <section id="hero" className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex items-center justify-center pt-20" aria-label="Hero Section">
+    <section id="hero" className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex items-end justify-center pt-20" aria-label="Hero Section">
       <motion.div style={{ opacity }} className="absolute inset-0 z-0">
         {heroSlides.map((s, i) => (
           <div
@@ -399,9 +399,9 @@ function Hero() {
             />
           </div>
         ))}
-        {/* Lighter overlay — shows more of the image while keeping text legible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
+        {/* Bottom-weighted gradient — image clear on top, legible text zone on bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent" />
       </motion.div>
 
       <button
@@ -420,7 +420,7 @@ function Hero() {
       </button>
 
       <div
-        className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 text-center"
+        className="relative z-10 max-w-4xl w-full mx-auto px-6 sm:px-8 text-center pb-10 sm:pb-14"
         style={{ transition: "opacity 0.45s, transform 0.45s", opacity: fading ? 0 : 1, transform: fading ? "translateY(12px)" : "translateY(0)" }}
       >
         <div
