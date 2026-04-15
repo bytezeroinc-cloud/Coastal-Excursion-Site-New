@@ -135,7 +135,7 @@ export default function BachelorettePage() {
       {/* Hero */}
       <section id="tour-hero" className="relative h-[90vh] min-h-[600px] overflow-hidden flex items-center pt-24 pb-12">
         <div className="absolute inset-0 z-0">
-          <img src="/images/lccx-bachelorette-boat.webp" alt="Bachelorette party celebrating on a private charter boat near the Ravenel Bridge in Charleston SC" className="w-full h-full object-cover object-center" />
+          <img src="/images/charter-group-sunset.png" alt="Bachelorette party celebrating on a private charter boat near the Ravenel Bridge in Charleston SC" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent" />
         </div>
@@ -304,7 +304,7 @@ export default function BachelorettePage() {
             </div>
             <div className="relative">
               <div className="rounded-3xl overflow-hidden border border-border shadow-2xl shadow-black/30 aspect-[4/5]">
-                <img src="/images/lccx-bachelorette-boat.webp" alt="Bachelorette party group on a private charter boat near Charleston SC" className="w-full h-full object-cover" />
+                <img src="/images/charter-group-sunset.png" alt="Bachelorette party group on a private charter boat near Charleston SC" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-card border border-border rounded-2xl p-5 shadow-xl max-w-[210px]">
                 <div className="text-3xl font-bold text-primary glow-orange-text mb-1">100%</div>
@@ -360,7 +360,7 @@ export default function BachelorettePage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Parties on the Water</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/lccx-bachelorette-boat.webp", alt: "Bachelorette party on a private charter boat near Charleston SC" },
+              { src: "/images/charter-group-sunset.png", alt: "Bachelorette party on a private charter boat near Charleston SC" },
               { src: "/images/lccx-group-shot.webp", alt: "Happy group celebrating on the water in the Lowcountry" },
               { src: "/images/lccx-charleston-sunset.webp", alt: "Golden sunset over Charleston Harbor from the boat" }
             ].map((img, i) => (

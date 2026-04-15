@@ -120,6 +120,18 @@ uri = "file://artifacts/lowcoastal-website/public/images/scene9-reveal.png"
 type = "image"
 title = "Brand reveal boat"
 
+[[generated]]
+id = "xX5hwkot0yHYhIWthC_zn"
+uri = "file://artifacts/lowcoastal-website/public/images/group-charter-sunset.png"
+type = "image"
+title = "group charter pontoon sunset"
+
+[[generated]]
+id = "4DjWBLQO6ps-V-8vcGcVL"
+uri = "file://artifacts/lowcoastal-website/public/images/couple-sunset-boat.png"
+type = "image"
+title = "romantic couple sunset boat"
+
 [[outputs]]
 id = "pcqqkxQ5GKM6PMSivYGau"
 uri = "file://attached_assets/stock_images/dolphins-boat.jpg"

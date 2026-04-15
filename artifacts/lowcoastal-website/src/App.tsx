@@ -332,7 +332,7 @@ const heroSlides = [
     objectPosition: "center",
   },
   {
-    image: "/images/lccx-bachelorette-boat.webp",
+    image: "/images/charter-group-sunset.png",
     tour: "Private Charters",
     headline: "Your Crew. Your Celebration.",
     price: "From $375/boat",
@@ -524,7 +524,7 @@ const experiences = [
     title: "Sunset Cruise",
     fromPrice: "From $65/person",
     desc: "Watch the SC Lowcountry sky shift colors over Charleston Harbor. The Ravenel Bridge catches the last light, the marsh goes quiet, and whatever the water decides to show you — it's always worth it.",
-    image: "/images/lccx-charleston-sunset.webp",
+    image: "/images/romantic-sunset-boat.png",
     icon: <Sun className="h-6 w-6" />,
     badge: "Most Romantic",
     features: ["Golden hour on the water", "Ravenel Bridge views", "Shared or private option", "BYOB on private charters"]
@@ -535,7 +535,7 @@ const experiences = [
     title: "Bachelorette & Group Charters",
     fromPrice: "From $450/boat",
     desc: "Celebrate on the water! A private charter for your bachelorette party, family reunion, or corporate retreat. Bring your drinks, play your music, and let us handle the rest.",
-    image: "/images/lccx-bachelorette-boat.webp",
+    image: "/images/group-charter-sunset.png",
     icon: <Sparkles className="h-6 w-6" />,
     badge: "Private Charter",
     features: ["Fully private boat", "Customizable itinerary", "Bluetooth sound system", "BYOB welcome"]
@@ -757,9 +757,9 @@ function Gallery() {
       likes: 376, span: "",
     },
     {
-      src: "/images/lccx-bachelorette-boat.webp",
-      alt: "Bachelorette party celebrating on a private charter boat near the Ravenel Bridge Charleston SC",
-      caption: "Bachelorette done right 🥂 Private boat, best views, best crew. You know where to find us 💛",
+      src: "/images/charter-group-sunset.png",
+      alt: "Group of friends celebrating on a private charter boat at golden hour on the SC Lowcountry coast",
+      caption: "Golden hour on the water with your crew 🌅 This is what a good evening looks like. You know where to find us 🛥️",
       likes: 512, span: "",
     },
     {
@@ -1462,7 +1462,7 @@ function PhotoSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { src: "/images/lccx-dolphin-leap.webp", alt: "Dolphin leaping beside the boat" },
-            { src: "/images/lccx-bachelorette-boat.webp", alt: "Bachelorette group on private charter" },
+            { src: "/images/romantic-sunset-boat.png", alt: "Romantic couple on a private charter at golden hour" },
             { src: "/images/lccx-fishing-redfish.webp", alt: "Happy angler with a big redfish" },
             { src: "/images/lccx-charleston-sunset.webp", alt: "Golden hour over Charleston Harbor" },
           ].map((img, i) => (

@@ -265,7 +265,7 @@ export default function GroupCharterPage() {
           <h2 className="text-4xl font-serif font-bold text-foreground mb-10">Life on Charter</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/lccx-bachelorette-boat.webp", alt: "Bachelorette party celebrating on a private charter in Charleston SC" },
+              { src: "/images/charter-group-sunset.png", alt: "Bachelorette party celebrating on a private charter in Charleston SC" },
               { src: "/images/lccx-group-shot.webp", alt: "Happy group enjoying a private boat charter on the SC coast" },
               { src: "/images/lccx-charleston-sunset.webp", alt: "Golden sunset over Charleston Harbor from the water" }
             ].map((img, i) => (
