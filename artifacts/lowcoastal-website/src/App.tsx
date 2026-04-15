@@ -307,7 +307,7 @@ const heroSlides = [
   {
     image: "/images/lccx-img8589.webp",
     tour: "Shark Tooth Hunting",
-    headline: "Expert Guides. Remote Beaches. Real Fossils.",
+    headline: "Remote Barrier Islands. Ancient Fossils. Open Water.",
     price: "From $65/person",
     cta: "Book the Hunt",
     path: "/shark-tooth-hunting",
@@ -316,7 +316,7 @@ const heroSlides = [
   {
     image: "/images/lccx-dolphin-leap.webp",
     tour: "Dolphin & Wildlife",
-    headline: "Wild Dolphins, Every Single Trip",
+    headline: "Dolphins, Pelicans & Lowcountry Views",
     price: "From $59/person",
     cta: "Meet the Dolphins",
     path: "/dolphin-wildlife",
@@ -343,7 +343,7 @@ const heroSlides = [
   {
     image: "/images/lccx-on-water.webp",
     tour: "Inshore Fishing",
-    headline: "Trophy Redfish in the Lowcountry",
+    headline: "Inshore Adventures in the Lowcountry",
     price: "From $350/half-day",
     cta: "Book a Fishing Trip",
     path: "/inshore-fishing",
@@ -501,33 +501,33 @@ const experiences = [
     path: "/shark-tooth-hunting",
     title: "Shark Tooth Hunting",
     fromPrice: "From $65/person",
-    desc: "Our hero experience. We take you to remote, boat-access-only barrier island beaches where prehistoric megalodon teeth wash ashore. Perfect for all ages — every fossil hunter's dream.",
+    desc: "Our signature outing. We take you to remote, boat-access-only barrier island beaches where the SC coastline has a long history of prehistoric fossil finds washing in with the tides. A hands-on adventure for curious minds of all ages.",
     image: "/images/kids-teeth.png",
     icon: <Gem className="h-6 w-6" />,
     badge: "Most Popular",
-    features: ["Remote beach access", "Fossil identification guide", "Keep everything you find", "Expert tide timing"]
+    features: ["Remote barrier island access", "Fossil spotting tips from your captain", "Keep any fossils you discover", "Tide-aware departures"]
   },
   {
     id: "dolphins",
     path: "/dolphin-wildlife",
     title: "Dolphin & Wildlife Tours",
     fromPrice: "From $59/person",
-    desc: "Cruise the pristine estuarine waters and winding creeks to witness Atlantic bottlenose dolphins feeding and playing in their natural habitat, alongside eagles and pelicans.",
+    desc: "Cruise the pristine estuarine waters and winding creeks of the SC Lowcountry — where dolphins, pelicans, and eagles are part of the everyday scenery. Nature sets the agenda; we just get you there.",
     image: "/images/lccx-dolphin-leap.webp",
     icon: <Waves className="h-6 w-6" />,
     badge: "Family Favorite",
-    features: ["Golden hour options", "Bird & dolphin watching", "Ecological insights", "Photography spots"]
+    features: ["Golden hour departure options", "Wildlife & coastal bird watching", "Scenic Lowcountry waterways", "Great photography opportunities"]
   },
   {
     id: "sunset",
     path: "/sunset-cruise",
     title: "Sunset Cruise",
     fromPrice: "From $65/person",
-    desc: "Watch the SC Lowcountry sky ignite over Charleston Harbor. Dolphins feed at golden hour, the Ravenel Bridge glows orange, and the marsh turns to pure gold. The most romantic 2 hours in Charleston.",
+    desc: "Watch the SC Lowcountry sky shift colors over Charleston Harbor. The Ravenel Bridge catches the last light, the marsh goes quiet, and whatever the water decides to show you — it's always worth it.",
     image: "/images/lccx-charleston-sunset.webp",
     icon: <Sun className="h-6 w-6" />,
     badge: "Most Romantic",
-    features: ["Golden hour dolphin spotting", "Ravenel Bridge views", "Shared or private option", "BYOB on private charters"]
+    features: ["Golden hour on the water", "Ravenel Bridge views", "Shared or private option", "BYOB on private charters"]
   },
   {
     id: "groups",
@@ -545,11 +545,11 @@ const experiences = [
     path: "/inshore-fishing",
     title: "Inshore Fishing Trips",
     fromPrice: "From $350/half-day",
-    desc: "Target redfish, trout, and flounder in the nutrient-rich marshes. Whether you're a seasoned angler or teaching the kids to cast, our captains know exactly where the fish are biting.",
+    desc: "Spend a morning or afternoon in the nutrient-rich Lowcountry marshes, casting for redfish, trout, and flounder. Whether you're an old hand or just learning the ropes, this is fishing with a beautiful backdrop.",
     image: "/images/lccx-fishing-redfish.webp",
     icon: <Fish className="h-6 w-6" />,
     badge: "Anglers Choice",
-    features: ["Bait & tackle provided", "Licenses included", "Expert local guidance", "All skill levels"]
+    features: ["Bait & tackle provided", "SC fishing licenses included", "Local captain knowledge", "All experience levels welcome"]
   }
 ];
 
@@ -565,7 +565,7 @@ function Experiences() {
           </div>
           <h3 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">Choose Your Adventure</h3>
           <p className="text-lg text-muted-foreground">
-            From the thrill of finding prehistoric fossils to relaxing sunset cruises, we offer experiences tailored for families, groups, and wildlife enthusiasts along the SC Lowcountry coast.
+            From barrier island fossil hunting to golden hour sunset cruises, we put you on the water in one of the most beautiful and wild stretches of the SC Lowcountry coast. What the day brings is part of the adventure.
           </p>
         </div>
 
@@ -660,13 +660,13 @@ function WhyUs() {
     },
     {
       icon: <Camera className="h-6 w-6" />,
-      title: "Instagram-Worthy",
-      desc: "Every trip is a photo story. Stunning coastal scenery, wildlife moments, and fossil finds for unforgettable shots.",
+      title: "Worth Every Shot",
+      desc: "The Lowcountry is one of the most photogenic coastlines on the East Coast. The scenery alone makes the trip.",
     },
     {
       icon: <Award className="h-6 w-6" />,
-      title: "Top-Rated Locally",
-      desc: "Consistently rated #1 shark tooth hunting tour on Google and TripAdvisor across the South Carolina coast.",
+      title: "Highly Rated",
+      desc: "One of the most reviewed and trusted coastal excursion companies on the South Carolina coast, with a 4.9 Google rating.",
     },
   ];
 
@@ -747,7 +747,7 @@ function Gallery() {
     {
       src: "/images/lccx-dolphin-leap.webp",
       alt: "Bottlenose dolphin leaping alongside a tour boat on the SC Lowcountry coast",
-      caption: "These guys leap right next to the boat — almost every single trip 🐬 #LowcountryLife #Charleston",
+      caption: "You never quite know what the Lowcountry will show you on the water 🐬 That's kind of the whole point #LowcountryLife #Charleston",
       likes: 419, span: "md:col-span-2 md:row-span-2",
     },
     {
@@ -771,7 +771,7 @@ function Gallery() {
     {
       src: "/images/lccx-fishing-redfish.webp",
       alt: "Happy anglers holding a large redfish catch on an inshore fishing charter in Charleston SC",
-      caption: "REDFISH CAUGHT ✅ Inshore season is going OFF right now 🎣 Bait & tackle provided, all skill levels!",
+      caption: "Out on the marsh this morning 🎣 Some days the fish cooperate, some days you just enjoy the scenery — either way, it's a good day on the water",
       likes: 241, span: "",
     },
     {
@@ -1057,7 +1057,7 @@ function Audience() {
     {
       icon: <Heart className="h-8 w-8" />,
       title: "Families with Kids",
-      desc: "Safe, engaging, and hands-on. Watch their faces light up when they pull a fossil from the sand.",
+      desc: "Safe, engaging, and hands-on. There's something about barrier island beaches that brings out the explorer in everyone.",
       color: "text-rose-400"
     },
     {
@@ -1075,7 +1075,7 @@ function Audience() {
     {
       icon: <Fish className="h-8 w-8" />,
       title: "Anglers & Sportsmen",
-      desc: "Expert local knowledge for inshore fishing. We know where the redfish run in the winding marsh creeks.",
+      desc: "Our captains know these marsh creeks better than anyone. The rest is up to the fish — and that's the fun of it.",
       color: "text-teal-400"
     }
   ];
@@ -1088,8 +1088,8 @@ function Audience() {
             <Users className="h-4 w-4" />
             <span>Who We Serve</span>
           </div>
-          <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Who Hunts With Us?</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">Every trip is custom-built for your group. Here's who joins us most often on the water.</p>
+          <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Who Gets Out On The Water With Us?</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">Every trip is shaped around your group. Here's who joins us most often.</p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1142,7 +1142,7 @@ function LocalSEO() {
           ))}
         </div>
         <p className="text-muted-foreground leading-loose">
-          Discover the hidden gems of the Lowcountry with the top-rated <strong className="text-foreground">shark tooth hunting tours in South Carolina</strong>. Whether you're staying in Charleston, exploring Edisto Beach, or visiting historic Beaufort, our coastal excursions offer unmatched access to secluded barrier islands. Our expert guides specialize in <strong className="text-foreground">shark teeth tours near Charleston</strong>, wildlife viewing, and unforgettable boat tours throughout the Edisto and Hunting Island area. Experience the authentic salt-air freedom of a true <strong className="text-foreground">Low Country boat tour</strong>.
+          Discover the hidden gems of the Lowcountry with one of the most talked-about <strong className="text-foreground">boat excursions in South Carolina</strong>. Whether you're staying in Charleston, exploring Edisto Beach, or visiting historic Beaufort, our coastal outings offer access to secluded barrier islands most visitors never see. Our captains specialize in <strong className="text-foreground">coastal exploration near Charleston</strong>, wildlife watching, and memorable days on the water throughout the Edisto and Hunting Island area. Experience the authentic salt-air freedom of a true <strong className="text-foreground">Low Country boat outing</strong>.
         </p>
       </div>
     </section>
@@ -1168,8 +1168,8 @@ function FAQ() {
     },
     {
       icon: <Gem className="h-4 w-4 text-primary shrink-0 mt-0.5" />,
-      q: "Will we definitely find shark teeth?",
-      a: "While nature makes no guarantees, our expert guides know the tides and secret spots. Almost every trip finds teeth, and we'll teach you exactly how to spot them."
+      q: "Will we find shark teeth?",
+      a: "That's the magic of it — nature doesn't follow a script. The SC coastline is rich with prehistoric fossils, and our captain will share everything they know about what to look for and where. Some guests find several, some find none — but the barrier island beach alone makes it worthwhile."
     },
     {
       icon: <ShieldCheck className="h-4 w-4 text-primary shrink-0 mt-0.5" />,
