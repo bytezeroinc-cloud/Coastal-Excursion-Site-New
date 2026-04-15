@@ -296,54 +296,70 @@ function MobileBookingBar() {
 
 const heroSlides = [
   {
-    image: "/images/lccx-img1016.jpg",
+    image: "/images/ta-photo-2.jpg",
     tag: "Most Popular",
     tour: "Shark Tooth Hunting",
-    headline: "Hunt for Fossilized Megalodon Teeth on a Private Barrier Island",
-    sub: "Remote, boat-access-only beaches · Expert fossil guides · Keep every tooth you find",
+    headline: "Find Fossilized Megalodon Teeth on a Remote Barrier Island",
+    sub: "Boat access only · 65 million year old fossils · Keep every tooth you find",
     price: "From $65/person",
     cta: "Book the Hunt",
     path: "/shark-tooth-hunting",
+    objectPosition: "center",
   },
   {
-    image: "/images/lccx-dolphin-leap.webp",
+    image: "/images/lccx-shark-release.jpg",
+    tag: "Our Signature Experience",
+    tour: "Shark Tooth Hunting",
+    headline: "SC Lowcountry's Premier Fossil Hunting Adventure",
+    sub: "Expert guides · Private barrier island beaches · All ages welcome · Since 2018",
+    price: "From $65/person",
+    cta: "Book the Hunt",
+    path: "/shark-tooth-hunting",
+    objectPosition: "center top",
+  },
+  {
+    image: "/images/ta-photo-3.jpg",
     tag: "Family Favorite",
     tour: "Dolphin & Wildlife Tours",
-    headline: "Wild Bottlenose Dolphins Up Close — Every Single Trip",
-    sub: "Shem Creek to Charleston Harbor · Pelicans, eagles & sea turtles · Morning & sunset options",
-    price: "From $65/person",
+    headline: "Wild Dolphins Up Close — Every Single Trip",
+    sub: "Shem Creek to Charleston Harbor · Pelicans, eagles & sea turtles · Morning & sunset departures",
+    price: "From $59/person",
     cta: "Meet the Dolphins",
     path: "/dolphin-wildlife",
+    objectPosition: "center",
   },
   {
     image: "/images/lccx-charleston-sunset.webp",
     tag: "Most Romantic",
     tour: "Sunset Cruise",
-    headline: "Watch Charleston Harbor Ignite at Golden Hour",
+    headline: "Charleston Harbor at Golden Hour",
     sub: "Ravenel Bridge views · Dolphins at dusk · Golden marshes · BYOB on private charters",
     price: "From $65/person",
     cta: "Book a Sunset",
     path: "/sunset-cruise",
+    objectPosition: "center",
   },
   {
     image: "/images/lccx-bachelorette-boat.webp",
     tag: "Private Charter",
     tour: "Bachelorette & Group Charters",
-    headline: "100% Private — Your Crew, Your Music, Your Celebration",
-    sub: "Up to 23 guests · Bluetooth stereo · BYOB welcome · Full bathroom on Roamer IV",
+    headline: "Your Crew, Your Music, Your Celebration",
+    sub: "Up to 23 guests · Bluetooth stereo · BYOB welcome · Full bathroom on board",
     price: "From $375/boat",
     cta: "Plan Your Party",
     path: "/bachelorette-party-cruise",
+    objectPosition: "center",
   },
   {
-    image: "/images/lccx-fishing-redfish.webp",
+    image: "/images/lccx-on-water.webp",
     tag: "Angler's Choice",
     tour: "Inshore Fishing",
-    headline: "Trophy Redfish & Speckled Trout in the SC Lowcountry",
-    sub: "All tackle & SC license included · Expert local captain · Half & full day trips available",
+    headline: "Trophy Redfish & Speckled Trout in the Lowcountry",
+    sub: "All tackle & SC license included · Expert local captain · Half & full day trips",
     price: "From $350/half-day",
     cta: "Book a Fishing Trip",
     path: "/inshore-fishing",
+    objectPosition: "center",
   },
 ];
 
@@ -387,11 +403,17 @@ function Hero() {
             className="absolute inset-0 transition-opacity duration-700"
             style={{ opacity: i === current ? 1 : 0 }}
           >
-            <img src={s.image} alt={s.tour} className="w-full h-full object-cover object-center" />
+            <img
+              src={s.image}
+              alt={s.tour}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: s.objectPosition || "center" }}
+            />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+        {/* Lighter overlay — shows more of the image while keeping text legible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
       </motion.div>
 
       <button
@@ -414,19 +436,28 @@ function Hero() {
         style={{ transition: "opacity 0.45s, transform 0.45s", opacity: fading ? 0 : 1, transform: fading ? "translateY(12px)" : "translateY(0)" }}
       >
         <div
-          className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5"
-          style={{ boxShadow: "0 0 16px hsl(22 95% 52% / 0.3)" }}
+          className="inline-flex items-center gap-1.5 bg-black/40 border border-primary/50 text-primary text-xs font-semibold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-5 backdrop-blur-sm"
         >
-          {slide.tag} · {slide.tour}
+          <span className="opacity-70">{slide.tag}</span>
+          <span className="text-primary/40 text-[10px]">●</span>
+          <span>{slide.tour}</span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-[4.25rem] font-serif font-bold text-white mb-5 leading-[1.1] tracking-tight">
+        <h1
+          className="text-[2.5rem] md:text-5xl lg:text-[3.5rem] font-serif font-bold text-white mb-5 leading-[1.12] tracking-tight"
+          style={{ textShadow: "0 2px 20px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5)" }}
+        >
           {slide.headline}
         </h1>
 
-        <p className="text-base md:text-xl text-white/75 max-w-2xl mx-auto mb-3 font-light leading-relaxed">{slide.sub}</p>
+        <p
+          className="text-base md:text-[1.15rem] text-white/85 max-w-2xl mx-auto mb-4 font-normal leading-relaxed"
+          style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
+        >
+          {slide.sub}
+        </p>
 
-        <div className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-8 bg-black/30 px-4 py-1.5 rounded-full border border-primary/30">
+        <div className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-8 bg-black/35 backdrop-blur-sm px-4 py-1.5 rounded-full border border-primary/25">
           {slide.price}
         </div>
 
